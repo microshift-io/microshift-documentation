@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: openshift-service-ca
+  name: service-ca
+  labels:
+    app: service-ca
+    service-ca: "true"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: service-ca
+      service-ca: "true"
+  template:
+    metadata:
+      name: service-ca
+      annotations:
+        target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+      labels:
+        app: service-ca
+        service-ca: "true"
+    spec:
+      securityContext: {}
+      serviceAccount: service-ca
+      serviceAccountName: service-ca
+      containers:
+      - name: service-ca-controller
+        image: {{ .ReleaseImage.service_ca_operator }}
+        imagePullPolicy: IfNotPresent
+        command: ["service-ca-operator", "controller"]
+        ports:
+        - containerPort: 8443
+        # securityContext:
+        #   runAsNonRoot: true
+        resources:
+          requests:
+            memory: 120Mi
+            cpu: 10m
+        volumeMounts:
+        - mountPath: /var/run/secrets/signing-key
+          name: signing-key
+        - mountPath: /var/run/configmaps/signing-cabundle
+          name: signing-cabundle
+      volumes:
+      - name: signing-key
+        hostPath:
+          path: {{.KeyDir}}
+      - name: signing-cabundle
+        hostPath:
+          path: {{.CADir}}
+      # nodeSelector:
+      #   node-role.kubernetes.io/master: ""
+      priorityClassName: "system-cluster-critical"
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: "NoSchedule"
+      - key: "node.kubernetes.io/unreachable"
+        operator: "Exists"
+        effect: "NoExecute"
+        tolerationSeconds: 120
+      - key: "node.kubernetes.io/not-ready"
+        operator: "Exists"
+        effect: "NoExecute"
+        tolerationSeconds: 120
