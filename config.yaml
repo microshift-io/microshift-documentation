@@ -72,18 +72,27 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
-    - identifier: project
-      name: The Project
-      url: /project/
+    - identifier: home 
+      name: Home
+      url: index.md
       weight: 20
-    - identifier: tags
-      name: Tags
-      url: /tags/
+    - identifier: design
+      name: Design
+      url: /design/design.md
+      weight: 20
+    - identifier: microshift-aio
+      name: MicroShift AIO
+      url: /microshift-aio/README.md
       weight: 30
-    - identifier: search
-      name: Search
-      url: /search
+    - identifier: microshift-containerized
+      name: MicroShift Containerized
+      url: /microshift-containerized/README.md
       weight: 40
+    - identifier: known-issues
+      name: Known Issues
+      url: known-issues.md
+      weight: 50
+
 
 outputs:
   home: ["HTML", "RSS", "JSON"]
