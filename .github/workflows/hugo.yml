@@ -1,0 +1,29 @@
+name: hugo
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  hugo:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2.3.4
+      -
+        name: Run Hugo
+        uses: crazy-max/ghaction-hugo@v1.4.0
+        with:
+          version: latest
+          extended: false
+          args: --minify --verbose
+      -
+        name: Deploy to GitHub Pages
+        if: success() && github.event_name != 'pull_request'
+        uses: crazy-max/ghaction-github-pages@v2.4.1
+        with:
+          target_branch: gh-pages
+          build_dir: public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
