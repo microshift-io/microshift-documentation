@@ -1,0 +1,4 @@
+<div class="admonition caution">
+    <p class="admonition-title">{{ .Get "title" | default "Caution" }}</p>
+    <p class="admonition">{{ printf "%s" .Inner | markdownify }}</p>
+</div>
