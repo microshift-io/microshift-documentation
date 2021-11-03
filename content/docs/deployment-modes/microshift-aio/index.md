@@ -2,25 +2,27 @@
 title: MicroShift All-In-One
 tags:
   - all-in-one
-  - aio
-date: 2019-02-11T19:30:08+10:00
+  - AIO
+date: 2019-02-11T09:30:08.000Z
 draft: false
 weight: 4
-summary: Deploy MicroShift All-In-One from a linux container and run as a systemd service.
+summary: Deploy MicroShift All-In-One from a Linux container and run as a systemd service.
+modified: "2021-11-03T16:32:35.904+01:00"
 ---
 
 MicroShift All-In-One includes everything required to run MicroShift in a single container image.
-This deployment mode is recommended for development and testing only. 
+This deployment mode is recommended for development and testing only.
 
 ### Run MicroShift All-In-One as a Systemd Service
-Copy `microshift-aio` unit file to `/etc/systemd` and the aio run script to `/usr/bin`
+
+Copy `microshift-aio.service` unit file to `/etc/systemd` and the `microshift-aio` run script to `/usr/bin`
 
 ```bash
 curl -o /etc/systemd https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-aio
 curl -o /usr/bin/microshift-aio https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-aio.service
 ```
 
-Now enable and start the service. The `KUBECONFIG` location will be written to `/etc/microshift-aio/microshift-aio.conf`.  
+Now enable and start the service. The `KUBECONFIG` location will be written to `/etc/microshift-aio/microshift-aio.conf`.
 If the `microshift-data` podman volume does not exist, the systemd service will create one.
 
 ```bash
@@ -28,7 +30,7 @@ systemctl enable microshift-aio --now
 source /etc/microshift-aio/microshift-aio.conf
 ```
 
-Verify that microshift is running.
+Verify that MicroShift is running.
 
 ```sh
 kubectl get pods -A
@@ -40,12 +42,13 @@ Stop `microshift-aio` service
 systemctl stop microshift-aio
 ```
 
-> note ""
-> Stopping microshift-aio service _does not_ remove the podman volume `microshift-data`. A restart will use the same volume.
+{{< note >}}
+Stopping `microshift-aio` service _does not_ remove the Podman volume `microshift-data`. A restart will use the same volume.
+{{< /note >}}
 
 ### Run MicroShift All-In-One Image Without Systemd
 
-First, enable the following SElinux rule:
+First, enable the following SELinux rule:
 
 ```bash
 setsebool -P container_manage_cgroup true
@@ -73,7 +76,7 @@ Execute the following command to get into the container:
 sudo podman exec -ti microshift-aio bash
 ```
 
-Inside the container, install kubectl:
+Inside the container, install `kubectl`:
 
 ```bash
 export ARCH=$(uname -m |sed -e "s/x86_64/amd64/" |sed -e "s/aarch64/arm64/")

@@ -1,7 +1,8 @@
 ---
-title: 'Overview'
-date: 2018-11-28T15:14:39+10:00
+title: Overview
+date: 2018-11-28T05:14:39.000Z
 weight: 1
+modified: "2021-11-03T14:32:01.858+01:00"
 ---
 
 MicroShift is a research project that is exploring how OpenShift<sup>1</sup> Kubernetes can be optimized for small form factor and edge computing.
@@ -19,7 +20,7 @@ We believe these properties should also make MicroShift a great tool for other u
 Watch this [end-to-end MicroShift provisioning demo video](https://youtu.be/QOiB8NExtA4) to get a first impression of MicroShift deployed onto a [RHEL for edge computing](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux/edge-computing) device and managed through [Open Cluster Management](https://github.com/open-cluster-management).
 
 {{< warning >}}
-MicroShift is still early days and moving fast. Features are missing. Things break. But you can still help shape it, too.{{\*\*
+MicroShift is still early days and moving fast. Features are missing. Things break. But you can still help shape it, too.
 {{< /warning >}}
 
 <sup>1) more precisely [OKD](https://www.okd.io/), the Kubernetes distribution by the OpenShift community</sup>
@@ -33,8 +34,8 @@ In order to run MicroShift, you will need at least:
 - ~124MB of free storage space for the MicroShift binary
 - 64-bit CPU (although 32-bit is _technically_ possible, if you're up for the challenge)
 
-For barebones development the minimum requirement is 3GB of RAM, though this can increase
-if you are using resource-intensive devtools.
+For barebone development the minimum requirement is 3GB of RAM, though this can increase
+if you are using resource-intensive development tools.
 
 ### OS Requirements
 

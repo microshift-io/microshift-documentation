@@ -57,6 +57,10 @@
     "deployable",
     "personas",
     "dongle",
-    "NAT'ed"
+    "NAT'ed",
+    "quickstart",
+    "QuickStart",
+    "Podman",
+    "Podman or"
   ]
 }

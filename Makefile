@@ -21,4 +21,3 @@ static: hugo
 .DEFAULT_GOAL := static
 
 .PHONY: static server
-

@@ -3,21 +3,22 @@ title: MicroShift Local QuickStart
 tags:
   - quickstart
   - testing
-date: 2019-02-11T19:30:08+10:00
+date: 2019-02-11T09:30:08.000Z
 draft: false
 weight: 5
 summary: MicroShift Local QuickStart
+modified: "2021-11-03T16:25:07.422+01:00"
 ---
 
-To give MicroShift a try, simply install a recent test version (we don't provide stable releases yet) on a Fedora-derived Linux distro (we've only tested Fedora, RHEL, and CentOS Stream so far) using:
+To give MicroShift a try, simply install a recent test version (we don't provide stable releases yet) on a Fedora-derived Linux distribution (we've only tested Fedora, RHEL, and CentOS Stream so far) using:
 
 ```sh
 curl -sfL https://raw.githubusercontent.com/redhat-et/microshift/main/install.sh | bash
 ```
 
-This will install MicroShift's dependencies (CRI-O) on the host, install a microshift systemd service and start it.
+This will install MicroShift's dependencies (CRI-O) on the host, install a MicroShift systemd service and start it.
 
-For convenience, the script will also add a new "microshift" context to your `$HOME/.kube/config`, so you'll be able to access your cluster using, e.g.:
+For convenience, the script will also add a new "`microshift`" context to your `$HOME/.kube/config`, so you'll be able to access your cluster using, e.g.:
 
 ```sh
 kubectl get all -A --context microshift

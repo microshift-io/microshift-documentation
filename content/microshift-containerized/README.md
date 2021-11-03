@@ -1,5 +1,5 @@
 ---
-modified: "2021-11-02T17:13:38.458+01:00"
+modified: "2021-11-03T16:09:44.115+01:00"
 title: Containerized
 tags:
   - container
@@ -11,7 +11,7 @@ toc: true
 
 ## Pre-requisites
 
-Before runnng microshift as a systemd service, ensure to update the host `crio-bridge.conf` as
+Before running MicroShift as a systemd service, ensure to update the host `crio-bridge.conf` as
 
 ```bash
 {
@@ -34,35 +34,35 @@ Before runnng microshift as a systemd service, ensure to update the host `crio-b
 }
 ```
 
-## Run microshift as a systemd service
+## Run MicroShift as a systemd service
 
-Copy microshift unit file to `/etc/systemd/system` and the microshift-containerized run script to `/usr/bin`
+Copy `microshift` unit file to `/etc/systemd/system` and the `microshift-containerized` run script to `/usr/bin`
 
 ```bash
 sudo cp packaging/systemd/microshift /etc/systemd/system/microshift
 sudo cp packaging/systemd/microshift-containerized /usr/bin/
 ```
 
-Now enable and start the service. The KUBECONFIG location will be written to `/etc/microshift-containerized/microshift-containerized.conf`.
+Now enable and start the service. The `KUBECONFIG` location will be written to `/etc/microshift-containerized/microshift-containerized.conf`.
 
 ```bash
 sudo systemctl enable microshift --now
 source /etc/microshift-containerized/microshift-containerized.conf
 ```
 
-Verify that microshift is running.
+Verify that MicroShift is running.
 
 ```sh
 kubectl get pods -A
 ```
 
-Stop microshift service
+Stop `microshift` service
 
 ```bash
 systemctl stop microshift
 ```
 
-You can check microshift via
+You can check MicroShift via
 
 ```bash
 sudo podman ps

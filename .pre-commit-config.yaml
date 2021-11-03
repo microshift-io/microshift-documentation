@@ -1,5 +1,5 @@
 fail_fast: true
-exclude: ^themes
+exclude: ^themes|^archetypes
 repos:
   - repo: meta
     hooks:

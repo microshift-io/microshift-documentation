@@ -6,15 +6,16 @@ tags:
   - podman
 draft: false
 weight: 3
-summary: Deploy MicroShift from a linux container and run as a systemd service.
+summary: Deploy MicroShift from a Linux container and run as a systemd service.
+modified: "2021-11-03T16:17:05.222+01:00"
 ---
 
-MicroShift can be run from a linux container with the host CRI-O service and managed with a systemd service.
+MicroShift can be run from a Linux container with the host CRI-O service and managed with a systemd service.
 
 ## Pre-requisites
 
-* CRI-O service must be running on the host
-* Before runnng microshift as a systemd service, ensure to update the host `crio-bridge.conf` as
+- CRI-O service must be running on the host
+- Before running MicroShift as a systemd service, ensure to update the host `crio-bridge.conf` as
 
 ```bash
 {
@@ -39,7 +40,7 @@ MicroShift can be run from a linux container with the host CRI-O service and man
 
 ## Run MicroShift as a systemd service
 
-Copy microshift unit file to `/etc/systemd/system` and the microshift-containerized run script to `/usr/bin`
+Copy `microshift` unit file to `/etc/systemd/system` and the `microshift-containerized` run script to `/usr/bin`
 
 ```bash
 curl -o /etc/systemd https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift
@@ -52,20 +53,20 @@ Now enable and start the service. The KUBECONFIG location will be written to `/v
 sudo systemctl enable microshift --now
 ```
 
-Verify that microshift is running.
+Verify that MicroShift is running.
 
 ```sh
 export KUBECONFIG=/var/lib/microshift/resources/kubeadmin/kubeconfig
 kubectl get pods -A
 ```
 
-Stop microshift service
+Stop MicroShift service
 
 ```bash
 systemctl stop microshift
 ```
 
-You can check microshift via
+You can check MicroShift via
 
 ```bash
 sudo podman ps
