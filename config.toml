@@ -1,6 +1,6 @@
 baseURL = "https://microshift.io"
 languageCode = "en-us"
-title = "Microshift.io"
+title = "MicroShift.io"
 themesDir = "themes"
 theme = "hugo-whisper-theme"
 
@@ -41,12 +41,12 @@ summaryLength = 300
     meta_description = "MicroShift is a research project that is exploring how OpenShift Kubernetes can be optimized for small form factor and edge computing."
     meta_og_title = "MicroShift"
     meta_og_type = "website"
-    meta_og_url = "https://hugo-whisper.netlify.app"
+    meta_og_url = "https://microshift.io"
     meta_og_image = "https://raw.githubusercontent.com/JugglerX/hugo-whisper-theme/master/images/tn.png"
     meta_og_description = "MicroShift is a research project that is exploring how OpenShift Kubernetes can be optimized for small form factor and edge computing."
     meta_twitter_card = "summary"
-    meta_twitter_site = "@zerostaticio"
-    meta_twitter_creator = "@zerostaticio"
+    meta_twitter_site = "@microshift"
+    meta_twitter_creator = "@microshift"
 
   [params.logo]
       mobile = "/images/logo-mobile.svg"
