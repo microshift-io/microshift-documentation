@@ -16,10 +16,9 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manif
 
 Once the components are available a configMap is required to define the address pool for the load balancer to use.
 
-Create the configmap.yaml file
+Create the Metal LB configmap:
 ```
-vi configmap.yaml
-
+kubectl create -f - <<EOF
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -32,11 +31,7 @@ data:
       protocol: layer2
       addresses:
       - 192.168.1.240-192.168.1.250
-```
-
-Load the configMap into the cluster.
-```
-kubectl create -f /tmp/configmap.yaml
+EOF
 ```
 
 Now we are able to deploy a test application to verify thing are working as expected.
@@ -46,14 +41,14 @@ kubectl create ns test
 kubectl create deployment nginx -n test --image nginx
 ```
 
-Create the following file to be used for the service.
+Create a service:
 ```
-vi service.yaml
-
+kubectl create -f - <<EOF
 apiVersion: v1
 kind: Service
 metadata:
   name: nginx
+  namespace: test
   annotations:
     metallb.universe.tf/address-pool: default
 spec:
@@ -63,11 +58,7 @@ spec:
   selector:
     app: nginx
   type: LoadBalancer
-```
-
-Use kubectl to create the service.
-```
-kubectl create -f service.yaml -n test
+EOF
 ```
 
 Verify the service exists and that an IP address has been assigned.
