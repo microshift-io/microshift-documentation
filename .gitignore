@@ -6,4 +6,7 @@ bin
 .vagrant/
 Vagrantfile
 sshfile
+.hugo_build.lock
+resources/
+static/
 public/*
