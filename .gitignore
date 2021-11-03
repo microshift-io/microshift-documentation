@@ -6,3 +6,4 @@ bin
 .vagrant/
 Vagrantfile
 sshfile
+public/*
