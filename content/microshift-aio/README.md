@@ -1,23 +1,23 @@
 ---
-modified: "2021-11-02T17:18:53.613+01:00"
+modified: "2021-11-03T16:30:22.535+01:00"
 title: All-In-One
 layout: page
 tags:
   - all-in-one
-  - aio
+  - AIO
 toc: true
 ---
 
 ## Run MicroShift All-In-One as a Systemd Service
 
-Copy `microshift-aio` unit file to `/etc/systemd` and the aio run script to `/usr/bin`
+Copy `microshift-aio.service` unit file to `/etc/systemd` and the `microshift-aio` run script to `/usr/bin`
 
 ```bash
 cp packaging/systemd/microshift-aio.service /etc/systemd/system/microshift-aio.service
 cp packaging/systemd/microshift-aio /usr/bin/
 ```
 
-Now enable and start the service. The `KUBECONFIG` location will be written to `/etc/microshift-aio/microshift-aio.conf`.  
+Now enable and start the service. The `KUBECONFIG` location will be written to `/etc/microshift-aio/microshift-aio.conf`.
 If the `microshift-data` podman volume does not exist, the systemd service will create one.
 
 ```bash
@@ -25,7 +25,7 @@ systemctl enable microshift-aio --now
 source /etc/microshift-aio/microshift-aio.conf
 ```
 
-Verify that microshift is running.
+Verify that MicroShift is running.
 
 ```sh
 kubectl get pods -A
@@ -37,12 +37,13 @@ Stop `microshift-aio` service
 systemctl stop microshift-aio
 ```
 
-> note ""
-> Stopping microshift-aio service _does not_ remove the podman volume `microshift-data`. A restart will use the same volume.
+{{< note >}}
+Stopping `microshift-aio` service _does not_ remove the Podman volume `microshift-data`. A restart will use the same volume.
+{{< /note >}}
 
 ## Run the Image Without Systemd
 
-First, enable the following SElinux rule:
+First, enable the following SELinux rule:
 
 ```bash
 setsebool -P container_manage_cgroup true
@@ -70,7 +71,7 @@ Execute the following command to get into the container:
 sudo podman exec -ti microshift-aio bash
 ```
 
-Inside the container, install kubectl:
+Inside the container, install `kubectl`:
 
 ```bash
 export ARCH=$(uname -m |sed -e "s/x86_64/amd64/" |sed -e "s/aarch64/arm64/")
@@ -126,7 +127,7 @@ make microshift-aio FROM_SOURCE="true"
 ### Build With Latest Released Binary Download
 
 ```bash
-make microshfit-aio
+make microshift-aio
 ```
 
 ## Limitation

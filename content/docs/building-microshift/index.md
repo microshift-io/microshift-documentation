@@ -1,5 +1,5 @@
 ---
-title: 'Local Development'
+title: "Local Development"
 date: 2019-02-11T19:30:08+10:00
 tags:
   - develop
@@ -14,18 +14,19 @@ summary: Building and running MicroShift for local development
 ### Build Dependencies
 
 Install the required binaries:
-- git
-- make
-- golang
-- glibc
-- podman # if building containerized, as recommended
+
+- `git`
+- `make`
+- `golang`
+- `glibc`
+- `podman` # if building containerized, as recommended
 
 ```sh
-# Fedora/CentOS 
+# Fedora/CentOS
 sudo dnf install \
     git \
     make \
-    golang \    
+    golang \
     glibc-static
 
 # Ubuntu
@@ -59,7 +60,7 @@ ARCH=$( /bin/arch )
 sudo subscription-manager repos --enable "codeready-builder-for-rhel-8-${ARCH}-rpms"
 ```
 
-Next clone the repository and cd into it, then build with `make`: 
+Next clone the repository and get into it, then build with `make`:
 
 ```sh
 git clone https://github.com/redhat-et/microshift.git
@@ -79,21 +80,21 @@ the following commands. First, run the install script to prepare the host enviro
 ```sh
 cd microshift
 CONFIG_ENV_ONLY=true ./install.sh
-sudo ./microshift run 
+sudo ./microshift run
 ```
 
 ## (optional) Developing with Vagrant
 
 It is possible to use Vagrant for VM provisioning, however it is not necessary.
 
-Find a guide on how to install it for your system [here](https://www.vagrantup.com/downloads). 
+Find a guide on how to install it for your system [here](https://www.vagrantup.com/downloads).
 
 Once Vagrant is installed, create a Vagrant box for the operating
 system of choice. For this example we will be looking at a [fedora 34 cloud
 image](https://app.vagrantup.com/fedora/boxes/34-cloud-base), however you can substitute any vagrant image of your choice.
 
 First, navigate to the MicroShift directory on your host system, or another designated
-directory where we will be storing the Vagrantfile.
+directory where we will be storing the `Vagrantfile`.
 
 Next, download the vagrant image. For this example we will use
 a fedora 34 cloud image:
@@ -101,6 +102,7 @@ a fedora 34 cloud image:
 ```sh
 vagrant box add fedora/34-cloud-base
 ```
+
 Depending on the image, Vagrant will ask you to select a Virtualization provider,
 just select the first one.
 
@@ -113,8 +115,8 @@ vagrant init fedora/34-cloud-base
 Running this command will create a `Vagrantfile` in your working directory which
 is used to configure your vagrant box.
 
-Before starting the Vagrant box, increase the amount of RAM available to the system. 
-To do this, edit the Vagrantfile and configure your provider settings to include
+Before starting the Vagrant box, increase the amount of RAM available to the system.
+To do this, edit the `Vagrantfile` and configure your provider settings to include
 the following:
 
 ```rb
@@ -125,8 +127,9 @@ the following:
         v.cpus = 2
     end
 ```
+
 The value of `config.vm.provider` depends on the provider you selected when you
-ran `vagrant add` earlier. For example, if you selected virtualbox then the first
+ran `vagrant add` earlier. For example, if you selected `virtualbox` then the first
 line should be: `config.vm.provider "virtualbox" do |v|`
 
 Now start the VM:
@@ -134,21 +137,22 @@ Now start the VM:
 ```
 vagrant up
 ```
+
 Once the VM is up, connect to it:
 
 ```
 vagrant ssh
 ```
 
-### (Extra Optional) Connecting VSCode to Vagrant 
+### (Extra Optional) Connecting VSCode to Vagrant
 
 If using VSCode, you can connect to your vagrant box with a few extra steps.
 
 #### Increasing Memory Requirements
 
-Since VS Code leans more on the heavy side of development, the RAM usage on your Vagrant environment 
+Since VSCode leans more on the heavy side of development, the RAM usage on your Vagrant environment
 can go up to 5GB, and therefore we will need to modify the `Vagrantfile` to
-increase the amount of available RAM from 3GB to 5GB (or 6GB if you want to be safe). 
+increase the amount of available RAM from 3GB to 5GB (or 6GB if you want to be safe).
 To do this, set `v.memory` to the following in your `Vagrantfile`:
 
 ```rb
@@ -166,10 +170,11 @@ First we need to ask Vagrant for an SSH config file. From your host machine, run
 vagrant ssh-config > ssh-config.conf
 ```
 
-*You can edit the `ssh-config.conf` file to change the hostname from `default` to
-`vagrant` to be more easily identifiable, but that's up to you. :)*
+_You can edit the `ssh-config.conf` file to change the hostname from `default` to
+`vagrant` to be more easily identifiable, but that's up to you. :)_
 
 Here's an example of a working SSH config file:
+
 ```
 Host default
   HostName 127.0.0.1
@@ -197,5 +202,5 @@ Next you'll want to navigate to the "Remote Explorer" tab on the left-hand side
 of VSCode, then select on the vagrant target (default if you haven't renamed it)
 and click on the button to connect to it in a remote window.
 
-*(Credits to Andrés Lopez for this guide: [Connect Visual Studio Code with Vagrant in your local machine
-](https://medium.com/@lopezgand/connect-visual-studio-code-with-vagrant-in-your-local-machine-24903fb4a9de))*
+_(Credits to Andrés Lopez for this guide: [Connect Visual Studio Code with Vagrant in your local machine
+](https://medium.com/@lopezgand/connect-visual-studio-code-with-vagrant-in-your-local-machine-24903fb4a9de))_

@@ -1,5 +1,5 @@
 ---
-title: 'Design'
+title: "Design"
 date: 2019-02-11T19:30:08+10:00
 tags:
   - Design documentation
@@ -23,7 +23,7 @@ MicroShift aims at meeting all of the following design goals:
     - e.g. disconnected or rarely connected, NAT'ed or firewalled, changing IP addresses, IPv4 or v6, high latency / low bandwidth, no control over local network (DNS, DHCP, LBN, GW), connectivity via LTE dongle (i.e. no LAN)
   - MicroShift operates autonomously; it does not require external orchestration.
   - MicroShift is safe to change<sup>1</sup>; it has means to automatically recover from faulty software or configuration updates that would render it unmanageable or non-operational.
-  - MicroShift is secure<sup>1</sup> even in environments without physical accesss security.
+  - MicroShift is secure<sup>1</sup> even in environments without physical access security.
 
   <sup>1) when used in combination with an edge-optimized OS like RHEL 4 Edge or Fedora IoT</sup>
 
@@ -31,7 +31,7 @@ MicroShift aims at meeting all of the following design goals:
 
   - MicroShift supports deployments with 1 or 3 control plane and 0..N worker instances.
   - MicroShift can be deployed containerized on Podman or Docker or non-containerized via RPM and managed via systemd; it is compatible with `rpm-ostree`-based systems.
-  - MicroShift's lifecyle is decoupled from the underlying OS's lifecycle.
+  - MicroShift's lifecycle is decoupled from the underlying OS's lifecycle.
   - MicroShift can be deployed such that updates or changes to it do not disrupt running workloads.
   - MicroShift meets DISA STIG and FedRAMP security requirements; it runs as non-privileged workload and supports common CVE and auditing workflows.
   - MicroShift allows segregation between the "edge device administrator" and the "edge service development and operations" personas.
