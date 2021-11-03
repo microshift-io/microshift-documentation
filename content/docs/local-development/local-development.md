@@ -1,6 +1,5 @@
 ---
 title: "Local Development"
-date: 2019-02-11T19:30:08+10:00
 tags:
   - develop
   - contribute
@@ -60,7 +59,7 @@ ARCH=$( /bin/arch )
 sudo subscription-manager repos --enable "codeready-builder-for-rhel-8-${ARCH}-rpms"
 ```
 
-Next clone the repository and get into it, then build with `make`:
+Next clone the repository and cd into it, then build with `make`:
 
 ```sh
 git clone https://github.com/redhat-et/microshift.git
@@ -193,10 +192,10 @@ Next, you'll want to install the `Remote - SSH` extension from the [VSCode Marke
 With the extension installed, you'll click on the green bottom in the bottom-left
 corner of VSCode to open a dropdown menu for SSH options:
 
-![VSCode Remote Button](./docs/pics/vscode-remote-button.png)
+![VSCode Remote Button](../../../pics/vscode-remote-button.png)
 
 Select the option to open an SSH configuration file:
-![Dropdown Menu](./docs/pics/remote-ssh-dropdown.png)
+![Dropdown Menu](../../../pics/remote-ssh-dropdown.png)
 
 Next you'll want to navigate to the "Remote Explorer" tab on the left-hand side
 of VSCode, then select on the vagrant target (default if you haven't renamed it)

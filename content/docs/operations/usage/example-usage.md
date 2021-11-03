@@ -1,14 +1,20 @@
-# Using MicroShift
-MicroShift operates similar to many other Kubernetes providers. This means that you can use the same tools to deploy and manage your applications.
+---
+title: "MicroShift Basic Usage"
+draft: false
+weight: 9
+summary: MicroShift operates similar to many other Kubernetes providers. This means that you can use the same tools to deploy and manage your applications.
+---
 
 All of the standard Kubernetes management tools can be used to maintain and modify your MicroShift applications. Below we will show some examples using kubectl, kustomize, and helm to deploy and maintain applications.
 
 ## Example Applications
 
 ### Metal LB
+
 Metal LB is a load balancer that can be used to route traffic to a number of backends.
 
 Creating the Metal LB namespace and deployment.
+
 ```
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/namespace.yaml
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/metallb.yaml
@@ -17,6 +23,7 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manif
 Once the components are available a configMap is required to define the address pool for the load balancer to use.
 
 Create the Metal LB configmap:
+
 ```
 kubectl create -f - <<EOF
 apiVersion: v1
@@ -42,6 +49,7 @@ kubectl create deployment nginx -n test --image nginx
 ```
 
 Create a service:
+
 ```
 kubectl create -f - <<EOF
 apiVersion: v1
@@ -62,6 +70,7 @@ EOF
 ```
 
 Verify the service exists and that an IP address has been assigned.
+
 ```
 kubectl get svc -n test
 NAME    TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)        AGE

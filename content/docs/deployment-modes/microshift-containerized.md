@@ -1,17 +1,21 @@
 ---
-modified: "2021-11-03T16:09:44.115+01:00"
-title: Containerized
+title: MicroShift Containerized
 tags:
   - container
   - docker
   - podman
-layout: page
-toc: true
+draft: false
+weight: 4
+summary: Deploy MicroShift from a Linux container and run as a systemd service.
+modified: "2021-11-03T16:17:05.222+01:00"
 ---
+
+MicroShift can be run from a Linux container with the host CRI-O service and managed with a systemd service.
 
 ## Pre-requisites
 
-Before running MicroShift as a systemd service, ensure to update the host `crio-bridge.conf` as
+- CRI-O service must be running on the host
+- Before running MicroShift as a systemd service, ensure to update the host `crio-bridge.conf` as
 
 ```bash
 {
@@ -39,24 +43,24 @@ Before running MicroShift as a systemd service, ensure to update the host `crio-
 Copy `microshift` unit file to `/etc/systemd/system` and the `microshift-containerized` run script to `/usr/bin`
 
 ```bash
-sudo cp packaging/systemd/microshift /etc/systemd/system/microshift
-sudo cp packaging/systemd/microshift-containerized /usr/bin/
+curl -o /etc/systemd https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift
+curl -o /usr/bin/microshift-containerized https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-containerized
 ```
 
-Now enable and start the service. The `KUBECONFIG` location will be written to `/etc/microshift-containerized/microshift-containerized.conf`.
+Now enable and start the service. The KUBECONFIG location will be written to `/var/lib/microshift/resources/kubeadmin/kubeconfig`.
 
 ```bash
 sudo systemctl enable microshift --now
-source /etc/microshift-containerized/microshift-containerized.conf
 ```
 
 Verify that MicroShift is running.
 
 ```sh
+export KUBECONFIG=/var/lib/microshift/resources/kubeadmin/kubeconfig
 kubectl get pods -A
 ```
 
-Stop `microshift` service
+Stop MicroShift service
 
 ```bash
 systemctl stop microshift
@@ -119,7 +123,7 @@ quay.io/microshift/microshift:4.7.0-0.microshift-2021-08-31-224727-linux-amd64
 
 ### Testing auto-updates
 
-Podman `auto-update` command will look for containers that are having the label and a systemd service file as described above. If the command finds one container, it will check for a new image, download it, restart the container service.
+Podman `auto-update` command will look for containers with the label and a systemd service file as described above. If the command finds one container, it will check for a new image, download it, restart the container service.
 
 ```bash
 sudo podman auto-update --dry-run

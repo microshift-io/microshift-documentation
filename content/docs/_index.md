@@ -1,6 +1,5 @@
 ---
 title: Overview
-date: 2018-11-28T05:14:39.000Z
 weight: 1
 modified: "2021-11-04T11:25:47.657+01:00"
 ---
@@ -50,9 +49,3 @@ Currently, the MicroShift binary is known to be supported on the following Opera
 - Ubuntu 20.04
 
 It may be possible to run MicroShift on other systems, however they haven't been tested so you may run into issues.
-
-### Community
-
-Join us on [Slack](https://microshift.slack.com)!
-
-Community meetings are held weekly, Wednesdays at 10:30AM - 11:00AM EST. Be sure to join the community [calendar](https://calendar.google.com/calendar/embed?src=nj6l882mfe4d2g9nr1h7avgrcs%40group.calendar.google.com&ctz=America%2FChicago)! Click "Google Calendar" in the lower right hand corner to subscribe.
