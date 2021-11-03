@@ -4,7 +4,7 @@ modified: "2021-11-03T16:31:13.096+01:00"
 
 # MicroShift
 
-MicroShift is a research project that is exploring how OpenShift<sup>1</sup> Kubernetes can be optimized for small form factor and edge computing.
+MicroShift is a research project that is exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing.
 
 This repository contains the files required for building the documentation at <https://microshift.io>
 
