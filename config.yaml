@@ -46,8 +46,8 @@ params:
 
   # home-info mode
   homeInfoParams:
-    Title: "Hi!"
-    Content: Welcome to MicroShift documentation site
+    Title: "MicroShift Documentation"
+    Content: Welcome to the MicroShift documentation site. For more information about the site check out Getting Started.
 
   # analytics:
   #   google:
@@ -72,27 +72,34 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
-    - identifier: home 
-      name: Home
-      url: index.html
+    - identifier: getting-started
+      name: Getting Started
+      url: /page/project/
       weight: 20
     - identifier: design
       name: Design
-      url: /content/design/design.md
-      weight: 20
+      url: /design/design
+      weight: 30
     - identifier: microshift-aio
       name: MicroShift AIO
-      url: /content/microshift-aio/README.md
-      weight: 30
+      url: /microshift-aio/readme
+      weight: 40
     - identifier: microshift-containerized
       name: MicroShift Containerized
-      url: /content/microshift-containerized/README.md
-      weight: 40
+      url: /microshift-containerized/readme
+      weight: 50
     - identifier: known-issues
       name: Known Issues
-      url: /content/known-issues.md
-      weight: 50
-
+      url: /known-issues
+      weight: 60
+    - identifier: tags
+￼     name: Tags
+￼     url: /tags/
+￼     weight: 70
+￼   - identifier: search
+￼     name: Search
+￼     url: /search
+￼     weight: 80
 
 outputs:
   home: ["HTML", "RSS", "JSON"]
