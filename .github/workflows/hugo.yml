@@ -16,7 +16,7 @@ jobs:
         uses: crazy-max/ghaction-hugo@v1.4.0
         with:
           version: latest
-          extended: false
+          extended: true
           args: --minify --verbose
       -
         name: Deploy to GitHub Pages
