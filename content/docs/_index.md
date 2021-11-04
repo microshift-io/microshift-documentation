@@ -2,10 +2,10 @@
 title: Overview
 date: 2018-11-28T05:14:39.000Z
 weight: 1
-modified: "2021-11-03T14:32:01.858+01:00"
+modified: "2021-11-04T11:25:47.657+01:00"
 ---
 
-MicroShift is a research project that is exploring how OpenShift<sup>1</sup> Kubernetes can be optimized for small form factor and edge computing.
+MicroShift is a research project that is exploring how OpenShift[^1] Kubernetes can be optimized for small form factor and edge computing.
 
 Edge devices deployed out in the field pose very different operational, environmental, and business challenges from those of cloud computing. These motivate different engineering trade-offs for Kubernetes at the far edge than for cloud or near-edge scenarios. MicroShift's design goals cater to this:
 
@@ -23,7 +23,7 @@ Watch this [end-to-end MicroShift provisioning demo video](https://youtu.be/QOiB
 MicroShift is still early days and moving fast. Features are missing. Things break. But you can still help shape it, too.
 {{< /warning >}}
 
-<sup>1) more precisely [OKD](https://www.okd.io/), the Kubernetes distribution by the OpenShift community</sup>
+[^1]: more precisely [OKD](https://www.okd.io/), the Kubernetes distribution by the OpenShift community</sup>
 
 ## Minimum specs
 
