@@ -1,12 +1,13 @@
 ---
-title: "Design"
-date: 2019-02-11T19:30:08+10:00
+title: Design
+date: 2019-02-11T09:30:08.000Z
 tags:
   - Design documentation
   - goals
 draft: false
 weight: 2
-summary: MicroShift's design goals, design principles, and fundamental design decisions.
+summary: "MicroShift's design goals, design principles, and fundamental design decisions."
+modified: "2021-11-04T11:24:57.450+01:00"
 ---
 
 The is a documentation of MicroShift's design goals, design principles, and fundamental design decisions. For details on specific feature enhancements, please refer to the corresponding low-level design documents.
@@ -17,15 +18,15 @@ MicroShift aims at meeting all of the following design goals:
 
 - **Optimized for field-deployment:**
 
-  - Provisioning and replacing devices running MicroShift is "plug&play"<sup>1</sup>; MicroShift does not add friction to this.
+  - Provisioning and replacing devices running MicroShift is "plug&play"[^1]; MicroShift does not add friction to this.
     - e.g. auto-configuring, auto-clustering
   - MicroShift works seamlessly under adverse network conditions.
     - e.g. disconnected or rarely connected, NAT'ed or firewalled, changing IP addresses, IPv4 or v6, high latency / low bandwidth, no control over local network (DNS, DHCP, LBN, GW), connectivity via LTE dongle (i.e. no LAN)
   - MicroShift operates autonomously; it does not require external orchestration.
-  - MicroShift is safe to change<sup>1</sup>; it has means to automatically recover from faulty software or configuration updates that would render it unmanageable or non-operational.
-  - MicroShift is secure<sup>1</sup> even in environments without physical access security.
+  - MicroShift is safe to change[^1]; it has means to automatically recover from faulty software or configuration updates that would render it unmanageable or non-operational.
+  - MicroShift is secure[^1] even in environments without physical access security.
 
-  <sup>1) when used in combination with an edge-optimized OS like RHEL 4 Edge or Fedora IoT</sup>
+  [^1]: when used in combination with an edge-optimized OS like RHEL 4 Edge or Fedora IoT
 
 - **Production-grade:**
 
