@@ -45,8 +45,8 @@ summaryLength = 300
     meta_og_image = "https://raw.githubusercontent.com/JugglerX/hugo-whisper-theme/master/images/tn.png"
     meta_og_description = "MicroShift is a research project that is exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing."
     meta_twitter_card = "summary"
-    meta_twitter_site = "@microshift"
-    meta_twitter_creator = "@microshift"
+    meta_twitter_site = "@microshift_io"
+    meta_twitter_creator = "@microshift_io"
 
   [params.logo]
       mobile = "/images/logo-mobile.svg"
