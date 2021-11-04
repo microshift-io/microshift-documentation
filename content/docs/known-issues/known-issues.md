@@ -3,16 +3,15 @@ title: Known Issues
 tags:
   - issues
   - troubleshoot
-date: 2019-02-11T09:30:08.000Z
 draft: false
-weight: 10
+weight: 100
 summary: MicroShift known issues
 modified: "2021-11-03T16:24:11.538+01:00"
 ---
 
 ## On EC2 with RHEL 8.4
 
-### `service-ca` can't be created
+### service-ca can't be created
 
 If you want to run `microshift` on EC2 RHEL 8.4(`cat /etc/os-release`), you might find [`ingress and service-ca will not stay online`](https://github.com/redhat-et/microshift/issues/270).
 
@@ -31,7 +30,7 @@ reboot
 
 You can find the details of this EC2 NetworkManager issue tracked at [issue](https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/740).
 
-### OpenShift pods restarts on `CrashLoopBackOff`
+### OpenShift pods CrashLoopBackOff
 
 A few minutes after `microshift` started, OpenShift pods fall into `CrashLoopBackOff`.
 

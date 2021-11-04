@@ -1,6 +1,5 @@
 ---
 title: Design
-date: 2019-02-11T09:30:08.000Z
 tags:
   - Design documentation
   - goals

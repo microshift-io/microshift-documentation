@@ -1,9 +1,8 @@
 ---
-title: MicroShift Local QuickStart
+title: MicroShift QuickStart
 tags:
   - quickstart
   - testing
-date: 2019-02-11T09:30:08.000Z
 draft: false
 weight: 5
 summary: MicroShift Local QuickStart

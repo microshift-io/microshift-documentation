@@ -10,3 +10,5 @@ sshfile
 resources/
 static/
 public/*
+.hugo/
+hugo
