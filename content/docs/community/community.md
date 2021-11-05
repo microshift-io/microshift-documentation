@@ -1,7 +1,12 @@
 ---
-title: "Community"
+title: Community
 weight: 99
-summary: MicroShift community is growing, we hope you can get involved!
+tags:
+  - Community
+  - slack
+  - meetings
+summary: "MicroShift community is growing, we hope you can get involved!"
+modified: "2021-11-05T16:24:42.777+01:00"
 ---
 
 Join us on [Slack](https://microshift.slack.com)! ([Invite to the Slack space](https://join.slack.com/t/microshift/shared_invite/zt-uxncbjbl-XOjueb1ShNP7xfByDxNaaA))
