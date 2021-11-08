@@ -3,10 +3,11 @@ title: Design
 tags:
   - Design documentation
   - goals
+  - features
 draft: false
 weight: 2
 summary: "MicroShift's design goals, design principles, and fundamental design decisions."
-modified: "2021-11-04T11:24:57.450+01:00"
+modified: "2021-11-05T16:26:11.663+01:00"
 ---
 
 The is a documentation of MicroShift's design goals, design principles, and fundamental design decisions. For details on specific feature enhancements, please refer to the corresponding low-level design documents.

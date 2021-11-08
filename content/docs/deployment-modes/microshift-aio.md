@@ -3,10 +3,12 @@ title: MicroShift All-In-One
 tags:
   - all-in-one
   - AIO
+  - container
+  - deploy
 draft: false
 weight: 4
 summary: Deploy MicroShift All-In-One from a Linux container and run as a systemd service.
-modified: "2021-11-03T16:32:35.904+01:00"
+modified: "2021-11-05T16:25:32.398+01:00"
 ---
 
 MicroShift All-In-One includes everything required to run MicroShift in a single container image.

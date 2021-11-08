@@ -2,6 +2,8 @@
 title: Overview
 weight: 1
 modified: "2021-11-04T11:25:47.657+01:00"
+tags:
+  - project overview
 ---
 
 MicroShift is a research project that is exploring how OpenShift[^1] Kubernetes can be optimized for small form factor and edge computing.

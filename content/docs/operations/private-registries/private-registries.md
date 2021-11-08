@@ -1,12 +1,14 @@
 ---
-title: "Working With Private Registries"
+title: Working With Private Registries
 tags:
   - registry
   - registries
   - pull-secret
+  - podman
 draft: false
 weight: 9
 summary: MicroShift may need access to a private registry. Access can be granted from registry login or from a pull-secret.
+modified: "2021-11-05T16:27:17.880+01:00"
 ---
 
 MicroShift may not have the pull secret for the registry that you are trying to use. For example, MicroShift does
