@@ -1,10 +1,12 @@
 ---
-title: Known Issues
+title: Troubleshooting
 tags:
   - issues
   - troubleshoot
+  - crashLoopBackoff
+  - ec2
 draft: false
-weight: 100
+weight: 7
 summary: MicroShift known issues
 modified: "2021-11-03T16:24:11.538+01:00"
 ---

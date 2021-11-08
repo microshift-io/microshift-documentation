@@ -29,28 +29,28 @@ page= ["HTML", "RSS"]
     weight = 1
 
 [[menu.main]]
-    name = "📚 About"
-    url = "/docs/"
+    name = "📚 MicroShift"
+    url = "/docs"
     weight = 2
 
 [[menu.main]]
-    name = "🧭 Design"
-    url = "/docs/design/design"
+    name = "📚 About"
+    url = "/docs/about/about"
     weight = 3
 
 [[menu.main]]
-    name = "🚧 Deployment Modes"
-    url = "/docs/deployment-modes/"
-    weight =4
+    name = "🧭 Getting Started"
+    url = "/docs/getting-started"
+    weight = 4
 
 [[menu.main]]
-    name = "⛑️ Operations"
-    url = "/docs/operations/"
+    name = "⛑️ User Documentation"
+    url = "/docs/user-documentation/"
     weight = 5
 
 [[menu.main]]
-    name = "🖥️ Local Development"
-    url = "/docs/local-development/local-development"
+    name = "🖥️ Developer Documentation"
+    url = "/docs/developer-documentation"
     weight = 6
 
 [[menu.main]]

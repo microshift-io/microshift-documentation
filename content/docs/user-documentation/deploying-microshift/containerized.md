@@ -12,6 +12,18 @@ modified: "2021-11-03T16:17:05.222+01:00"
 
 MicroShift can be run from a Linux container with the host CRI-O service and managed with a systemd service.
 
+## WIP More content coming soon
+
+### When to Use
+
+### Deployment Architecture
+
+MicroShift on podman, CRI-O on host
+
+### Systemd service
+
+### Auto-Updates
+
 ## Pre-requisites
 
 - CRI-O service must be running on the host
