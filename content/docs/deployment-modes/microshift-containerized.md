@@ -44,7 +44,7 @@ $ cat /etc/cni/net.d/crio-bridge.conf
 Copy `microshift-containerized.service` unit file to `/etc/systemd/system` and the `microshift-containerized` run script to `/usr/bin`
 
 ```bash
-curl -o /etc/systemd/system/microshift-containerized.service https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-containerized.service
+curl -o /etc/systemd/system/microshift.service https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-containerized.service
 curl -o /usr/bin/microshift-containerized https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-containerized
 ```
 
@@ -119,7 +119,7 @@ ExecStart=/usr/bin/podman run \
 -v /var/run:/var/run -v /sys:/sys:ro -v /var/lib:/var/lib:rw,rshared -v /lib/modules:/lib/modules -v /etc:/etc\
 -v /run/containers:/run/containers -v /var/log:/var/log \
 -e KUBECONFIG=/var/lib/microshift/resources/kubeadmin/kubeconfig \
-quay.io/microshift/microshift:4.7.0-0.microshift-2021-08-31-224727-linux-amd64
+quay.io/microshift/microshift:latest
 ```
 
 ### Testing auto-updates
