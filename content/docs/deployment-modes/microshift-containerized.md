@@ -18,6 +18,7 @@ MicroShift can be run from a Linux container with the host CRI-O service and man
 - Before running MicroShift as a systemd service, ensure to update the host `crio-bridge.conf` as
 
 ```bash
+$ cat /etc/cni/net.d/crio-bridge.conf
 {
     "cniVersion": "0.4.0",
     "name": "crio",
@@ -38,12 +39,12 @@ MicroShift can be run from a Linux container with the host CRI-O service and man
 }
 ```
 
-## Run MicroShift as a systemd service
+## Run MicroShift container as a systemd service
 
-Copy `microshift` unit file to `/etc/systemd/system` and the `microshift-containerized` run script to `/usr/bin`
+Copy `microshift-containerized.service` unit file to `/etc/systemd/system` and the `microshift-containerized` run script to `/usr/bin`
 
 ```bash
-curl -o /etc/systemd https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift
+curl -o /etc/systemd/system/microshift-containerized.service https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-containerized.service
 curl -o /usr/bin/microshift-containerized https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-containerized
 ```
 
