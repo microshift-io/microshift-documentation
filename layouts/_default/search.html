@@ -1,0 +1,19 @@
+{{ define "header_css" }}{{ end }}
+{{ define "body_classes" }}page-default-single{{ end }}
+{{ define "header_classes" }}{{ end }}
+
+{{ define "main" }}
+<div class="container pt-2 pt-md-6 pb-3 pb-md-6">
+      <div class="row">
+        <div class="col-12 col-md-9">
+            <h1 class="title">{{.Title}}</h1>
+            <div class="content {{if .Site.Params.enable_anchor_link}}{{ "anchor-link-enabled" }}{{ end }}">
+                <div id="searchbox">
+                    <input id="searchInput" autofocus placeholder="{{ .Title }} ↵" aria-label="search" type="search">
+                    <ul id="searchResults" aria-label="search results"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}

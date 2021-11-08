@@ -17,40 +17,52 @@ pygmentsUseClasses = true
 # See https://gohugo.io/content-management/summaries/
 summaryLength = 300
 
+
+[outputs]
+home= ["HTML", "RSS", "JSON"]
+page= ["HTML", "RSS"]
+
+
 [[menu.main]]
-    name = "Home"
+    name = "🏠 Home"
     url = "/"
     weight = 1
 
 [[menu.main]]
-    name = "About"
+    name = "📚 About"
     url = "/docs/"
     weight = 2
 
 [[menu.main]]
-    name = "Design"
+    name = "🧭 Design"
     url = "/docs/design/design"
     weight = 3
 
 [[menu.main]]
-    name = "DeploymentModes"
+    name = "🚧 Deployment Modes"
     url = "/docs/deployment-modes/"
     weight =4
 
 [[menu.main]]
-    name = "Operations"
+    name = "⛑️ Operations"
     url = "/docs/operations/"
     weight = 5
 
 [[menu.main]]
-    name = "LocalDevelopment"
+    name = "🖥️ Local Development"
     url = "/docs/local-development/local-development"
     weight = 6
 
 [[menu.main]]
-    name = "Community"
+    name = "❤️ Community"
     url = "/docs/community/community"
     weight = 7
+
+
+[[menu.main]]
+    name = "🔍 Search"
+    url = "/search"
+    weight = 8
 
 [params]
   google_analytics_id=""
@@ -76,3 +88,12 @@ summaryLength = 300
   [params.logo]
       mobile = "/images/logo-mobile.svg"
       standard  = "/images/logo.svg"
+
+  [params.fuseOpts]
+    isCaseSensitive= false
+    shouldSort= true
+    location= 0
+    distance= 1000
+    threshold= 0.4
+    minMatchCharLength= 0
+    keys= ["title", "permalink", "summary", "content"]
