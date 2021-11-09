@@ -1,5 +1,5 @@
 ---
-title: Working With Private Registries
+title: Private Registries and Pull Secrets
 tags:
   - registry
   - registries

@@ -2,11 +2,10 @@
 title: "Local Development"
 tags:
   - develop
-  - contribute
   - build
   - vagrant
 draft: false
-weight: 6
+weight: 1
 summary: Building and running MicroShift for local development
 ---
 
@@ -142,6 +141,9 @@ Once the VM is up, connect to it:
 ```
 vagrant ssh
 ```
+
+Once ssh'd into the vagrant instance, return to the [Build Dependencies section](#build-dependencies)
+to begin local development.
 
 ### (Extra Optional) Connecting VSCode to Vagrant
 

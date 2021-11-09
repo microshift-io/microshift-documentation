@@ -1,15 +1,26 @@
 ---
-title: MicroShift All-In-One
-tags:
-  - all-in-one
-  - AIO
-  - container
-  - deploy
-draft: false
+title: Experimental Development
 weight: 4
-summary: Deploy MicroShift All-In-One from a Linux container and run as a systemd service.
-modified: "2021-11-05T16:25:32.398+01:00"
+modified: "2021-11-04T11:25:47.657+01:00"
+tags:
+  - experimental
+  - all-in-one
+  - OSX
+  - MacOS
+  - ephemeral
+  - Windows
+summary: MicroShift has been deployed on various platforms and with an All-In-One image
 ---
+
+## OSX
+
+WIP: More Content Coming Soon
+
+## Windows
+
+WIP: More Content Coming Soon
+
+## MicroShift All-In-One Image
 
 MicroShift All-In-One includes everything required to run MicroShift in a single container image.
 This deployment mode is recommended for development and testing only.
@@ -19,8 +30,8 @@ This deployment mode is recommended for development and testing only.
 Copy `microshift-aio.service` unit file to `/etc/systemd` and the `microshift-aio` run script to `/usr/bin`
 
 ```bash
-curl -o /etc/systemd https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-aio
-curl -o /usr/bin/microshift-aio https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-aio.service
+curl -o /etc/systemd/system/microshift-aio.service https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-aio.service
+curl -o /usr/bin/microshift-aio https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-aio
 ```
 
 Now enable and start the service. The `KUBECONFIG` location will be written to `/etc/microshift-aio/microshift-aio.conf`.
@@ -128,6 +139,37 @@ make microshift-aio FROM_SOURCE="true"
 
 ```bash
 make microshfit-aio
+```
+
+## QuickStart Local Deployment for Testing Only
+
+To give MicroShift a try, simply install a recent test version (we don't provide stable releases yet) on a Fedora-derived Linux distribution (we've only tested Fedora, RHEL, and CentOS Stream so far) using:
+
+```sh
+curl -sfL https://raw.githubusercontent.com/redhat-et/microshift/main/install.sh | bash
+```
+
+This will install MicroShift's dependencies (CRI-O) on the host, install a MicroShift systemd service and start it.
+
+For convenience, the script will also add a new "`microshift`" context to your `$HOME/.kube/config`, so you'll be able to access your cluster using, e.g.:
+
+```sh
+kubectl get all -A --context microshift
+```
+
+or
+
+```sh
+kubectl config use-context microshift
+kubectl get all -A
+```
+
+{{< warning >}}
+When installing MicroShift on a system with an older version already installed, it is safest to remove the old data directory and start fresh:
+{{< /warning >}}
+
+```sh
+rm -rf /var/lib/microshift && rm -r $HOME/.microshift
 ```
 
 ## Limitation
