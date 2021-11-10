@@ -34,6 +34,17 @@
   <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
   {{ end }}
 
+
+  {{ if .Site.IsServer }}
+  {{ $style := resources.Get "sass/darkmode.scss" | toCSS (dict "targetPath" "css/darkmode.css" "enableSourceMap" true) }}
+  <link rel="stylesheet" href="{{ ($style).RelPermalink }}">
+  {{ else }}
+  {{ $style := resources.Get "sass/darkmode.scss" | toCSS (dict "targetPath" "css/darkmode.css" "enableSourceMap" false) }}
+  <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
+  {{ end }}
+
+
+
     {{- /* Search */}}
     {{- if (eq .Layout `search`) -}}
     <link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">
@@ -48,15 +59,21 @@
     {{- end }}
     {{- end -}}
 
+    {{- $toggle := resources.Get "js/toggle.js" }}
+    {{- $toggle := (slice $toggle )  | resources.Concat "assets/js/toggle.js" | minify | fingerprint }}
+    <script defer crossorigin="anonymous" src="{{ $toggle.RelPermalink }}" integrity="{{ $toggle.Data.Integrity }}"></script>
+
     {{ block "header_css" . }}{{ end }}
 
 </head>
 
 <body class='page {{ block "body_classes" . }}{{ end }}'>
   {{ partial "main-menu-mobile.html" . }}
+
+
   <div class="wrapper">
     {{ partial "header.html" . }}
-
+    {{ partial "toggle.html" . }}
     {{ $displaySidebar := false }}
     {{ range .Site.Params.mainSections }}
     {{ if eq $.Section . }}
