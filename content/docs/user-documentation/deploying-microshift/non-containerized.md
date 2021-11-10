@@ -3,7 +3,7 @@ title: MicroShift RPM Install
 tags:
   - rpm
   - non-containerized
-draft: false
+draft: true
 weight: 4
 summary: Deploy MicroShift from RPM and run as a systemd service.
 modified: "2021-11-03T16:32:35.904+01:00"
