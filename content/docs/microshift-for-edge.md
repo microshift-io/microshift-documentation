@@ -1,5 +1,5 @@
 ---
-title: About
+title: MicroShift for Edge
 weight: 1
 modified: "2021-11-04T11:25:47.657+01:00"
 tags:
@@ -7,7 +7,9 @@ tags:
 summary: MicroShift is optimized for edge computing.
 ---
 
-Edge devices deployed out in the field pose very different operational, environmental, and business challenges from those of cloud computing. These motivate different engineering trade-offs for Kubernetes at the far edge than for cloud or near-edge scenarios. MicroShift's design goals cater to this:
+Edge devices deployed out in the field pose very different operational, environmental, and business challenges from those of cloud computing. These motivate different engineering trade-offs for Kubernetes at the far edge than for cloud or near-edge scenarios.
+
+MicroShift's design goals cater to edge computing:
 
 - make frugal use of system resources (CPU, memory, network, storage, etc.),
 - tolerate severe networking constraints,
