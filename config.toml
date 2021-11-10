@@ -29,7 +29,7 @@ page= ["HTML", "RSS"]
     weight = 1
 
 [[menu.main]]
-    name = "📚 MicroShift"
+    name = "🔬 MicroShift"
     url = "/docs"
     weight = 2
 
