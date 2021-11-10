@@ -1,0 +1,42 @@
+body.dark-mode,
+body.dark-mode * {
+  background: rgb(45, 45, 45);
+  color: #f5f5f5;
+}
+
+.dark-mode p {
+  color: #f5f5f5;
+}
+
+.dark-mode p.admonition {
+  color: #f5f5f5;
+}
+
+.dark-mode div.admonition,
+p.admonition {
+  color: #f5f5f5;
+  background: rgb(45, 45, 45);
+}
+
+.dark-mode div.admonition {
+  color: green;
+  background: rgb(45, 45, 45);
+}
+
+.dark-mode a.button {
+  color: #000;
+}
+
+.dark-mode div.js-toggle-track {
+  touch-action: pan-x;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  background-color: brown;
+  border: 0;
+  padding: 0;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
