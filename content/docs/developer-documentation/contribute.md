@@ -5,7 +5,7 @@ tags:
   - triage
   - enhancement
   - RFE
-draft: false
+draft: true
 weight: 3
 summary: "Contribution processes for MicroShift."
 modified: "2021-11-05T16:26:11.663+01:00"

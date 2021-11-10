@@ -4,7 +4,7 @@ tags:
   - config.yaml
   - environment variables
   - command line
-draft: false
+draft: true
 weight: 3
 summary: Configuration options with MicroShift
 modified: "2021-11-03T16:24:11.538+01:00"
