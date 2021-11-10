@@ -8,7 +8,7 @@ tags:
 draft: false
 weight: 9
 summary: MicroShift may need access to a private registry. Access can be granted from registry login or from a pull-secret.
-modified: "2021-11-05T16:27:17.880+01:00"
+modified: "2021-11-10T12:40:37.755+01:00"
 ---
 
 MicroShift may not have the pull secret for the registry that you are trying to use. For example, MicroShift does
@@ -30,15 +30,29 @@ one can choose to install podman separately, or use other approaches described b
 
 #### Authenticate to a Registry With a Pull-Secret
 
-The second approach is to create a pull secret, then let the service account use this pull secret. This approach works within a name space. For example, if the pull secret is stored in a json formatted file "secret.json",
+The second approach is to create a pull secret, then let the service account use this pull secret. This approach works within a name space. For example, if the pull secret is stored in a json formatted file "**secret**.json",
 
 ```sh
 # First create the secret in a name space
 kubectl create secret generic my_pull_secret \
     --from-file=secret.json \
     --type=kubernetes.io/dockerconfigjson
+```
+
+Alternatively, you can use your container manager configuration file to create the secret:
+
+```sh
+# First create the secret in a name space using our configuration file
+kubectl create secret generic my_pull_secret \
+    --from-file=.dockerconfigjson=.docker/config.json \
+    --type=kubernetes.io/dockerconfigjson
+```
+
+Finally, we set the secret as default for pulling
+
+```sh
 # Then attach the secret to a service account in the name space
-kubectl secrets link default my_pull_secret --for=pull
+oc secrets link default my_pull_secret --for=pull
 ```
 
 Instead of attaching the secret to a service account, one can also specify the pull secret under the pod spec, Refer to [this Kubernetes document](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/) for more details.
