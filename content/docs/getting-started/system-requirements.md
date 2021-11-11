@@ -23,14 +23,15 @@ if you are using resource-intensive development tools.
 
 ### OS Requirements
 
-The all-in-one containerized MicroShift can run on Windows, MacOS, and Linux.
-
 Currently, the MicroShift binary is known to be supported on the following Operating Systems:
 
-- Fedora 33/34
+- Fedora > 32
 - CentOS 8 Stream
 - RHEL 8
+- RHEL 4 Edge
 - CentOS 7
 - Ubuntu 20.04
+
+For testing and development purposes, the all-in-one containerized MicroShift can run on Windows, MacOS, and Linux.
 
 It may be possible to run MicroShift on other systems, however they haven't been tested so you may run into issues.

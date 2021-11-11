@@ -10,6 +10,6 @@ tags:
   - troubleshooting
   - how-to
 draft: false
-weight: 6
+weight: 3
 summary: MicroShift user documentation
 ---

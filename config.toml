@@ -34,8 +34,8 @@ page= ["HTML", "RSS"]
     weight = 2
 
 [[menu.main]]
-    name = "📚 About"
-    url = "/docs/about/about"
+    name = "📚 MicroShift for Edge"
+    url = "/docs/microshift-for-edge"
     weight = 3
 
 [[menu.main]]
