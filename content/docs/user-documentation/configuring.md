@@ -4,7 +4,7 @@ tags:
   - config.yaml
   - environment variables
   - command line
-draft: true
+draft: false
 weight: 3
 summary: Configuration options with MicroShift
 modified: "2021-11-03T16:24:11.538+01:00"
@@ -22,57 +22,21 @@ Microshift can be configured in three simple ways, in order of precedence:
 - Environment variables
 - Configuration file
 
-Values are passed in to modify the `MicroshiftConfig` defined in `pkg/config/config.go`. 
+Below is a table of consisting of the configuration settings presently offered in MicroShift, along with the ways they can be set, what they mean, and their default values.
 
-#### Configuration File
-
-The config file is a `yaml` which has the fieldnames of the struct written in yaml format:
-
-```yaml
-# to set MicroshiftConfig.NodeName:
-nodeName: anonymous-node-32
-
-# to set MicroshiftConfig.Cluster.DNS:
-cluster:
-  dns: '1.2.3.4'
-```
-
-#### Environment Variables
-
-Microshift reads environment variables as config settings if they are in the following format: 
-
-```bash
-# sets MicroshiftConfig.NodeName
-export MICROSHIFT_NODENAME="anonymous-node-32"
-
-# sets Microshift.LogVLevel
-export MICROSHIFT_LOGVLEVEL=3
-``` 
-*Note*: Currently, you cannot use environment variables to set values for fields in structs 
-that are nested within MicroshiftConfig; only top-level fields are allowed. 
-
-#### Commandline Arguments
-
-At the moment, only a subset of the Microshift config can be set through the commandline:
-
-| MicroshiftConfig field | CLI Argument | 
-| ---------------------- | ------------ |
-| `DataDir` | `--data-dir` |
-| `LogDir` | `--log-dir` |
-| `LogVLevel` | `--v` |
-| `LogVModule` | `--vmodule` |
-| `LogAlsotostderr` | `--alsologtostderr` |
-| `Roles` | `--roles` |
-| `ConfigFile` | `--config` |
-
-
-### Configuration Options
-
-#### Changing the API Server Port 
-
-To change the port for the API server, you must set the cluster URL in the config file:
-
-```yaml
-cluster:
-  url: 'https://127.0.0.1:1234'
-```
+| MicroshiftConfig field | CLI Argument | Environment Variable | Configuration File | Meaning | Default |
+| ---------------------- | ------------ | -------------------- | ------------------ | ------- | ------- |
+| `ConfigFile` | `--config` | `n/a` | `n/a` | Path to a config file used to populate the rest of the values | `"~/.microshift/config.yaml"` if the file exists, else `/etc/microshift/config.yaml` if it exists, else `""` | 
+| `DataDir` | `--data-dir` | `MICROSHIFT_DATADIR` | `.dataDir` | Data directory for MicroShift | `"~/.microshift/data"` |
+| `LogDir` | `--log-dir` | `MICROSHIFT_LOGDIR` | `.logDir` | Directory to output logfiles to | `""` | 
+| `LogVLevel` | `--v` | `MICROSHIFT_LOGVLEVEL` | `.logVLevel` | Log verbosity level | `0` |
+| `LogVModule` | `--vmodule` | `MICROSHIFT_LOGVMODULE` | `.logVModule` | Log verbosity module | `""` | 
+| `LogAlsotostderr` | `--alsologtostderr` | `MICROSHIFT_LOGALSOTOSTDERR` | `.logAlsotostderr` | Log into standard error as well | `false` | 
+| `Roles` | `--roles` | `MICROSHIFT_ROLES` | `.roles` | Roles available on the cluster | `["controlplane", "node"]` |
+| `NodeName` | `n/a` | `MICROSHIFT_NODENAME` | `.nodeName` | Name of the node to run MicroShift on | `os.Hostname()` |
+| `NodeIP` | `n/a` | `MICROSHIFT_NODEIP` | `.nodeIP` | Node's IP | `util.GetHostIP()` |
+| `Cluster.URL` | `n/a` | `n/a` | `.cluster.url` | URL that the cluster will run on | `"https://127.0.0.1:6443"` |
+| `Cluster.ClusterCIDR` | `n/a` | `n/a` | `.cluster.clusterCIDR` | Cluster's CIDR | `"10.42.0.0/16"` |
+| `Cluster.ServiceCIDR` | `n/a` | `n/a` | `.cluster.serviceCIDR` | Service CIDR | `"10.43.0.0/16"` |
+| `Cluster.DNS` | `n/a` | `n/a` | `.cluster.dns` | Cluster's DNS server | `"10.43.0.10"` |
+| `Cluster.Domain` | `n/a` | `n/a` | `.cluster.domain` | Cluster's domain | `"cluster.local"` |
