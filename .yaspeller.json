@@ -96,6 +96,7 @@
     "NGINX",
     "nginx",
     "kubectl",
+    "hugo",
     "LB"
   ]
 }
