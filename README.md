@@ -8,9 +8,12 @@ MicroShift is a research project that is exploring how OpenShift and Kubernetes 
 
 This repository contains the files required for building the documentation at <https://microshift.io>
 
-### Contributing
+The source code for MicroShift can be found at [github.com/redhat-et/microshift](https://github.com/redhat-et/microshift.git).
 
-For more information on working with MicroShift, you can find a contributor's guide in [`CONTRIBUTING.md`](./CONTRIBUTING.md)
+### Contributing to MicroShift Documentation
+
+For more information on contributing to MicroShift documentation, you can find a contributor's guide in
+[`CONTRIBUTING.md`](./CONTRIBUTING.md)
 
 ### Community
 

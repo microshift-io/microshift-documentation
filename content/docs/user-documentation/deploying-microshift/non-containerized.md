@@ -30,7 +30,6 @@ MicroShift install with RPM is the recommended deployment method for production 
 
 ```bash
 dnf copr enable -y @redhat-et/microshift-nightly
-dnf module -y enable cri-o:1.20
 dnf install -y microshift firewalld
 systemctl enable crio --now
 systemctl enable microshift --now
@@ -53,13 +52,6 @@ MicroShift data at `/var/lib/microshift` and `/var/lib/kubelet`, will not be del
 
 Upon a restart, the cluster state will persist as long as the storage is intact.
 {{< /note >}}
-
-Check MicroShift with
-
-```bash
-sudo podman ps
-sudo critcl ps
-```
 
 Now that MicroShift is running, refer to the [user documentation]({{< ref "/docs/user-documentation/_index.md" >}})
 
