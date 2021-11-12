@@ -18,10 +18,6 @@ provides automatic updates using [Podman's Auto-Update feature](https://docs.pod
 
 More about MicroShift Auto-Updates with Podman [here]({{< relref "#auto-update-on-demand-via-podman" >}})
 
-{{< warning >}}
-Containerized kubelet is deprecated upstream. [Deprecation Info](https://github.com/kubernetes/kubernetes/issues/74148)
-{{< /warning >}}
-
 ### Prerequisites
 
 - CRI-O service must be running on the host
