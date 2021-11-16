@@ -1,0 +1,20 @@
+.page-home {
+    .title {
+      font-family: $font-family-base;
+    }
+
+    p {
+      font-size: 1.2rem;
+      font-weight: lighter;
+    }
+
+    .terminal {
+      border-radius: 3px;
+      margin: 0 auto;
+      margin-top: -200px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+}
