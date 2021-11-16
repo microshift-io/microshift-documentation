@@ -43,6 +43,12 @@
   <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
   {{ end }}
 
+  {{ $jQueryUIstyle := resources.Get "css/jquery-ui.css" }}
+  {{ if .Site.IsServer }}
+    <link rel="stylesheet" href="{{ ($jQueryUIstyle).RelPermalink }}">
+  {{ else }}
+    <link rel="stylesheet" href="{{ ($jQueryUIstyle | minify | fingerprint).RelPermalink }}">
+  {{ end }}
 
 
     {{- /* Search */}}
@@ -103,15 +109,22 @@
 
   {{ partial "gh-footer.html" . }}
 
-  {{ $scripts := resources.Get "js/scripts.js" }}
+
 
   {{ block "footer_js" . }}
-  {{ end }}
-
-  {{ if .Site.IsServer }}
-  <script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>
-  {{ else }}
-  <script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
+    {{ $scripts := resources.Get "js/scripts.js" }}
+    {{ $jquery := resources.Get "js/jquery.js" }}
+    {{ $jqueryUI := resources.Get "js/jquery-ui.js" }}
+    {{ if .Site.IsServer }}
+      <script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>
+      <script type="text/javascript" src="{{ $jquery.RelPermalink }}"></script>
+      <script type="text/javascript" src="{{ $jqueryUI.RelPermalink }}"></script>
+    {{ else }}
+      <script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
+      <script type="text/javascript" src="{{ ($jquery | minify | fingerprint).RelPermalink }}"></script>
+      <script type="text/javascript" src="{{ ($jqueryUI | minify | fingerprint).RelPermalink }}"></script>
+    {{ end }}
+    <script>$( function() { $( ".tabs" ).tabs();} ); </script>
   {{ end }}
 
   {{ partial "google-analytics.html" . }}
