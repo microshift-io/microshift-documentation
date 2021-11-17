@@ -1,5 +1,5 @@
 fail_fast: true
-exclude: ^themes|^archetypes|^layouts/_default/index.json
+exclude: ^themes|^archetypes|^layouts/_default/index.json|assets||^node_modules
 repos:
   - repo: meta
     hooks:

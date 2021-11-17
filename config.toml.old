@@ -1,0 +1,99 @@
+baseURL = "https://microshift.io"
+languageCode = "en-us"
+title = "MicroShift.io"
+themesDir = "themes"
+theme = "hugo-whisper-theme"
+
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsUseClasses = true
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.55.0"
+
+# Controls how many words are printed in the content summary on the docs homepage.
+# See https://gohugo.io/content-management/summaries/
+summaryLength = 300
+
+
+[outputs]
+home= ["HTML", "RSS", "JSON"]
+page= ["HTML", "RSS"]
+
+
+[[menu.main]]
+    name = "🏠 Home"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "🔬 MicroShift"
+    url = "/docs"
+    weight = 2
+
+[[menu.main]]
+    name = "📚 MicroShift for Edge"
+    url = "/docs/microshift-for-edge"
+    weight = 3
+
+[[menu.main]]
+    name = "🧭 Getting Started"
+    url = "/docs/getting-started"
+    weight = 4
+
+[[menu.main]]
+    name = "⛑️ User Documentation"
+    url = "/docs/user-documentation/"
+    weight = 5
+
+[[menu.main]]
+    name = "🖥️ Developer Documentation"
+    url = "/docs/developer-documentation"
+    weight = 6
+
+[[menu.main]]
+    name = "❤️ Community"
+    url = "/docs/community/community"
+    weight = 7
+
+
+[[menu.main]]
+    name = "🔍 Search"
+    url = "/search"
+    weight = 8
+
+[params]
+  google_analytics_id=""
+  homepage_button_link = '/docs'
+  homepage_button_text = 'Read The Docs'
+  homepage_intro = 'MicroShift is a research project that is exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing.'
+  homepage_image = '/images/microshift.gif'
+
+  ## You can enable to add anchor links to header elements
+  # enable_anchor_link = true
+
+  [params.homepage_meta_tags]
+    meta_description = "MicroShift is a research project that is exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing."
+    meta_og_title = "MicroShift"
+    meta_og_type = "website"
+    meta_og_url = "https://microshift.io"
+    meta_og_image = "https://raw.githubusercontent.com/JugglerX/hugo-whisper-theme/master/images/tn.png"
+    meta_og_description = "MicroShift is a research project that is exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing."
+    meta_twitter_card = "summary"
+    meta_twitter_site = "@microshift_io"
+    meta_twitter_creator = "@microshift_io"
+
+  [params.logo]
+      mobile = "/images/logo-mobile.svg"
+      standard  = "/images/logo.svg"
+
+  [params.fuseOpts]
+    isCaseSensitive= false
+    shouldSort= true
+    location= 0
+    distance= 1000
+    threshold= 0.4
+    minMatchCharLength= 0
+    keys= ["title", "permalink", "summary", "content"]

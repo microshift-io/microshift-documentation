@@ -1,121 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  {{ block "meta_tags" . }}{{end}}
-  <link rel="icon" href="{{ "favicon.png" | absURL}}">
-
-  {{ if .Site.IsServer }}
-  {{ $style := resources.Get "scss/style.scss" | toCSS (dict "targetPath" "css/style.css" "enableSourceMap" true) }}
-  <link rel="stylesheet" href="{{ ($style).RelPermalink }}">
-  {{ else }}
-  {{ $style := resources.Get "scss/style.scss" | toCSS (dict "targetPath" "css/style.css" "enableSourceMap" false) }}
-  <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
-  {{ end }}
-
-  {{ if .Site.IsServer }}
-  {{ $style := resources.Get "sass/admonition.scss" | toCSS (dict "targetPath" "css/admonition.css" "enableSourceMap" true) }}
-  <link rel="stylesheet" href="{{ ($style).RelPermalink }}">
-  {{ else }}
-  {{ $style := resources.Get "sass/admonition.scss" | toCSS (dict "targetPath" "css/admonition.css" "enableSourceMap" false) }}
-  <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
-  {{ end }}
-
-
-  {{ if .Site.IsServer }}
-  {{ $style := resources.Get "sass/search.scss" | toCSS (dict "targetPath" "css/search.css" "enableSourceMap" true) }}
-  <link rel="stylesheet" href="{{ ($style).RelPermalink }}">
-  {{ else }}
-  {{ $style := resources.Get "sass/search.scss" | toCSS (dict "targetPath" "css/search.css" "enableSourceMap" false) }}
-  <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
-  {{ end }}
-
-
-  {{ if .Site.IsServer }}
-  {{ $style := resources.Get "sass/darkmode.scss" | toCSS (dict "targetPath" "css/darkmode.css" "enableSourceMap" true) }}
-  <link rel="stylesheet" href="{{ ($style).RelPermalink }}">
-  {{ else }}
-  {{ $style := resources.Get "sass/darkmode.scss" | toCSS (dict "targetPath" "css/darkmode.css" "enableSourceMap" false) }}
-  <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
-  {{ end }}
-
-
-
-    {{- /* Search */}}
-    {{- if (eq .Layout `search`) -}}
-    <link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">
-    {{- $fastsearch := resources.Get "js/fastsearch.js" | js.Build (dict "params" (dict "fuseOpts" .Site.Params.fuseOpts)) }}
-    {{- $fusejs := resources.Get "js/fuse.js" }}
-    {{- if not .Site.Params.assets.disableFingerprinting }}
-    {{- $search := (slice $fusejs $fastsearch ) | resources.Concat "assets/js/search.js" | minify | fingerprint }}
-    <script defer crossorigin="anonymous" src="{{ $search.RelPermalink }}" integrity="{{ $search.Data.Integrity }}"></script>
-    {{- else }}
-    {{- $search := (slice $fusejs $fastsearch ) | resources.Concat "assets/js/search.js" | minify }}
-    <script defer crossorigin="anonymous" src="{{ $search.RelPermalink }}"></script>
-    {{- end }}
-    {{- end -}}
-
-    {{- $toggle := resources.Get "js/toggle.js" }}
-    {{- $toggle := (slice $toggle )  | resources.Concat "assets/js/toggle.js" | minify | fingerprint }}
-    <script defer crossorigin="anonymous" src="{{ $toggle.RelPermalink }}" integrity="{{ $toggle.Data.Integrity }}"></script>
-
-    {{ block "header_css" . }}{{ end }}
-
-</head>
-
-<body class='page {{ block "body_classes" . }}{{ end }}'>
-  {{ partial "main-menu-mobile.html" . }}
-
-
-  <div class="wrapper">
-    {{ partial "header.html" . }}
-    {{ partial "toggle.html" . }}
-    {{ $displaySidebar := false }}
-    {{ range .Site.Params.mainSections }}
-    {{ if eq $.Section . }}
-    {{ $displaySidebar = true }}
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}" class="{{.Params.class}} no-js">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body class="td-{{ .Kind }}{{- if ne .Params.cid "" -}}{{- printf " cid-%s" (lower .Params.cid) -}}{{- end -}}">
+    <header>
+      {{ partial "navbar.html" . }}
+      {{ block "announcement" . }}
+        {{ partial "announcement.html" . }}
+      {{ end }}
+		{{ block "hero" . }}
+		<!--  HERO  -->
+		<section class="header-hero text-white pb-4 light-text">
+			<div class="main-section">
+				<div id="headlineWrapper">
+					<h1>{{ block "hero-title" . }}{{ .Params.bigheader | default .Title }}{{ end }}</h1>
+				</div>
+				{{ block "hero-more" . }}{{ end }}
+			</div>
+		</section>
+		{{ block "post-hero" . }}
+    </header>
+      {{ block "deprecated" . }}
+        {{ if or .IsHome ( eq .Params.cid "partners" ) ( eq .Params.cid "community" ) }}
+          {{ partial "deprecation-warning.html" . }}
+        {{ end }}
+      {{ end }}
     {{ end }}
-    {{ end }}
-
-    {{ if $displaySidebar }}
-    <div class="container pt-2 pt-md-6 pb-3 pb-md-6">
-      <div class="row">
-        <div class="col-12 col-md-3 mb-3">
-          <div class="sidebar">
-            {{ partial "sidebar.html" . }}
-          </div>
-        </div>
-        <div class="col-12 col-md-9">
-          {{ block "main" . }}
-          {{ end }}
-        </div>
-      </div>
+		{{ end }}
+    <div class="td-outer">
+      <main role="main" class="td-main">
+        {{ block "main" . }}{{ end }}
+      </main>
     </div>
-    {{ else }}
-    {{ block "main" . }}
-    {{ end }}
-    {{ end}}
-  </div>
-
-  {{ partial "gh-footer.html" . }}
-
-  {{ $scripts := resources.Get "js/scripts.js" }}
-
-  {{ block "footer_js" . }}
-  {{ end }}
-
-  {{ if .Site.IsServer }}
-  <script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>
-  {{ else }}
-  <script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
-  {{ end }}
-
-  {{ partial "google-analytics.html" . }}
-
-</body>
-
+    {{ partialCached "footer.html" . }}
+    {{ partialCached "scripts.html" . }}
+  </body>
 </html>
