@@ -1,0 +1,11 @@
+{{/*
+If a 404 occurs and the referrer is a different version of the MicroShift documentation,
+don't show the regular 404 error page, but instead redirect to the site root
+*/}}
+<script type="text/javascript">
+  var sameBaseUrlRegExp = new RegExp("^" + location.protocol + "//" + location.host.replace(".", "\\.") + "/.*", "i");
+  var microShiftDocumentationUrlRegExp = new RegExp("^https?://(.+\\.)?microshift.io/.*", "i");
+  if (!sameBaseUrlRegExp.test(document.referrer) && microShiftDocumentationUrlRegExp.test(document.referrer)) {
+    location.replace("/");
+  }
+</script>

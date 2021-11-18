@@ -12,3 +12,4 @@ static/
 public/*
 .hugo/
 hugo
+node_modules/

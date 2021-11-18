@@ -1,0 +1,51 @@
+<svg version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="petal">
+    <circle cx="256" cy="256" r="2"/>
+    <circle cx="294.74" cy="23.927" r="2"/>
+    <circle cx="313.11" cy="18.842" r="2"/>
+    <circle cx="332.19" cy="18.682" r="2"/>
+    <circle cx="350.66" cy="23.461" r="2"/>
+    <circle cx="367.25" cy="32.829" r="2"/>
+    <circle cx="278.31" cy="33.626" r="2"/>
+    <circle cx="390.53" cy="62.654" r="2"/>
+    <circle cx="264.92" cy="47.226" r="2"/>
+    <circle cx="380.85" cy="46.213" r="2"/>
+    <circle cx="395.81" cy="100.09" r="2"/>
+    <circle cx="395.62" cy="81.015" r="2"/>
+    <circle cx="338.57" cy="173.41" r="2"/>
+    <circle cx="324.81" cy="187.18" r="2"/>
+    <circle cx="311.06" cy="200.94" r="2"/>
+    <circle cx="269.77" cy="242.24" r="2"/>
+    <circle cx="283.53" cy="228.48" r="2"/>
+    <circle cx="297.30" cy="214.70" r="2"/>
+    <circle cx="391.78" cy="120.24" r="2"/>
+    <circle cx="352.35" cy="159.67" r="2"/>
+    <circle cx="378.39" cy="133.63" r="2"/>
+    <circle cx="365.85" cy="146.16" r="2"/>
+    <g fill="none" stroke="#000" stroke-width="1px">
+      <path d="m256.01 119.75 122.38 13.875"/>
+      <path d="m255.99 139.21 135.79-18.974"/>
+      <path d="m255.99 158.68 139.82-58.591"/>
+      <path d="m256 178.13 139.62-97.118"/>
+      <path d="m256 197.59 134.53-134.94"/>
+      <path d="m256.01 217.07 124.84-170.86"/>
+      <path d="m256.01 236.53 111.24-203.7"/>
+      <path d="m256 256 94.66-232.54"/>
+      <path d="m269.77 242.24 62.42-223.56"/>
+      <path d="m283.53 228.48 29.58-209.64"/>
+      <path d="m297.3 214.7-2.56-190.77"/>
+      <path d="m311.06 200.94-32.75-167.31"/>
+      <path d="m324.81 187.18-59.89-139.95"/>
+      <path d="m338.57 173.41-82.556-109.42"/>
+      <path d="m352.35 159.67-96.336-76.741"/>
+      <path d="m365.85 146.16-109.84-45.504"/>
+    </g>
+  </g>
+  <use xlink:href="#petal" transform="rotate(45 256 256)"/>
+  <use xlink:href="#petal" transform="rotate(90 256 256)"/>
+  <use xlink:href="#petal" transform="rotate(135 256 256)"/>
+  <use xlink:href="#petal" transform="rotate(180 256 256)"/>
+  <use xlink:href="#petal" transform="rotate(225 256 256)"/>
+  <use xlink:href="#petal" transform="rotate(270 256 256)"/>
+  <use xlink:href="#petal" transform="rotate(315 256 256)"/>
+</svg>

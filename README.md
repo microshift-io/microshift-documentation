@@ -1,22 +1,53 @@
----
-modified: "2021-11-03T16:31:13.096+01:01"
----
+# The MicroShift documentation
 
-# MicroShift
+This repository contains the assets required to build the [MicroShift website and documentation](https://microshift.io/). We welcome contributions.
 
-MicroShift is a research project that is exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing.
+## Prerequisites
 
-This repository contains the files required for building the documentation at <https://microshift.io>
+To use this repository, you need the following installed locally:
 
-The source code for MicroShift can be found at [github.com/redhat-et/microshift](https://github.com/redhat-et/microshift.git).
+- [npm](https://www.npmjs.com/)
+- [Go](https://golang.org/)
+- [Hugo (Extended version)](https://gohugo.io/)
 
-### Contributing to MicroShift Documentation
+Before you start, install the dependencies. Clone the repository and navigate to the directory:
 
-For more information on contributing to MicroShift documentation, you can find a contributor's guide in
-[`CONTRIBUTING.md`](./CONTRIBUTING.md)
+```bash
+git clone https://github.com/redhat-et/microshift-documentation.git
+cd microshift-documentation
+```
 
-### Community
+## Running the website locally using Hugo
 
-Join us on [Slack](https://microshift.slack.com)! ([Invite to the Slack space](https://join.slack.com/t/microshift/shared_invite/zt-uxncbjbl-XOjueb1ShNP7xfByDxNaaA))
+Make sure to install the Hugo extended version specified by the `HUGO_VERSION` environment variable in the [`netlify.toml`](netlify.toml#L10) file.
 
-Community meetings are held weekly, Wednesdays at 10:30AM - 11:00AM EST. Be sure to join the community [calendar](https://calendar.google.com/calendar/embed?src=nj6l882mfe4d2g9nr1h7avgrcs%40group.calendar.google.com&ctz=America%2FChicago)! Click "Google Calendar" in the lower right-hand corner to subscribe.
+To build and test the site locally, run:
+
+```bash
+# install dependencies
+npm ci
+make server
+```
+
+This will start the local Hugo server on port 1313. Open up your browser to <http://localhost:1313> to view the website. As you make changes to the source files, Hugo updates the website and forces a browser refresh.
+
+## Get involved with MicroShift
+
+- Join us on [Slack](https://microshift.slack.com)! ([Invite to the Slack space](https://join.slack.com/t/microshift/shared_invite/zt-uxncbjbl-XOjueb1ShNP7xfByDxNaaA))
+
+- Community meetings are held weekly, Wednesdays at 10:30AM - 11:00AM EST.
+  - [📆 Check the community calendar](https://calendar.google.com/calendar/embed?src=nj6l882mfe4d2g9nr1h7avgrcs%40group.calendar.google.com&ctz=America%2FChicago) and click `➕ Google Calendar` button in the lower right hand corner to subscribe.
+
+## Code of conduct
+
+Participation in the MicroShift community is governed by the [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
+
+## Thank you
+
+MicroShift thrives on community participation, and we appreciate your contributions to our website and our documentation!
+
+## Images used on this site
+
+Images used as background images in this site are in the [public domain](https://commons.wikimedia.org/wiki/User:Bep/gallery#Wed_Aug_01_16:16:51_CEST_2018) and can be used freely or with attributes where indicated.
+
+The temporary flower icon is by <a href="https://upload.wikimedia.org/wikipedia/commons/7/7c/Filled_flower_sewing_pattern.svg">Jooja</a> Attribution: Jooja, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons
