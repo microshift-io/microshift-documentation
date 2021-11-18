@@ -1,5 +1,5 @@
 ---
-title: MicroShift Basic Usage
+title: MicroShift Metal LB
 draft: false
 weight: 9
 tags:
@@ -8,12 +8,7 @@ tags:
 summary: MicroShift operates similar to many other Kubernetes providers. This means that you can use the same tools to deploy and manage your applications.
 modified: "2021-11-05T16:31:07.264+01:00"
 ---
-
-All of the standard Kubernetes management tools can be used to maintain and modify your MicroShift applications. Below we will show some examples using kubectl, kustomize, and helm to deploy and maintain applications.
-
-## Example Applications
-
-### Metal LB
+## Metal LB
 
 Metal LB is a load balancer that can be used to route traffic to a number of backends.
 
