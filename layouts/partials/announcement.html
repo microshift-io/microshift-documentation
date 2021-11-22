@@ -15,7 +15,7 @@
     {{- if or (eq .endTime nil ) (gt ( time .endTime ) now ) -}}
       {{- if not $announcementShown -}}
       {{- $announcementShown = true -}}
-  <div lang="en" id="announcement" style="background-color: #3371e3; color: #fff; {{ .style | safeCSS }}">
+  <div lang="en" id="announcement" style="background-color: #008080; color: #fff; {{ .style | safeCSS }}">
     <aside>
       <div class="announcement-main" data-nosnippet>
         {{ if .title }}

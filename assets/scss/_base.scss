@@ -62,8 +62,8 @@ footer {
   }
 
   p {
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 600;
   }
 
   .button {
@@ -408,7 +408,7 @@ dd {
 }
 
 // ocean nodes
-$ocean-nodes-padding-Y: 60px;
+$ocean-nodes-padding-Y: 40px;
 $ocean-nodes-main-margin-bottom: 60px;
 $ocean-nodes-h3-margin-bottom: 30px;
 
@@ -427,7 +427,7 @@ $feature-box-div-margin-bottom: 40px;
   &.flip-nav,
   &.open-nav {
     .logo {
-      background-image: url(/images/nav_logo2.svg);
+      background-image: url(/images/nav_logo_green.svg);
     }
   }
 }
@@ -476,17 +476,17 @@ section#cncf {
     text-align: center;
 
     img {
-      width: 100%;
+      width: 75%;
       max-width: 160px;
     }
   }
 
   .main-section:first-child {
     .image-wrapper {
-      max-width: 100%;
+      max-width: 75%;
 
       img {
-        max-width: 491px;
+        max-width: 300px;
       }
     }
   }
@@ -504,7 +504,7 @@ section#cncf {
 #video {
   width: 100%;
   position: relative;
-  background-position: center center;
+  background-position: center left;
   background-size: cover;
 
   & > .light-text {
@@ -512,7 +512,7 @@ section#cncf {
     // position: absolute;
     // top: 50%;
     // left: 75%;
-    width: 500px;
+    width: 1200px;
     padding-top: 2rem;
     // transform: translate(-50%, -50%);
     color: white;
@@ -628,7 +628,7 @@ section#cncf {
 #features {
   padding-top: 140px;
   background-color: $light-grey;
-  background-image: url(/images/flower.svg);
+  background-image: url(/images/nav_logo_green.svg);
   background-position: center 60px;
   background-repeat: no-repeat;
   background-size: 60px;

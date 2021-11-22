@@ -7,7 +7,6 @@ This repository contains the assets required to build the [MicroShift website an
 To use this repository, you need the following installed locally:
 
 - [npm](https://www.npmjs.com/)
-- [Go](https://golang.org/)
 - [Hugo (Extended version)](https://gohugo.io/)
 
 Before you start, install the dependencies. Clone the repository and navigate to the directory:
@@ -19,13 +18,19 @@ cd microshift-documentation
 
 ## Running the website locally using Hugo
 
-Make sure to install the Hugo extended version specified by the `HUGO_VERSION` environment variable in the [`netlify.toml`](netlify.toml#L10) file.
+Make sure to install the Hugo extended version.
+
+Also, install `PostCSS` for the docs site to create the CSS assets. Install by running the following from the
+root directory:
+
+```bash
+sudo npm install -D --save autoprefixer
+sudo npm install -D --save postcss-cli
+```
 
 To build and test the site locally, run:
 
 ```bash
-# install dependencies
-npm ci
 make server
 ```
 
@@ -44,7 +49,7 @@ Participation in the MicroShift community is governed by the [CNCF Code of Condu
 
 ## Thank you
 
-MicroShift thrives on community participation, and we appreciate your contributions to our website and our documentation!
+MicroShift welcomes community participation, and we appreciate your contributions to [MicroShift](https://github.com/redhat-et/microshift) and to our documentation!
 
 ## Images used on this site
 

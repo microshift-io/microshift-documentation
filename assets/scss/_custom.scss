@@ -84,7 +84,7 @@ body.td-404 main .error-details {
 
   // mermaid diagram - sequence diagram
   .actor {
-    fill: #326ce5 !important;
+    fill: #008080 !important;
   }
   text.actor {
     font-size: 18px !important;
@@ -122,7 +122,7 @@ body.td-404 main .error-details {
 
   @media only screen and (min-width: 768px) {
     .navbar-brand {
-      background-image: url("/images/nav_logo.svg");
+      background-image: url("/images/nav_logo_green.svg");
       top: 1.5rem;
       width: 180px;
       margin-left: 1rem;
@@ -210,7 +210,7 @@ body.td-404 main .error-details {
 
   @media only screen and (min-width: 768px) {
     .navbar-brand {
-      background-image: url("/images/nav_logo2.svg");
+      background-image: url("/images/nav_logo_green.svg");
     }
   }
 }
@@ -409,7 +409,7 @@ body.td-home #deprecation-warning {
     display: inline-block;
     vertical-align: top;
     position: relative;
-    background-color: #326ce5; // Kubernetes blue
+    background-color: #008080; // was #326ce5 Kubernetes blue // Modified to Teal 008080
     color: #fff;
     padding: 0;
     margin: 0;

@@ -15,7 +15,7 @@ It may be possible to run MicroShift on other systems, however they haven't been
 ## MicroShift All-In-One Image
 
 MicroShift All-In-One (AIO) includes everything required to run MicroShift in a single container image.
-This deployment mode is recommended for development and testing only. See here for [deploying MicroShift AIO]({{< ref "/docs/deployment-guide/containerized.md#microshift-all-in-one-startup" >}})
+This deployment mode is recommended for development and testing only. See here for [deploying MicroShift AIO]({{< ref "../deployment-guide/containerized.md#microshift-all-in-one-startup" >}})
 
 ## Limitation
 
