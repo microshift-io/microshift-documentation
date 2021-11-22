@@ -26,6 +26,7 @@ root directory:
 ```bash
 sudo npm install -D --save autoprefixer
 sudo npm install -D --save postcss-cli
+sudo npm install
 ```
 
 To build and test the site locally, run:
