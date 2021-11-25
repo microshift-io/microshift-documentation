@@ -1,99 +1,244 @@
 baseURL = "https://microshift.io"
-languageCode = "en-us"
-title = "MicroShift.io"
-themesDir = "themes"
-theme = "hugo-whisper-theme"
+title = "MicroShift"
 
+# Hugo allows theme composition (and inheritance). The precedence is from left to right.
+theme = ["docsy"]
+
+# Language settings
+# Setting up for future multi-language
+contentDir = "content/en"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+disableBrowserError = true
+
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
+ignoreFiles = [ "(?:^|/)OWNERS$", "README[-]+[a-z]*\\.md", "^node_modules$" ]
+
+timeout = 3000
+
+# Highlighting config.
 pygmentsCodeFences = true
-pygmentsCodefencesGuessSyntax = true
-pygmentsUseClasses = true
+pygmentsUseClasses = false
+# Use the new Chroma Go highlighter in Hugo.
+pygmentsUseClassic = false
+#pygmentsOptions = "linenos=table"
+# See https://help.farbox.com/pygments.html
+pygmentsStyle = "emacs"
 
-[module]
-  [module.hugoVersion]
-    extended = true
-    min = "0.55.0"
+# Enable Git variables like commit, lastmod
+enableGitInfo = true
 
-# Controls how many words are printed in the content summary on the docs homepage.
-# See https://gohugo.io/content-management/summaries/
-summaryLength = 300
+[caches]
+ [caches.assets]
+  dir = ":cacheDir/_gen"
+  maxAge = -1
+ [caches.getcsv]
+  dir = ":cacheDir/:project"
+  maxAge = "60s"
+ [caches.getjson]
+  dir = ":cacheDir/:project"
+  maxAge = "60s"
+ [caches.images]
+  dir = ":cacheDir/_images"
+  maxAge = -1
+ [caches.modules]
+  dir = ":cacheDir/modules"
+  maxAge = -1
 
+[markup]
+ [markup.goldmark]
+   [markup.goldmark.extensions]
+     definitionList = true
+     table = true
+     typographer = false
+   [markup.goldmark.parser]
+     attribute = true
+     autoHeadingID = true
+     autoHeadingIDType = "blackfriday"
+   [markup.goldmark.renderer]
+     unsafe = true
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "emacs"
+    tabWidth = 4
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
 
+[frontmatter]
+date = ["date", ":filename", "publishDate", "lastmod"]
+
+[permalinks]
+blog = "/:section/:year/:month/:day/:slug/"
+
+[sitemap]
+  filename = "sitemap.xml"
+  priority = 0.75
+
+# Be explicit about the output formats. We (currently) only want an RSS feed for the home page.
 [outputs]
-home= ["HTML", "RSS", "JSON"]
-page= ["HTML", "RSS"]
+home = [ "HTML", "RSS", "HEADERS" ]
+page = [ "HTML"]
+section = [ "HTML", "print" ]
 
+# Add a "text/netlify" media type for auto-generating the _headers file
+[mediaTypes]
+[mediaTypes."text/netlify"]
+delimiter = ""
 
-[[menu.main]]
-    name = "🏠 Home"
-    url = "/"
-    weight = 1
+[outputFormats]
+[outputFormats.RSS]
+baseName = "feed"
 
-[[menu.main]]
-    name = "🔬 MicroShift"
-    url = "/docs"
-    weight = 2
+# _headers file output (uses the template at layouts/index.headers)
+[outputFormats.HEADERS]
+mediatype = "text/netlify"
+baseName = "_headers"
+isPlainText = true
+notAlternative = true
 
-[[menu.main]]
-    name = "📚 MicroShift for Edge"
-    url = "/docs/microshift-for-edge"
-    weight = 3
+# Image processing configuration.
+[imaging]
+resampleFilter = "CatmullRom"
+quality = 75
+anchor = "smart"
 
-[[menu.main]]
-    name = "🧭 Getting Started"
-    url = "/docs/getting-started"
-    weight = 4
-
-[[menu.main]]
-    name = "⛑️ User Documentation"
-    url = "/docs/user-documentation/"
-    weight = 5
-
-[[menu.main]]
-    name = "🖥️ Developer Documentation"
-    url = "/docs/developer-documentation"
-    weight = 6
-
-[[menu.main]]
-    name = "❤️ Community"
-    url = "/docs/community/community"
-    weight = 7
-
-
-[[menu.main]]
-    name = "🔍 Search"
-    url = "/search"
-    weight = 8
+[services]
+[services.googleAnalytics]
+# Comment out the next line to disable GA tracking. Also disables the feature described in [params.ui.feedback].
+#id = "UA-00000000-0"
 
 [params]
-  google_analytics_id=""
-  homepage_button_link = '/docs'
-  homepage_button_text = 'Read The Docs'
-  homepage_intro = 'MicroShift is a research project that is exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing.'
-  homepage_image = '/images/microshift.gif'
+copyright_microshift = "The MicroShift Authors"
 
-  ## You can enable to add anchor links to header elements
-  # enable_anchor_link = true
+# privacy_policy = "https://policies.google.com/privacy"
 
-  [params.homepage_meta_tags]
-    meta_description = "MicroShift is a research project that is exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing."
-    meta_og_title = "MicroShift"
-    meta_og_type = "website"
-    meta_og_url = "https://microshift.io"
-    meta_og_image = "https://raw.githubusercontent.com/JugglerX/hugo-whisper-theme/master/images/tn.png"
-    meta_og_description = "MicroShift is a research project that is exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing."
-    meta_twitter_card = "summary"
-    meta_twitter_site = "@microshift_io"
-    meta_twitter_creator = "@microshift_io"
+# First one is picked as the Twitter card image if not set on page.
+# images = ["images/project-illustration.png"]
 
-  [params.logo]
-      mobile = "/images/logo-mobile.svg"
-      standard  = "/images/logo.svg"
+# Menu title if your navbar has a versions selector to access old versions of your site.
+# This menu appears only if you have at least one [params.versions] set.
+version_menu = "Versions"
 
-  [params.fuseOpts]
-    isCaseSensitive= false
-    shouldSort= true
-    location= 0
-    distance= 1000
-    threshold= 0.4
-    minMatchCharLength= 0
-    keys= ["title", "permalink", "summary", "content"]
+time_format_blog = "Monday, January 02, 2006"
+time_format_default = "January 02, 2006 at 3:04 PM PST"
+
+description = "Kubernetes and OpenShift optimized for small form factor and edge computing"
+showedit = true
+
+#latest = "v1.22"
+
+#fullversion = "v1.22.0"
+#version = "v1.22"
+githubbranch = "main"
+docsbranch = "main"
+deprecated = false
+currentUrl = "https://microshift.io/docs/home/"
+
+# See codenew shortcode
+githubWebsiteRaw = "raw.githubusercontent.com/redhat-et/microshift-documentation"
+
+# GitHub repository link for editing a page and opening issues.
+github_repo = "https://github.com/redhat-et/microshift-documentation"
+
+#Searching
+microshift_search = true
+
+#The following search parameters are specific to Docsy's implementation. MicroShift implementes its own search-related partials and scripts.
+
+# Google Custom Search Engine ID. Remove or comment out to disable search.
+gcs_engine_id = "011737558837375720776:fsdu1nryfng"
+
+# Enable Algolia DocSearch
+algolia_docsearch = false
+
+# Enable Lunr.js offline search
+offlineSearch = false
+
+[params.pushAssets]
+css = [
+  "callouts",
+  "styles"
+]
+js = [
+  "script"
+]
+
+# User interface configuration
+[params.ui]
+# Enable to show the side bar menu in its compact state.
+sidebar_menu_compact = false
+# https://github.com/gohugoio/hugo/issues/8918#issuecomment-903314696
+sidebar_cache_limit = 1
+#  Set to true to disable breadcrumb navigation.
+breadcrumb_disable = false
+#  Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
+sidebar_search_disable = false
+#  Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top nav bar
+navbar_logo = true
+# Set to true to disable the About link in the site footer
+footer_about_disable = false
+
+# Adds a H2 section titled "Feedback" to the bottom of each doc. The responses are sent to Google Analytics as events.
+# This feature depends on [services.googleAnalytics] and will be disabled if "services.googleAnalytics.id" is not set.
+# If you want this feature, but occasionally need to remove the "Feedback" section from a single page,
+# add "hide_feedback: true" to the page's front matter.
+[params.ui.feedback]
+enable = false
+# The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
+yes = 'Glad to hear it! Please <a href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we can improve</a>.'
+no = 'Sorry to hear that. Please <a href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we can improve</a>.'
+
+[params.links]
+# End user relevant links. These will show up on left side of footer and in the community page if you have one.
+
+[[params.links.user]]
+	name = "Twitter"
+	url = "https://twitter.com/microshift_io"
+	icon = "fab fa-twitter"
+  desc = "Follow us on Twitter to get the latest news!"
+
+[[params.links.user]]
+	name = "Calendar"
+	url = "https://calendar.google.com/calendar/embed?src=nj6l882mfe4d2g9nr1h7avgrcs%40group.calendar.google.com&ctz=America%2FChicago"
+	icon = "fas fa-calendar-alt"
+  desc = "Google Calendar for MicroShift"
+
+[[params.links.user]]
+	name = "Youtube"
+	url = "https://www.youtube.com/results?search_query=MicroShift+Red+Hat"
+	icon = "fab fa-youtube"
+  desc = "Youtube community videos"
+
+# Developer relevant links. These will show up on right side of footer and in the community page if you have one.
+[[params.links.developer]]
+	name = "GitHub"
+	url = "https://github.com/redhat-et/microshift"
+	icon = "fab fa-github"
+  desc = "Development takes place here!"
+
+[[params.links.developer]]
+	name = "Slack"
+	url = "https://microshift.slack.com"
+	icon = "fab fa-slack"
+  desc = "Chat with other project developers"
+
+# Language definitions.
+
+[languages]
+[languages.en]
+title = "MicroShift"
+description = "MicroShift is a research project that is exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing."
+languageName ="English"
+# Weight used for sorting.
+weight = 1
+languagedirection = "ltr"

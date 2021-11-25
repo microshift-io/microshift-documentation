@@ -8,7 +8,7 @@ Vagrantfile
 sshfile
 .hugo_build.lock
 resources/
-static/
 public/*
 .hugo/
 hugo
+node_modules/
