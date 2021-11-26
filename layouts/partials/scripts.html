@@ -26,3 +26,11 @@
 <script src='/js/prism.js'></script>
 {{ end }}
 {{ partial "hooks/body-end.html" . }}
+
+{{ $jqueryUI := resources.Get "js/jquery-ui.js" }}
+{{ if .Site.IsServer }}
+<script type="text/javascript" src="{{ $jqueryUI.RelPermalink }}"></script>
+{{ else }}
+<script type="text/javascript" src="{{ ($jqueryUI | minify | fingerprint).RelPermalink }}"></script>
+{{ end }}
+<script>$( function() { $( ".tabs" ).tabs();} ); </script>

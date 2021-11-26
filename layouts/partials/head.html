@@ -79,3 +79,10 @@
 <script src="{{ "js/script.js" | relURL }}"></script>
 {{ with .Params.js }}{{ range (split . ",") }}<script src="{{ (trim . " ") | relURL }}"></script><!-- custom js added -->
 {{ end }}{{ else }}<!-- no custom js detected -->{{ end }}
+
+{{ $jQueryUIstyle := resources.Get "css/jquery-ui.css" }}
+{{ if .Site.IsServer }}
+<link rel="stylesheet" href="{{ ($jQueryUIstyle).RelPermalink }}">
+{{ else }}
+<link rel="stylesheet" href="{{ ($jQueryUIstyle | minify | fingerprint).RelPermalink }}">
+{{ end }}
