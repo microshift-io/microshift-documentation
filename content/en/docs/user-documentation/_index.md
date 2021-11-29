@@ -1,5 +1,5 @@
 ---
-title: "User guide"
+title: "User Documentation"
 tags:
   - use
   - configure

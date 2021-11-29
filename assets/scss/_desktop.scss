@@ -26,15 +26,23 @@ $video-section-height: 550px;
   #oceanNodes {
     .main-section {
       position: relative;
-
       &:nth-child(1) {
         max-width: 1000px;
-        padding-right: 475px;
 
         h3,
         p {
           text-align: left
         }
+      }
+    }
+  }
+
+  #oceanNodes-img {
+    @extend #oceanNodes;
+    .main-section {
+
+      &:nth-child(1) {
+        padding-right: 475px;
 
         .image-wrapper {
           position: absolute;

@@ -63,7 +63,6 @@ footer {
 
   p {
     font-size: 16px;
-    font-weight: 600;
   }
 
   .button {
@@ -494,6 +493,10 @@ section#cncf {
   h3 {
     margin-bottom: $ocean-nodes-h3-margin-bottom;
   }
+}
+
+#oceanNodes-img {
+  @extend #oceanNodes
 }
 
 // Video thingy

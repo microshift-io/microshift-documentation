@@ -107,7 +107,8 @@ podman push quay.io/username/microshift:tag
 
 ### Deploying MicroShift Containerized
 
-Now follow the [Containerized Deployment steps]({{< ref "/docs/deployment-guide/containerized.md#run_container_with_systemd" >}}) or [Containerized All-In-One Deployment steps]({{< ref "/docs/deployment-guide/containerized.md#containerized_all_in_one" >}})
+Now follow the [Containerized Deployment steps -podman-]({{< ref "/docs/getting-started/#deploying-microshift-to-edge-devices" >}}) or 
+[Containerized All-In-One Deployment steps]({{< ref "/docs/getting-started/#using-microshift-for-application-development" >}})
 and substitute the locally built image for the latest released image in the documentation.
 
 ### Building Non-Containerized
