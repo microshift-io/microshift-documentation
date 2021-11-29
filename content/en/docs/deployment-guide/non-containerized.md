@@ -26,7 +26,7 @@ MicroShift install with RPM is the recommended deployment method for production 
 
 ### Prerequisites
 
-- Refer to the [System Requirements]({{< ref "/docs/getting-started/system-requirements.md" >}})
+- Refer to the [System Requirements]({{< ref "/docs/getting-started/" >}})
 - CRI-O repositories or CRI-O installed on system. [CRI-O install info here]({{< ref "/docs/developer-documentation/local-development.md#installing-cri-o" >}})
 
 ### Deployment Architecture
