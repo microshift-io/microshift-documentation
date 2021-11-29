@@ -22,11 +22,6 @@ cards:
     description: "Learn about MicroShift and its fundamental concepts."
     button: "View Getting Started"
     button_path: "/docs/getting-started"
-  - name: deployment-guide
-    title: "Deploy MicroShift"
-    description: "Get up and running with MicroShift."
-    button: "View Deployment Guide"
-    button_path: "/docs/deployment-guide"
   - name: user-documentation
     title: "MicroShift User Guide"
     description: "Look up common tasks and how to perform them."
