@@ -5,7 +5,7 @@
 
 		<ul class="navbar-nav mt-2 mt-lg-0">
 			{{ $p := . }}
-			{{ $sections := slice "docs/home" "getting-started" "deployment-guide" "user-documentation" "developer-documentation" "community"}}
+			{{ $sections := slice "getting-started" "docs/home" }}
 			{{ range $sections }}
 			{{ with site.GetPage "section" . }}
 			<li class="nav-item mr-2 mb-lg-0">

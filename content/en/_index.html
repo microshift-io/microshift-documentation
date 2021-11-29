@@ -7,23 +7,38 @@ sitemap:
 ---
 
 {{< blocks/section id="oceanNodes" >}}
-{{% blocks/feature image="nav_logo_green_no_background" %}}
+{{% blocks/feature-noimg %}}
 
-[MicroShift]({{< relref "/docs/home" >}}) is exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing.
+[MicroShift]({{< relref "/docs/home" >}}) is a research project that is exploring how OpenShift<sup>1</sup> and Kubernetes can be
+optimized for small form factor and edge computing.
 
-### Run MicroShift Anywhere
+Edge devices deployed out in the field pose very different operational, environmental, and business challenges from those of cloud computing. These motivate different engineering trade-offs for Kubernetes at the far edge than for cloud or near-edge scenarios. MicroShift's design goals cater to this:
 
-<div>
-    <br>
-            <ul>
-                <li>Kubernetes and OpenShift workloads at the far edge</li>
-                <li>Optimized for small form factor and edge computing</li>
-                <li>Deploy containerized or from RPM</li>
-                <li>Minimal configuration</li>
-                <li>Frugal use of resources</li>
-            </ul>
-</div>
-{{% /blocks/feature %}}
+- make frugal use of system resources (CPU, memory, network, storage, etc.),
+- tolerate severe networking constraints,
+- update (resp. rollback) securely, safely, speedily, and seamlessly (without disrupting workloads).
+- build on and integrate cleanly with edge-optimized OSes like Fedora IoT and RHEL for Edge.
+- provide a consistent development and management experience with standard OpenShift.
+
+We believe these properties should also make MicroShift a great tool for other use cases such as Kubernetes applications development on resource-constrained systems, scale testing, and provisioning of lightweight Kubernetes control planes.
+
+Watch this [end-to-end MicroShift provisioning demo video](https://youtu.be/QOiB8NExtA4) to get a first impression of MicroShift deployed onto a [RHEL for edge computing](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux/edge-computing) device and managed through [Open Cluster Management](https://github.com/open-cluster-management).
+
+{{< warning >}}
+MicroShift is still early days and moving fast. Features are missing. Things break. But you can still help shape it, too.
+{{< /warning >}}
+
+<sup>1) more precisely [OKD](https://www.okd.io/), the Kubernetes distribution by the OpenShift community</sup>
+
+### continue with:
+<button id="btn-concepts" class="button" onclick="location.href='\/docs\/getting-started';"
+        aria-label="Getting Started">Getting
+    Started</button> <button id="btn-concepts" class="button" onclick="location.href='\/docs\/home';"
+                             aria-label="Microshift Documentation">Microshift
+    Documentation</button>
+
+
+{{% /blocks/feature-noimg %}}
 {{< /blocks/section >}}
 {{< blocks/section id="video" background-image="stars" >}}
 <div class="light-text">
@@ -32,8 +47,6 @@ sitemap:
         <br>
         <a href="https://youtu.be/QOiB8NExtA4" button id="desktopShowVideoButton">MicroShift Provisioning</a>
         <br>
-        <br>
-        <a href="docs/home" button id="desktopKCButton">MicroShift Documentation</a>
         <br>
 </div>
 <div id="videoPlayer">

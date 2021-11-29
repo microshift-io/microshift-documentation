@@ -1,5 +1,5 @@
 ---
-title: "Developer docs"
+title: "Developer Documentation"
 draft: false
 weight: 60
 main_menu: true

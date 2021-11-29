@@ -27,23 +27,13 @@ cards:
     description: "Get up and running with MicroShift."
     button: "View Deployment Guide"
     button_path: "/docs/deployment-guide"
-    #- name: tutorials
-    #  title: "Try MicroShift"
-    #  description: "Follow tutorials to learn how to deploy applications in MicroShift."
-    #  button: "View Tutorials"
-    #  button_path: "/tutorials"
-    #- name: setup
-    #  title: "Set up a K8s cluster"
-    #  description: "Get Kubernetes running based on your resources and needs."
-    #  button: "Set up Kubernetes"
-    #  button_path: "/setup"
   - name: user-documentation
     title: "MicroShift User Guide"
     description: "Look up common tasks and how to perform them."
     button: "View User Docs"
     button_path: "/docs/user-documentation"
   - name: developer-documentation
-    title: "Local Development"
+    title: "Developer Documentation"
     description: "Look up how to build and run MicroShift locally, for testing, contributing, and development."
     button: "View Developer Docs"
     button_path: "/docs/developer-documentation"

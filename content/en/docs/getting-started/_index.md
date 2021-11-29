@@ -1,30 +1,10 @@
 ---
-title: "Getting started"
+title: "Getting Started"
 weight: 20
 main_menu: true
 content_type: concept
 description: "MicroShift design and system requirements"
 ---
-MicroShift is a research project that is exploring how OpenShift<sup>1</sup> and Kubernetes can be optimized for small form factor and edge computing.
-
-Edge devices deployed out in the field pose very different operational, environmental, and business challenges from those of cloud computing. These motivate different engineering trade-offs for Kubernetes at the far edge than for cloud or near-edge scenarios. MicroShift's design goals cater to this:
-
-- make frugal use of system resources (CPU, memory, network, storage, etc.),
-- tolerate severe networking constraints,
-- update (resp. rollback) securely, safely, speedily, and seamlessly (without disrupting workloads).
-- build on and integrate cleanly with edge-optimized OSes like Fedora IoT and RHEL for Edge.
-- provide a consistent development and management experience with standard OpenShift.
-
-We believe these properties should also make MicroShift a great tool for other use cases such as Kubernetes applications development on resource-constrained systems, scale testing, and provisioning of lightweight Kubernetes control planes.
-
-Watch this [end-to-end MicroShift provisioning demo video](https://youtu.be/QOiB8NExtA4) to get a first impression of MicroShift deployed onto a [RHEL for edge computing](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux/edge-computing) device and managed through [Open Cluster Management](https://github.com/open-cluster-management).
-
-{{< warning >}}
-MicroShift is still early days and moving fast. Features are missing. Things break. But you can still help shape it, too.
-{{< /warning >}}
-
-<sup>1) more precisely [OKD](https://www.okd.io/), the Kubernetes distribution by the OpenShift community</sup>
-
 ## Getting Started
 ### System Requirements
 To run MicroShift, you need a machine with at least:
@@ -33,7 +13,7 @@ To run MicroShift, you need a machine with at least:
 - a supported OS (see below)
 - 2 CPU cores
 - 2GB of RAM
-- 200MB of free storage space for MicroShift
+- 1GB of free storage space for MicroShift
 
 <sup>2) 32-bit is _technically_ possible, if you're up for the challenge.</sup>
 
@@ -159,11 +139,3 @@ oc.exe get all -A --kubeconfig .\kubeconfig
 {{% /tab %}}
 {{< /tabs >}}
 
-## User Documentation
-[MicroShift user documentation](http://localhost:1313/docs/user-documentation/)
-
-## Developer Documentation
-[Building and running MicroShift](https://microshift.io/docs/developer-documentation/) for local development
-
-## Community
-MicroShift community is growing, we hope you can [get involved!](https://microshift.io/docs/community/community/)
