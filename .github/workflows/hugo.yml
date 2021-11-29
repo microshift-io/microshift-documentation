@@ -21,11 +21,8 @@ jobs:
         run: npm install
       -
         name: Run Hugo
-        uses: crazy-max/ghaction-hugo@v1.4.0
-        with:
-          version: latest
-          extended: true
-          args: --minify --verbose
+        run: make static
+
       -
         name: Deploy to GitHub Pages
         if: success() && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
