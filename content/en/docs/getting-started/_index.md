@@ -26,13 +26,16 @@ For production deployments, we recommend (and only test) deploying MicroShift on
 
 Both methods feature a minimal resource footprint, a strong security posture, the ability to restart/update without disrupting workloads, and optionally auto-updates.
 
+NOTE: For RHEL ensure that the repository "rhocp-4.7-for-rhel-8-x86_64-rpms" has been enabled for the system.
+
 {{< tabs >}}
 {{% tab name="Podman" %}}
 MicroShift requires CRI-O to be installed on the host:
 
 ```Bash
 sudo dnf module -y enable cri-o:1.21
-sudn dnf install crio
+sudo dnf install crio podman
+sudo systemctl enable crio --now
 ```
 <br/>
 
@@ -56,6 +59,24 @@ sudo systemctl enable microshift --now
 ```
 {{% /tab %}}
 {{< /tabs >}}
+
+### Accessing the cluster
+Kubectl and the OpenShift client can be used to access objects within the cluster.
+```Bash
+curl -o oc.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz
+tar -xzvf oc.tar.gz
+sudo mv kubectl /usr/local/bin/
+sudo mv oc /usr/local/bin/
+```
+
+Depending on the user that will be administrating the system it may be required to copy the kubeconfig to a location that can be accessed by the user.
+```Bash
+mkdir ~/.kube
+sudo cp /var/lib/microshift/resources/kubeadmin/kubeconfig ~/.kube/config
+sudo chown `whoami`: ~/.kube/config
+```
+
+It is now possible to run kubectl or oc commands against the MicroShift environment.
 
 ### Using MicroShift for Application Development
 
