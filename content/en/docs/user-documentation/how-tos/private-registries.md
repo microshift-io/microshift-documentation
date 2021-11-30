@@ -34,7 +34,7 @@ The second approach is to create a pull secret, then let the service account use
 
 ```sh
 # First create the secret in a name space
-kubectl create secret generic my_pull_secret \
+oc create secret generic my_pull_secret \
     --from-file=.dockerconfigjson=secret.json \
     --type=kubernetes.io/dockerconfigjson
 ```
@@ -43,7 +43,7 @@ Alternatively, you can use your container manager configuration file to create t
 
 ```sh
 # First create the secret in a name space using our configuration file
-kubectl create secret generic my_pull_secret \
+oc create secret generic my_pull_secret \
     --from-file=.dockerconfigjson=.docker/config.json \
     --type=kubernetes.io/dockerconfigjson
 ```

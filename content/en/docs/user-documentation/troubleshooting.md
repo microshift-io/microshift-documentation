@@ -62,7 +62,7 @@ As a workaround, you can follow steps below:
 - delete `flannel` `daemonset`
 
   ```sh
-  kubectl delete ds -n kube-system kube-flannel-ds
+  oc delete ds -n kube-system kube-flannel-ds
   ```
 
 - restart all the OpenShift pods.

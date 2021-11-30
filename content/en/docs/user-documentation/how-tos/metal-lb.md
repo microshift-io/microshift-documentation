@@ -1,18 +1,14 @@
 ---
-title: Deploy a basic application
+title: Deploy a load balancer
 draft: false
 weight: 9
 tags:
   - Metal LB
   - nginx
-description: MicroShift operates similar to many other Kubernetes providers. This means that you can use the same tools to deploy and manage your applications.
+description: Deploy Metal LB as a Load Balancer service 
 ---
 
-All of the standard Kubernetes management tools can be used to maintain and modify your MicroShift applications. Below we will show some examples using oc, kustomize, and helm to deploy and maintain applications.
-
-## Example Applications
-
-### Metal LB
+## Metal LB
 
 Metal LB is a load balancer that can be used to route traffic to a number of backends.
 
