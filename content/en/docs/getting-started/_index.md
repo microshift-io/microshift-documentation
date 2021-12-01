@@ -3,7 +3,7 @@ title: "Getting Started"
 weight: 20
 main_menu: true
 content_type: concept
-description: "MicroShift design and system requirements"
+description: "MicroShift system requirements and deployment"
 ---
 ## Getting Started
 ### System Requirements
