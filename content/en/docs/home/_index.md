@@ -23,14 +23,14 @@ cards:
     button: "View Getting Started"
     button_path: "/docs/getting-started"
   - name: user-documentation
-    title: "MicroShift User Guide"
+    title: "MicroShift User Documentation"
     description: "Look up common tasks and how to perform them."
-    button: "View User Docs"
+    button: "View User Documentation"
     button_path: "/docs/user-documentation"
   - name: developer-documentation
     title: "Developer Documentation"
     description: "Look up how to build and run MicroShift locally, for testing, contributing, and development."
-    button: "View Developer Docs"
+    button: "View Developer Documentation"
     button_path: "/docs/developer-documentation"
   - name: community
     title: Community
@@ -40,6 +40,6 @@ cards:
   - name: release-notes
     title: Release Notes
     description: If you are installing MicroShift refer to the current release notes.
-    button: "Release Info"
+    button: "Release Notes"
     button_path: "/docs/release-notes"
 ---
