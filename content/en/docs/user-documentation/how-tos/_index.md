@@ -1,8 +1,8 @@
 ---
 title: "HowTos"
-weight: 6
-description: Once MicroShift is running, visit this section for day 2 tips. New content is added frequently.
+weight: 90
+description: Solving common use cases with MicroShift.
 card:
   name: user-documentation
-  weight: 6
+  weight: 90
 ---

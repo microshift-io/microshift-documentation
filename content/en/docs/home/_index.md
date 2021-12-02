@@ -19,11 +19,11 @@ overview: >
 cards:
   - name: getting-started
     title: "Getting Started"
-    description: "Learn about MicroShift and its fundamental concepts."
+    description: "Quickly start using MicroShift."
     button: "View Getting Started"
     button_path: "/docs/getting-started"
   - name: user-documentation
-    title: "MicroShift User Documentation"
+    title: "User Documentation"
     description: "Look up common tasks and how to perform them."
     button: "View User Documentation"
     button_path: "/docs/user-documentation"
