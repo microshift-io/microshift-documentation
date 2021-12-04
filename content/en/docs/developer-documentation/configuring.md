@@ -4,10 +4,15 @@ tags:
   - config.yaml
   - environment variables
   - command line
+  - configuration
+  - config
+  - configure
 draft: false
-weight: 3
+card:
+  name: developer-documentation
+  weight: 20
+weight: 20
 summary: Configuration options with MicroShift
-modified: "2021-11-03T16:24:11.538+01:00"
 ---
 
 <!-- 
