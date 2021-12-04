@@ -22,7 +22,7 @@ cd microshift-documentation
 ## Running the website locally using Hugo
 
 ```bash
-sudo npm install
+npm install
 # if you do want to download and use hugo-extended in current directory
 make server
 # or if you already have hugo-extended installed in $PATH
