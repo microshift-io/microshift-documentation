@@ -16,8 +16,8 @@ The following are basic prerequisites for using Docsy in your site:
   the following commands from the root directory of your project:
 
   ```
-  sudo npm install -D --save autoprefixer
-  sudo npm install -D --save postcss-cli
+  npm install -D --save autoprefixer
+  npm install -D --save postcss-cli
   ```
 
 ## Example and usage
