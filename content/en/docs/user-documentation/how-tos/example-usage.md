@@ -25,7 +25,7 @@ oc apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/
 
 Once the components are available, a `ConfigMap` is required to define the address pool for the load balancer to use.
 
-Create the Metal` LB Confi`gMap:
+Create the Metal LB ConfigMap:
 
 ```yaml
 oc create -f - <<EOF
