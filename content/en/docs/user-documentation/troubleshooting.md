@@ -10,8 +10,7 @@ weight: 100
 card:
   name: user-documentation
   weight: 100
-description: MicroShift known issues
-modified: "2021-11-03T16:24:11.538+01:00"
+description: MicroShift known issues and troubleshooting tips.
 ---
 
 ## On EC2 with RHEL 8.4
