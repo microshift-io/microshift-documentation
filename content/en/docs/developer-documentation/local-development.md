@@ -1,145 +1,86 @@
 ---
-title: "Build and install"
+title: "Building and Running MicroShift"
 tags:
   - develop
   - build
-  - vagrant
+  - binary
 draft: false
 card:
   name: developer-documentation
   weight: 10
 weight: 10
-description: Building and running MicroShift for local development
+description: Building and running the MicroShift binary for local development
 ---
 
-### Build Dependencies
+## System Requirements
 
-Install the required dependencies:
+For building MicroShift you need a system with a minimum of
 
-```sh
-# Fedora/CentOS
-sudo dnf install --enablerepo=powertools \
-    git \
-    make \
-    golang \
-    glibc-static
+- a supported 64-bit CPU architecture (amd64, arm64, or riscv64)
+- a supported Linux OS (RHEL 8, CentOS Stream 8, or Fedora 34+)
+- 2 CPU cores
+- 3GB of RAM
+- 1GB of free storage space for MicroShift
 
-# Ubuntu
-sudo apt install \
-    git \
-    build-essential \   # provides Make
-    golang-go \
-    glibc
+## Building MicroShift
+
+Install the build-time dependencies:
+
+```Bash
+command -v subscription-manager &> /dev/null \
+    && sudo subscription-manager repos --enable "codeready-builder-for-rhel-8-$(uname -m)-rpms"
+sudo dnf install -y --enablerepo=powertools git make golang
 ```
 
-{{< note >}}
-If building containerized, will need to install podman (or Docker), find the appropriate guide for your respective system:
-[Install Podman](https://podman.io/getting-started/installation)
-If Docker is preferred, be sure that it is installed on your system.
-{{< /note >}}
+Clone the repository and `cd` into it:
 
-Clone the repository and cd into it:
-
-```sh
+```Bash
 git clone https://github.com/redhat-et/microshift.git
 cd microshift
 ```
 
-### Installing CRI-O
+Build MicroShift:
 
-MicroShift containerized and RPM require that CRI-O is installed.
-Steps to install CRI-O on Centos8 and Fedora are below.
-More information on installing CRI-O lives [here](https://github.com/cri-o/cri-o/blob/main/install.md).
-
-```bash
-export OS=CentOS_8_Stream
-export VERSION=1.22
+```Bash
+make
 ```
 
-#### Centos8Stream
+## Running MicroShift
 
-```bash
-sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/$OS/devel:kubic:libcontainers:stable.repo
-sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable:cri-o:$VERSION.repo https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:$VERSION/$OS/devel:kubic:libcontainers:stable:cri-o:$VERSION.repo
-sudo dnf install cri-o
+Install [CRI-O](https://github.com/cri-o/cri-o/blob/main/install.md):
+
+```Bash
+command -v subscription-manager &> /dev/null \
+    && subscription-manager repos --enable rhocp-4.8-for-rhel-8-x86_64-rpms \
+    || sudo dnf module enable -y cri-o:1.21
+sudo dnf install -y crio cri-tools podman
+sudo systemctl enable crio --now
 ```
 
-#### Fedora 31 or later
+Install the SELinux policies from RPM or build and install them from source:
 
-```
-sudo dnf module enable cri-o:$VERSION
-sudo dnf install cri-o
-```
+```Bash
+# from RPM
+sudo dnf copr enable -y @redhat-et/microshift
+sudo dnf install -y microshift-selinux
 
-### Containerized Build
-
-Podman and Quay are used here, substitute `docker` for `podman` and/or `docker.io` for `quay.io` if preferred.
-
-```sh
-make microshift
+# from source
+(cd packaging/selinux && sudo make install)
 ```
 
-### Containerized All-In-One Build
-
-{{< warning >}}
-Containerized All-In-One MicroShift is meant for testing and development only.
-{{< /warning >}}
-
-For testing and development convenience, an All-In-One image that includes everything required to run MicroShift can be built.
-
-In the All-In-One deployment, CRI-O runs _inside_ the container rather than directly on the host.
-
-To build this All-In-One image with your local branch:
-
-```
-FROM_SOURCE=true make microshift-aio
-```
-
-{{< note >}}
-List the image and use podman tag to push the image to a registry of choice.
-
-```sh
-podman tag <image> quay.io/username/microshift:tag
-podman push quay.io/username/microshift:tag
-```
-
-{{< /note >}}
-
-### Deploying MicroShift Containerized
-
-Now follow the [Containerized Deployment steps -podman-]({{< ref "/docs/getting-started/#deploying-microshift-to-edge-devices" >}}) or 
-[Containerized All-In-One Deployment steps]({{< ref "/docs/getting-started/#using-microshift-for-application-development" >}})
-and substitute the locally built image for the latest released image in the documentation.
-
-### Building Non-Containerized
-
-MicroShift can be built directly on the host. When developing non-containerized, is also necessary to build the required SELinux package.
-
-Build the binary and configure SELinux with:
-
-```bash
-make build
-sudo mv microshift /usr/local/bin/
-cd packaging/selinux && sudo make install
-```
-
-{{< note >}}
-When using RHEL ensure the system is registered and run the following before installing the prerequisites.
-
-```sh
-ARCH=$( /bin/arch )
-sudo subscription-manager repos --enable "codeready-builder-for-rhel-8-${ARCH}-rpms"
-```
-
-{{< /note >}}
-
-### Running MicroShift Locally
+Run MicroShift using
 
 ```bash
 sudo microshift run
-or
-sudo microshift run -v=<log verbosity>
 ```
 
 Now switch to a new terminal to access and use this development MicroShift cluster.
 Refer to the [MicroShift user documentation]({{< ref "/docs/user-documentation/_index.md" >}})
+
+## Cleaning Up
+
+To stop all MicroShift processes and wipe its state run:
+
+```Bash
+sudo hack/cleanup.sh
+```
