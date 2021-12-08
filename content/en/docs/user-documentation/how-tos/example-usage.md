@@ -8,7 +8,7 @@ tags:
 description: MicroShift operates similar to many other Kubernetes providers. This means that you can use the same tools to deploy and manage your applications.
 ---
 
-All of the standard Kubernetes management tools can be used to maintain and modify your MicroShift applications. Below we will show some examples using kubectl, kustomize, and helm to deploy and maintain applications.
+All of the standard Kubernetes management tools can be used to maintain and modify your MicroShift applications. Below we will show some examples using oc, kustomize, and helm to deploy and maintain applications.
 
 ## Example Applications
 
@@ -19,16 +19,16 @@ Metal LB is a load balancer that can be used to route traffic to a number of bac
 Creating the Metal LB namespace and deployment.
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/namespace.yaml
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/metallb.yaml
+oc apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/namespace.yaml
+oc apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/metallb.yaml
 ```
 
 Once the components are available, a `ConfigMap` is required to define the address pool for the load balancer to use.
 
-Create the Metal` LB Confi`gMap:
+Create the Metal LB ConfigMap:
 
 ```yaml
-kubectl create -f - <<EOF
+oc create -f - <<EOF
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -47,14 +47,14 @@ EOF
 Now we are able to deploy a test application to verify thing are working as expected.
 
 ```sh
-kubectl create ns test
-kubectl create deployment nginx -n test --image nginx
+oc create ns test
+oc create deployment nginx -n test --image nginx
 ```
 
 Create a service:
 
 ```yaml
-kubectl create -f - <<EOF
+oc create -f - <<EOF
 apiVersion: v1
 kind: Service
 metadata:
@@ -75,7 +75,7 @@ EOF
 Verify the service exists and that an IP address has been assigned.
 
 ```sh
-kubectl get svc -n test
+oc get svc -n test
 NAME    TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)        AGE
 nginx   LoadBalancer   10.43.183.104   192.168.1.241   80:32434/TCP   29m
 ```
