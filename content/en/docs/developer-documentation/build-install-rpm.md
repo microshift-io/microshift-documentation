@@ -16,7 +16,7 @@ description: Building and installing the MicroShift RPMs for local development
 
 MicroShift binary with systemd unit file and the required SELinux submodule can be built as an RPM using `make` on an RPM-based distribution.
 
-Install the [MicroShift build dependencies]({{< ref "/docs/developer-documentation/local-development.md/#building-microshift" >}}) and the RPM specific build-time packages.
+Install the [MicroShift build dependencies]({{< ref "/docs/developer-documentation/local-development.md#build-dependencies" >}}) and the RPM specific build-time packages.
 
 ```bash
 dnf install -y rpm-build selinux-policy-devel container-selinux
@@ -35,7 +35,7 @@ Build the SELinux and MicroShift RPMs with:
 make rpm
 ```
 
-RPMs will be placed in `./packaging/rpm/\_rpmbuild/RPMS/`. There are two RPMs that will be required to install:
+RPMs will be placed in `./packaging/rpm/_rpmbuild/RPMS/`. There are two RPMs that will be required to install:
 
 ```
 packaging/rpm/_rpmbuild/RPMS/noarch/microshift-selinux-*
