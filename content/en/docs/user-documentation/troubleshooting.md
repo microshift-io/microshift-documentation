@@ -10,8 +10,7 @@ weight: 100
 card:
   name: user-documentation
   weight: 100
-description: MicroShift known issues
-modified: "2021-11-03T16:24:11.538+01:00"
+description: MicroShift known issues and troubleshooting tips.
 ---
 
 ## On EC2 with RHEL 8.4
@@ -62,7 +61,7 @@ As a workaround, you can follow steps below:
 - delete `flannel` `daemonset`
 
   ```sh
-  kubectl delete ds -n kube-system kube-flannel-ds
+  oc delete ds -n kube-system kube-flannel-ds
   ```
 
 - restart all the OpenShift pods.
