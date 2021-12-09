@@ -53,7 +53,7 @@ sudo systemctl enable microshift --now
 MicroShift requires CRI-O to be installed on the host:
 
 ```Bash
-command -v subscription-manager &> /dev/null \
+command -v subscription-manager >/dev/null 2>&1 \
     && subscription-manager repos --enable rhocp-4.8-for-rhel-8-x86_64-rpms \
     || sudo dnf module enable -y cri-o:1.21
 sudo dnf install -y crio cri-tools
@@ -72,6 +72,7 @@ sudo systemctl enable microshift --now
 
 {{% /tab %}}
 {{< /tabs >}}
+<br/>
 
 ## Accessing the cluster
 
@@ -92,3 +93,77 @@ sudo chown `whoami`: ~/.kube/config
 ```
 
 It is now possible to run kubectl or oc commands against the MicroShift environment.
+
+### Using MicroShift for Application Development
+
+For trying out MicroShift or using it as development tool, we provide a flavor of MicroShift that bundles host dependencies like CRI-O and useful tools like the `oc` client, so it can run on most modern Linux distros, on OSX, and on Windows with `podman` or `docker` installed.
+
+{{< tabs >}}
+{{% tab name="Linux" %}}
+[Install `podman`](https://podman.io/getting-started/installation#linux-distributions) if necessary, then run MicroShift using:
+
+```Bash
+command -v setsebool >/dev/null 2>&1 || sudo setsebool -P container_manage_cgroup true
+sudo podman run -d --rm --name microshift --privileged -v microshift-data:/var/lib -p 6443:6443 quay.io/microshift/microshift-aio:latest
+```
+<br/>
+
+You can then access your cluster either via the bundled `oc` (resp. `kubectl`) command
+
+```Bash
+sudo podman exec -ti microshift oc get all -A
+```
+<br/>
+
+or via an `oc` (resp. `kubectl`) client installed on the host:
+
+```Bash
+sudo podman cp microshift:/var/lib/microshift/resources/kubeadmin/kubeconfig ./kubeconfig
+oc get all -A --kubeconfig ./kubeconfig
+```
+{{% /tab %}}
+{{% tab name="OSX" %}}
+[Install `docker`](https://docs.docker.com/desktop/mac/install/) if necessary, then run MicroShift using:
+
+```Bash
+docker run -d --rm --name microshift --privileged -v microshift-data:/var/lib -p 6443:6443 quay.io/microshift/microshift-aio:latest
+```
+<br/>
+
+You can then access your cluster either via the bundled `oc` (resp. `kubectl`) command
+
+```Bash
+docker exec -ti microshift oc get all -A
+```
+<br/>
+
+or via an `oc` (resp. `kubectl`) client [installed](https://access.redhat.com/downloads/content/290/) on the host:
+
+```Bash
+docker cp microshift:/var/lib/microshift/resources/kubeadmin/kubeconfig ./kubeconfig
+oc get all -A --kubeconfig .\kubeconfig
+```
+{{% /tab %}}
+{{% tab name="Windows" %}}
+[Install `docker`](https://docs.docker.com/desktop/windows/install/) if necessary, then run MicroShift using:
+
+```Bash
+docker.exe run -d --rm --name microshift --privileged -v microshift-data:/var/lib -p 6443:6443 quay.io/microshift/microshift-aio:latest
+```
+<br/>
+
+You can then access your cluster either via the bundled `oc` (resp. `kubectl`) command
+
+```Bash
+docker.exe exec -ti microshift oc get all -A
+```
+<br/>
+
+or via an `oc` (resp. `kubectl`) client [installed](https://access.redhat.com/downloads/content/290/) on the host:
+
+```Bash
+docker.exe cp microshift:/var/lib/microshift/resources/kubeadmin/kubeconfig .\kubeconfig
+oc.exe get all -A --kubeconfig .\kubeconfig
+```
+{{% /tab %}}
+{{< /tabs >}}
