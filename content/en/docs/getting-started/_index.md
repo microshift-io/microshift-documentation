@@ -34,7 +34,7 @@ MicroShift requires CRI-O to be installed on the host:
 command -v subscription-manager &> /dev/null \
     && subscription-manager repos --enable rhocp-4.8-for-rhel-8-x86_64-rpms \
     || sudo dnf module enable -y cri-o:1.21
-sudo dnf install -y crio cri-tools podman
+sudo dnf install -y cri-o cri-tools podman
 sudo systemctl enable crio --now
 ```
 
