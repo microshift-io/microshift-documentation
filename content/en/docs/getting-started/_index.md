@@ -17,7 +17,7 @@ To run MicroShift, you need a machine with at least:
 
 <sup>2) 32-bit is _technically_ possible, if you're up for the challenge.</sup>
 
-## Deploying MicroShift to Edge Devices
+## Deploying MicroShift on Edge Devices
 
 For production deployments, we recommend (and only test) deploying MicroShift on RHEL 8, CentOS Stream 8, or Fedora 34+ using one of two methods:
 
@@ -31,7 +31,7 @@ Both methods feature a minimal resource footprint, a strong security posture, th
 MicroShift requires CRI-O to be installed on the host:
 
 ```Bash
-command -v subscription-manager &> /dev/null \
+command -v subscription-manager >/dev/null 2>&1 \
     && subscription-manager repos --enable rhocp-4.8-for-rhel-8-x86_64-rpms \
     || sudo dnf module enable -y cri-o:1.21
 sudo dnf install -y cri-o cri-tools podman
@@ -56,7 +56,7 @@ MicroShift requires CRI-O to be installed on the host:
 command -v subscription-manager >/dev/null 2>&1 \
     && subscription-manager repos --enable rhocp-4.8-for-rhel-8-x86_64-rpms \
     || sudo dnf module enable -y cri-o:1.21
-sudo dnf install -y crio cri-tools
+sudo dnf install -y cri-o cri-tools
 sudo systemctl enable crio --now
 ```
 
@@ -74,9 +74,7 @@ sudo systemctl enable microshift --now
 {{< /tabs >}}
 <br/>
 
-## Accessing the cluster
-
-Kubectl and the OpenShift client can be used to access objects within the cluster.
+To access the cluster, install the OpenShift client or kubectl if you haven't done so yet:
 
 ```Bash
 curl -o oc.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz
@@ -94,7 +92,7 @@ sudo chown `whoami`: ~/.kube/config
 
 It is now possible to run kubectl or oc commands against the MicroShift environment.
 
-### Using MicroShift for Application Development
+## Using MicroShift for Application Development
 
 For trying out MicroShift or using it as development tool, we provide a flavor of MicroShift that bundles host dependencies like CRI-O and useful tools like the `oc` client, so it can run on most modern Linux distros, on OSX, and on Windows with `podman` or `docker` installed.
 
