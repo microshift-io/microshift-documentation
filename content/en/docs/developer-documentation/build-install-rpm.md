@@ -47,7 +47,7 @@ packaging/rpm/_rpmbuild/RPMS/x86_64/microshift-*
 
 ```bash
 sudo dnf localinstall -y packaging/rpm/_rpmbuild/RPMS/noarch/microshift-selinux-*
-sudo dnf localinstall -y packaging/rpm/_rpmbuild/RPMS/x86_64/microshift-4.8.0-nightly.el8.x86_64.rpm
+sudo dnf localinstall -y packaging/rpm/_rpmbuild/RPMS/x86_64/microshift-*
 ```
 
 ### Start CRI-O and MicroShift services
