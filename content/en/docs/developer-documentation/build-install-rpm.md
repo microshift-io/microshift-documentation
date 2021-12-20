@@ -19,9 +19,7 @@ MicroShift binary with systemd unit file and the required SELinux submodule can 
 Install the [MicroShift build dependencies]({{< ref "/docs/developer-documentation/local-development.md#build-dependencies" >}}) and the RPM specific build-time packages.
 
 ```bash
-command -v subscription-manager &> /dev/null \
-    && sudo subscription-manager repos --enable "codeready-builder-for-rhel-8-$(uname -m)-rpms"
-dnf install -y rpm-build selinux-policy-devel container-selinux glibc-static
+dnf install -y rpm-build selinux-policy-devel container-selinux
 ```
 
 Clone the repository and cd into it:
