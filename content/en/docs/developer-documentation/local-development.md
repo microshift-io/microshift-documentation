@@ -29,7 +29,7 @@ Install the build-time dependencies:
 ```Bash
 command -v subscription-manager &> /dev/null \
     && sudo subscription-manager repos --enable "codeready-builder-for-rhel-8-$(uname -m)-rpms"
-sudo dnf install -y --enablerepo=powertools git make golang
+sudo dnf install -y git make golang
 ```
 
 Clone the repository and `cd` into it:
@@ -42,7 +42,11 @@ cd microshift
 Build MicroShift:
 
 ```Bash
+# release build (without debug symbols)
 make
+
+# development build (with debug symbols)
+make DEBUG=true
 ```
 
 ## Running MicroShift
@@ -71,7 +75,7 @@ sudo dnf install -y microshift-selinux
 Run MicroShift using
 
 ```bash
-sudo microshift run
+sudo ./microshift run
 ```
 
 Now switch to a new terminal to access and use this development MicroShift cluster.
