@@ -27,8 +27,6 @@ For building MicroShift you need a system with a minimum of
 Install the build-time dependencies:
 
 ```Bash
-command -v subscription-manager &> /dev/null \
-    && sudo subscription-manager repos --enable "codeready-builder-for-rhel-8-$(uname -m)-rpms"
 sudo dnf install -y --enablerepo=powertools git make golang
 ```
 
