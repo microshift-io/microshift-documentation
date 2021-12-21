@@ -38,6 +38,16 @@ Build the MicroShift AIO container:
 ```Bash
 make microshift-aio
 ```
+## Tagging the Image
+
+It is necessary to tag the image as latest to ensure that the newly created image is used when starting MicroShift with systemd.
+
+```Bash
+IMAGE=$(podman images | grep micro | awk '{print $3}')
+podman tag ${IMAGE} quay.io/microshift/microshift:latest
+```
+
+
 
 ## Running the MicroShift Containers
 
