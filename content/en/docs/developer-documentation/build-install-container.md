@@ -41,4 +41,4 @@ make microshift-aio
 
 ## Running the MicroShift Containers
 
-Now follow the [Getting Started](http://localhost:1313/docs/getting-started/) respective section of the User Documentation, substituting the released image in the documentation with your local image.
+Now follow the [Getting Started]({{< ref "/docs/getting-started/" >}}) respective section of the User Documentation, substituting the released image in the documentation with your local image.

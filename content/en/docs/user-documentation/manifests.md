@@ -10,7 +10,8 @@ card:
   weight: 40
 description: Automatically applying manifests for bootstrapping cluster services.
 ---
-A common use case after bringing up a new cluster is applying manifests for bootstrapping a [management agent like the Open Cluster Management's klusterlet](http://localhost:1313/docs/user-documentation/how-tos/acm-with-microshift/) or for starting up services when running disconnected.
+A common use case after bringing up a new cluster is applying manifests for bootstrapping a [management agent like the Open Cluster Management's klusterlet]({{< ref "/docs/user-documentation/how-tos/acm-with-microshift" >}}) or for starting up services when running disconnected.
+
 
 MicroShift leverages [`kustomize`](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/) for Kubernetes-native templating and declarative management of resource objects. Upon start-up, it searches `${DATADIR}/manifests` (which defaults to `/var/lib/microshift/manifests`) for a `kustomization.yaml` file. If it finds one, it automatically runs `kubectl apply -k` to that kustomization.
 
