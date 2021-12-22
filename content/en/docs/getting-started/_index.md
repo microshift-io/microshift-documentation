@@ -72,6 +72,8 @@ sudo dnf install -y podman
 ```
 <br/>
 
+### Launch MicroShift with Podman and Systemd
+
 To have `systemd` start and manage MicroShift on Podman, run:
 
 ```Bash
@@ -82,6 +84,8 @@ sudo systemctl enable microshift --now
 
 {{% /tab %}}
 {{% tab name=".rpm" %}}
+
+### Launch MicroShift RPM with Systemd
 
 To have `systemd` start and manage MicroShift on an rpm-based host, run:
 
