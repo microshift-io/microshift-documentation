@@ -49,7 +49,7 @@ sudo dnf install -y cri-o cri-tools
 sudo systemctl enable crio --now
 ```
 {{% /tab %}}
-{{% tab name="CentOS_8_Stream" %}}
+{{% tab name="CentOS 8 Stream" %}}
 
 ```Bash
 curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8_Stream/devel:kubic:libcontainers:stable.repo
@@ -67,16 +67,10 @@ sudo systemctl enable crio --now
 
 {{< tabs >}}
 {{% tab name="Podman" %}}
-```Bash
-sudo dnf install -y podman
-```
-<br/>
-
-### Launch MicroShift with Podman and Systemd
-
 To have `systemd` start and manage MicroShift on Podman, run:
 
 ```Bash
+sudo dnf install -y podman
 sudo curl -o /etc/systemd/system/microshift.service \
      https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-containerized.service
 sudo systemctl enable microshift --now
@@ -84,9 +78,6 @@ sudo systemctl enable microshift --now
 
 {{% /tab %}}
 {{% tab name=".rpm" %}}
-
-### Launch MicroShift RPM with Systemd
-
 To have `systemd` start and manage MicroShift on an rpm-based host, run:
 
 ```Bash
@@ -97,7 +88,6 @@ sudo systemctl enable microshift --now
 
 {{% /tab %}}
 {{< /tabs >}}
-<br/>
 
 ### Install Clients
 
