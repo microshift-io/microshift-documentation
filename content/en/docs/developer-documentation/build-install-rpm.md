@@ -19,7 +19,7 @@ MicroShift binary with systemd unit file and the required SELinux submodule can 
 Install the [MicroShift build dependencies]({{< ref "/docs/developer-documentation/local-development.md#build-dependencies" >}}) and the RPM specific build-time packages.
 
 ```bash
-dnf install -y rpm-build selinux-policy-devel container-selinux
+sudo dnf install -y rpm-build selinux-policy-devel container-selinux
 ```
 
 Clone the repository and cd into it:
@@ -64,8 +64,8 @@ sudo dnf localinstall -y packaging/rpm/_rpmbuild/RPMS/x86_64/microshift-*
 Start CRI-O and MicroShift services:
 
 ```Bash
-systemctl enable crio --now
-systemctl enable microshift --now
+sudo systemctl enable crio --now
+sudo systemctl enable microshift --now
 ```
 
 Verify that MicroShift is running:
@@ -78,7 +78,7 @@ sudo oc get pods -A
 You can stop MicroShift service with systemd:
 
 ```bash
-systemctl stop microshift
+sudo systemctl stop microshift
 ```
 
 {{< note >}}
