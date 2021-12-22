@@ -26,11 +26,26 @@ For building MicroShift you need a system with a minimum of
 
 Install the build-time dependencies:
 
+{{< tabs >}}
+{{% tab name="RHEL" %}}
+
 ```Bash
 command -v subscription-manager &> /dev/null \
     && sudo subscription-manager repos --enable "codeready-builder-for-rhel-8-$(uname -m)-rpms"
 sudo dnf install -y git make golang
 ```
+
+{{% /tab %}}
+{{% tab name="Fedora, CentOS_8_Stream" %}}
+
+```Bash
+sudo dnf install -y git make golang
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+<br/>
 
 Clone the repository and `cd` into it:
 
@@ -51,15 +66,8 @@ make DEBUG=true
 
 ## Running MicroShift
 
-Install [CRI-O](https://github.com/cri-o/cri-o/blob/main/install.md):
-
-```Bash
-command -v subscription-manager &> /dev/null \
-    && subscription-manager repos --enable rhocp-4.8-for-rhel-8-x86_64-rpms \
-    || sudo dnf module enable -y cri-o:1.21
-sudo dnf install -y crio cri-tools podman
-sudo systemctl enable crio --now
-```
+MicroShift requires `CRI-O` to be installed and running on the host.    
+Refer to [Getting Started: Install CRI-O]({{< ref "/docs/getting-started/_index.md#install-cri-o" >}})
 
 Install the SELinux policies from RPM or build and install them from source:
 
@@ -79,6 +87,19 @@ sudo ./microshift run
 ```
 
 Now switch to a new terminal to access and use this development MicroShift cluster.
+
+- To install OpenShift and Kubernetes clients, follow [Getting Started: Install Clients]({{< ref "/docs/getting-started/_index.md#install-clients" >}}).
+
+- To configure the kubeconfig, follow [Getting Started: Copy  Kubeconfig]({{< ref "/docs/getting-started/_index.md#copy-kubeconfig" >}}).
+
+It is now possible to run `oc` or `kubectl` commands against the MicroShift environment.
+
+Verify that MicroShift is running:
+
+```sh
+oc get pods -A
+```
+
 Refer to the [MicroShift user documentation]({{< ref "/docs/user-documentation/_index.md" >}})
 
 ## Cleaning Up

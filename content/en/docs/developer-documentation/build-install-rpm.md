@@ -44,13 +44,34 @@ packaging/rpm/_rpmbuild/RPMS/x86_64/microshift-*
 
 ## Installing the RPMs
 
-Enable the CRI-O repo:
+Enable the CRI-O repository:
+
+{{< tabs >}}
+{{% tab name="RHEL" %}}
 
 ```Bash
 command -v subscription-manager &> /dev/null \
-    && subscription-manager repos --enable rhocp-4.8-for-rhel-8-x86_64-rpms \
-    || sudo dnf module enable -y cri-o:1.21
+    && subscription-manager repos --enable rhocp-4.8-for-rhel-8-x86_64-rpms
 ```
+
+{{% /tab %}}
+{{% tab name="Fedora" %}}
+
+```Bash
+sudo dnf module enable -y cri-o:1.21
+```
+{{% /tab %}}
+{{% tab name="CentOS_8_Stream" %}}
+
+```Bash
+curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8_Stream/devel:kubic:libcontainers:stable.repo
+curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable:cri-o:1.21.repo https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:1.21/CentOS_8_Stream/devel:kubic:libcontainers:stable:cri-o:1.21.repo
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+<br/>
 
 Install the MicroShift and the SELinux policies:
 
@@ -68,11 +89,16 @@ systemctl enable crio --now
 systemctl enable microshift --now
 ```
 
+To install OpenShift and Kubernetes clients, follow [Getting Started: Install Clients]({{< ref "/docs/getting-started/_index.md#install-clients" >}}).
+
+To configure the kubeconfig, follow [Getting Started: Copy Kubeconfig]({{< ref "/docs/getting-started/_index.md#copy-kubeconfig" >}}).
+
+It is now possible to run `oc` or `kubectl` commands against the MicroShift environment.
+
 Verify that MicroShift is running:
 
 ```sh
-export KUBECONFIG=/var/lib/microshift/resources/kubeadmin/kubeconfig
-sudo oc get pods -A
+oc get pods -A
 ```
 
 You can stop MicroShift service with systemd:
@@ -82,10 +108,9 @@ systemctl stop microshift
 ```
 
 {{< note >}}
-
 - cluster data at `/var/lib/microshift` and `/var/lib/kubelet`, will not be deleted upon stopping services.
   Upon a restart, the cluster state will persist as long as the storage is intact.
-  {{< /note >}}
+{{< /note >}}
 
 Check MicroShift with
 

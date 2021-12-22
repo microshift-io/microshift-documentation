@@ -21,23 +21,55 @@ To run MicroShift, you need a machine with at least:
 
 For production deployments, we recommend (and only test) deploying MicroShift on RHEL 8, CentOS Stream 8, or Fedora 34+ using one of two methods:
 
-- running containerized on Podman
+- running containerized with `Podman`
 - installing via .rpm (e.g. for embedding MicroShift into an `rpm-ostree` image)
 
 Both methods feature a minimal resource footprint, a strong security posture, the ability to restart/update without disrupting workloads, and optionally auto-updates.
 
+### Install CRI-O
+
+MicroShift requires CRI-O to be installed and running on the host:
+
 {{< tabs >}}
-{{% tab name="Podman" %}}
-MicroShift requires CRI-O to be installed on the host:
+{{% tab name="RHEL" %}}
 
 ```Bash
-command -v subscription-manager >/dev/null 2>&1 \
-    && subscription-manager repos --enable rhocp-4.8-for-rhel-8-x86_64-rpms \
-    || sudo dnf module enable -y cri-o:1.21
-sudo dnf install -y cri-o cri-tools podman
+command -v subscription-manager &> /dev/null \
+    && subscription-manager repos --enable rhocp-4.8-for-rhel-8-x86_64-rpms
+sudo dnf install -y cri-o cri-tools
 sudo systemctl enable crio --now
 ```
 
+{{% /tab %}}
+{{% tab name="Fedora" %}}
+
+```Bash
+sudo dnf module enable -y cri-o:1.21
+sudo dnf install -y cri-o cri-tools
+sudo systemctl enable crio --now
+```
+{{% /tab %}}
+{{% tab name="CentOS_8_Stream" %}}
+
+```Bash
+curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8_Stream/devel:kubic:libcontainers:stable.repo
+curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable:cri-o:1.21.repo https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:1.21/CentOS_8_Stream/devel:kubic:libcontainers:stable:cri-o:1.21.repo
+sudo dnf install -y cri-o cri-tools
+sudo systemctl enable crio --now
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+<br/>
+
+### Deploying MicroShift
+
+{{< tabs >}}
+{{% tab name="Podman" %}}
+```Bash
+sudo dnf install -y podman
+```
 <br/>
 
 To have `systemd` start and manage MicroShift on Podman, run:
@@ -50,19 +82,8 @@ sudo systemctl enable microshift --now
 
 {{% /tab %}}
 {{% tab name=".rpm" %}}
-MicroShift requires CRI-O to be installed on the host:
 
-```Bash
-command -v subscription-manager >/dev/null 2>&1 \
-    && subscription-manager repos --enable rhocp-4.8-for-rhel-8-x86_64-rpms \
-    || sudo dnf module enable -y cri-o:1.21
-sudo dnf install -y cri-o cri-tools
-sudo systemctl enable crio --now
-```
-
-<br/>
-
-To have `systemd` start and manage MicroShift on the host, run:
+To have `systemd` start and manage MicroShift on an rpm-based host, run:
 
 ```Bash
 sudo dnf copr enable -y @redhat-et/microshift
@@ -74,7 +95,9 @@ sudo systemctl enable microshift --now
 {{< /tabs >}}
 <br/>
 
-To access the cluster, install the OpenShift client or kubectl if you haven't done so yet:
+### Install Clients
+
+To access the cluster, install the OpenShift client or kubectl.
 
 ```Bash
 curl -o oc.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz
@@ -82,7 +105,9 @@ tar -xzvf oc.tar.gz
 sudo install -t /usr/local/bin {kubectl,oc}
 ```
 
-Depending on the user that will be administrating the system it may be required to copy the kubeconfig to a location that can be accessed by the user.
+### Copy Kubeconfig
+
+Copy the kubeconfig to the default location that can be accessed without administrator privilege.
 
 ```Bash
 mkdir ~/.kube
@@ -91,10 +116,19 @@ sudo chown `whoami`: ~/.kube/config
 ```
 
 It is now possible to run kubectl or oc commands against the MicroShift environment.
+Verify that MicroShift is running:
+
+```sh
+oc get pods -A
+```
 
 ## Using MicroShift for Application Development
 
-For trying out MicroShift or using it as development tool, we provide a flavor of MicroShift that bundles host dependencies like CRI-O and useful tools like the `oc` client, so it can run on most modern Linux distros, on OSX, and on Windows with `podman` or `docker` installed.
+For trying out MicroShift or using it as development tool, we provide a MicroShift image that bundles host dependencies like CRI-O
+and useful tools like the `oc` client, so it can run on most modern Linux distros, on OSX, and on Windows with `podman` or `docker` installed.
+This bundled image is referred to as `aio` or `all-in-one` since it provides everything necessary to run MicroShift.
+The all-in-one image is meant for ephemeral test environments only. There is no way to update the image without disruption of workloads and loss of data.
+For production workloads, it is recommended to run with [MicroShift Containerized]({{< ref "/docs/getting-started/_index.md#launch-microshift-with-podman-and-systemd" >}}).
 
 {{< tabs >}}
 {{% tab name="Linux" %}}
