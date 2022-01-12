@@ -12,7 +12,7 @@ card:
   name: user-documentation
   weight: 20
 weight: 20
-summary: Configuration options with MicroShift
+description: Configuration options with MicroShift
 ---
 
 <!-- 
