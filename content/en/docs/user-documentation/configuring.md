@@ -9,7 +9,7 @@ tags:
   - configure
 draft: false
 card:
-  name: developer-documentation
+  name: user-documentation
   weight: 20
 weight: 20
 summary: Configuration options with MicroShift
@@ -31,7 +31,6 @@ Below is a table of consisting of the configuration settings presently offered i
 
 | MicroshiftConfig field | CLI Argument | Environment Variable | Configuration File | Meaning | Default |
 | ---------------------- | ------------ | -------------------- | ------------------ | ------- | ------- |
-| `ConfigFile` | `--config` | `n/a` | `n/a` | Path to a config file used to populate the rest of the values | `"~/.microshift/config.yaml"` if the file exists, else `/etc/microshift/config.yaml` if it exists, else `""` | 
 | `DataDir` | `--data-dir` | `MICROSHIFT_DATADIR` | `.dataDir` | Data directory for MicroShift | `"~/.microshift/data"` |
 | `LogDir` | `--log-dir` | `MICROSHIFT_LOGDIR` | `.logDir` | Directory to output logfiles to | `""` | 
 | `LogVLevel` | `--v` | `MICROSHIFT_LOGVLEVEL` | `.logVLevel` | Log verbosity level | `0` |
@@ -45,3 +44,4 @@ Below is a table of consisting of the configuration settings presently offered i
 | `Cluster.ServiceCIDR` | `n/a` | `n/a` | `.cluster.serviceCIDR` | Service CIDR | `"10.43.0.0/16"` |
 | `Cluster.DNS` | `n/a` | `n/a` | `.cluster.dns` | Cluster's DNS server | `"10.43.0.10"` |
 | `Cluster.Domain` | `n/a` | `n/a` | `.cluster.domain` | Cluster's domain | `"cluster.local"` |
+| `ConfigFile` | `--config` | `n/a` | `n/a` | Path to a config file used to populate the rest of the values | `"~/.microshift/config.yaml"` if the file exists, else `/etc/microshift/config.yaml` if it exists, else `""` | 
