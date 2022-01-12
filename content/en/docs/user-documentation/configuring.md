@@ -15,10 +15,6 @@ weight: 20
 description: Configuration options with MicroShift
 ---
 
-<!-- 
-todo: 
-- logging 
--->
 
 ## Configuration
 
