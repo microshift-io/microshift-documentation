@@ -130,7 +130,7 @@ For production workloads, it is recommended to run with [MicroShift Containerize
 
 ```Bash
 command -v setsebool >/dev/null 2>&1 || sudo setsebool -P container_manage_cgroup true
-sudo podman run -d --rm --name microshift --privileged -v microshift-data:/var/lib -p 6443:6443 quay.io/microshift/microshift-aio:latest
+sudo podman run -d --rm --name microshift --hostname microshift --privileged -v microshift-data:/var/lib -p 6443:6443 quay.io/microshift/microshift-aio:latest
 ```
 <br/>
 
@@ -152,7 +152,7 @@ oc get all -A --kubeconfig ./kubeconfig
 [Install `docker`](https://docs.docker.com/desktop/mac/install/) if necessary, then run MicroShift using:
 
 ```Bash
-docker run -d --rm --name microshift --privileged -v microshift-data:/var/lib -p 6443:6443 quay.io/microshift/microshift-aio:latest
+docker run -d --rm --name microshift --hostname microshift --privileged -v microshift-data:/var/lib -p 6443:6443 quay.io/microshift/microshift-aio:latest
 ```
 <br/>
 
@@ -174,7 +174,7 @@ oc get all -A --kubeconfig .\kubeconfig
 [Install `docker`](https://docs.docker.com/desktop/windows/install/) if necessary, then run MicroShift using:
 
 ```Bash
-docker.exe run -d --rm --name microshift --privileged -v microshift-data:/var/lib -p 6443:6443 quay.io/microshift/microshift-aio:latest
+docker.exe run -d --rm --name microshift --hostname microshift --privileged -v microshift-data:/var/lib -p 6443:6443 quay.io/microshift/microshift-aio:latest
 ```
 <br/>
 
