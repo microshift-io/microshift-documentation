@@ -167,7 +167,7 @@ or via an `oc` (resp. `kubectl`) client [installed](https://access.redhat.com/do
 
 ```Bash
 docker cp microshift:/var/lib/microshift/resources/kubeadmin/kubeconfig ./kubeconfig
-oc get all -A --kubeconfig .\kubeconfig
+oc get all -A --kubeconfig ./kubeconfig
 ```
 {{% /tab %}}
 {{% tab name="Windows" %}}
