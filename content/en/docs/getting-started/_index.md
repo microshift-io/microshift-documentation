@@ -105,7 +105,7 @@ Copy the kubeconfig to the default location that can be accessed without adminis
 
 ```Bash
 mkdir ~/.kube
-sudo cp /var/lib/microshift/resources/kubeadmin/kubeconfig ~/.kube/config
+sudo podman cp microshift:/var/lib/microshift/resources/kubeadmin/kubeconfig ~/.kube/config
 sudo chown `whoami`: ~/.kube/config
 ```
 
