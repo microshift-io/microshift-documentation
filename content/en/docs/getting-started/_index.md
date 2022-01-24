@@ -70,9 +70,12 @@ sudo systemctl enable crio --now
 To have `systemd` start and manage MicroShift on Podman, run:
 
 ```Bash
-sudo dnf install -y podman
+sudo dnf install -y podman firewalld
 sudo curl -o /etc/systemd/system/microshift.service \
      https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-containerized.service
+sudo systemctl enable firewalld --now
+sudo firewall-cmd --permanent --zone=trusted --add-source=10.42.0.0/16
+sudo firewall-cmd --reload
 sudo systemctl enable microshift --now
 ```
 
@@ -83,6 +86,9 @@ To have `systemd` start and manage MicroShift on an rpm-based host, run:
 ```Bash
 sudo dnf copr enable -y @redhat-et/microshift
 sudo dnf install -y microshift firewalld
+sudo systemctl enable firewalld --now
+sudo firewall-cmd --permanent --zone=trusted --add-source=10.42.0.0/16
+sudo firewall-cmd --reload
 sudo systemctl enable microshift --now
 ```
 
