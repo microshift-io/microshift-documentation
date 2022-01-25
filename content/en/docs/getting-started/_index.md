@@ -103,11 +103,24 @@ sudo install -t /usr/local/bin {kubectl,oc}
 
 Copy the kubeconfig to the default location that can be accessed without administrator privilege.
 
+{{< tabs >}}
+{{% tab name="Podman" %}}
+
 ```Bash
 mkdir ~/.kube
 sudo podman cp microshift:/var/lib/microshift/resources/kubeadmin/kubeconfig ~/.kube/config
 sudo chown `whoami`: ~/.kube/config
 ```
+
+{{% /tab %}}
+{{% tab name=".rpm" %}}
+```Bash
+mkdir ~/.kube
+sudo cat /var/lib/microshift/resources/kubeadmin/kubeconfig > ~/.kube/config
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 It is now possible to run kubectl or oc commands against the MicroShift environment.
 Verify that MicroShift is running:
