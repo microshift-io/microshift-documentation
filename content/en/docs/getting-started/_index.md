@@ -117,7 +117,6 @@ sudo chown `whoami`: ~/.kube/config
 ```Bash
 mkdir ~/.kube
 sudo cat /var/lib/microshift/resources/kubeadmin/kubeconfig > ~/.kube/config
-sudo chown `whoami`: ~/.kube/config
 ```
 
 {{% /tab %}}
