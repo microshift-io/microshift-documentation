@@ -116,7 +116,7 @@ sudo chown `whoami`: ~/.kube/config
 {{% tab name=".rpm" %}}
 ```Bash
 mkdir ~/.kube
-sudo cp /var/lib/microshift/resources/kubeadmin/kubeconfig ~/.kube/config
+sudo cat /var/lib/microshift/resources/kubeadmin/kubeconfig > ~/.kube/config
 sudo chown `whoami`: ~/.kube/config
 ```
 
