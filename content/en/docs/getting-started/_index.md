@@ -132,7 +132,7 @@ oc get pods -A
 ## Using MicroShift for Application Development
 
 For trying out MicroShift or using it as development tool, we provide a MicroShift image that bundles host dependencies like CRI-O
-and useful tools like the `oc` client, so it can run on most modern Linux distros, on MacOS, and on Windows with `podman` or `docker` installed.
+and useful tools like the `oc` client, so it can run on most modern Linux distros, on macOS, and on Windows with `podman` or `docker` installed.
 This bundled image is referred to as `aio` or `all-in-one` since it provides everything necessary to run MicroShift.
 The all-in-one image is meant for ephemeral test environments only. There is no way to update the image without disruption of workloads and loss of data.
 For production workloads, it is recommended to run with [MicroShift Containerized]({{< ref "/docs/getting-started/_index.md#launch-microshift-with-podman-and-systemd" >}}).
@@ -161,7 +161,7 @@ sudo podman cp microshift:/var/lib/microshift/resources/kubeadmin/kubeconfig ./k
 oc get all -A --kubeconfig ./kubeconfig
 ```
 {{% /tab %}}
-{{% tab name="MacOS" %}}
+{{% tab name="macOS" %}}
 [Install `docker`](https://docs.docker.com/desktop/mac/install/) if necessary, then run MicroShift using:
 
 ```Bash
