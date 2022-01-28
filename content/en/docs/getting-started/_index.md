@@ -74,7 +74,7 @@ sudo dnf install -y podman firewalld
 sudo curl -o /etc/systemd/system/microshift.service \
      https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-containerized.service
 sudo systemctl enable firewalld --now
-sudo firewall-cmd --zone=trusted --add-source=10.42.0.0/16 --add-port=53/udp --permanent
+sudo firewall-cmd --zone=trusted --add-source=10.42.0.0/16 --permanent
 sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=443/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=5353/udp --permanent
