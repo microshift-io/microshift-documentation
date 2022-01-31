@@ -64,6 +64,7 @@ sudo systemctl enable crio --now
 <br/>
 
 ### Deploying MicroShift
+The following steps will deploy MicroShift and enable `firewalld`. It is always best practice to have firewalls enabled and only to allow the minimum set of ports necessary for MicroShift to operate. `Iptables` can be used in place of `firewalld` if desired.
 
 {{< tabs >}}
 {{% tab name="Podman" %}}
@@ -102,7 +103,7 @@ sudo systemctl enable microshift --now
 {{< /tabs >}}
 
 ### Firewall Rules
-It is always best practice to have firewalls enabled and only to allow the minimum set of ports necessary for MicroShift to operate. Depending on the MicroShift deployment additional ports can be opened.
+Depending on the MicroShift deployment additional ports can be opened.
 
 If external access to run `kubectl` or `oc` commands against MicroShift is required, you may need to add the following rule:
 ```Bash
