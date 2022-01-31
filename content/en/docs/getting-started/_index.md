@@ -91,25 +91,12 @@ sudo systemctl enable microshift --now
 
 ### Install Clients
 
-To access the cluster, install the OpenShift client or kubectl. Ensure that the proper architecture is used.
+To access the cluster, install the OpenShift client or kubectl. 
 
-{{< tabs >}}
-{{% tab name="amd64" %}}
 ```Bash
-curl -O https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz
+curl -O https://mirror.openshift.com/pub/openshift-v4/$(uname -m)/clients/ocp/stable/openshift-install-linux.tar.gz
 sudo tar -xf openshift-client-linux.tar.gz -C /usr/local/bin oc kubectl
 ```
-{{% /tab %}}
-{{% tab name="aarch" %}}
-```Bash
-curl -O https://mirror.openshift.com/pub/openshift-v4/aarch64/clients/ocp/stable/openshift-install-linux.tar.gz
-sudo tar -xf openshift-client-linux.tar.gz -C /usr/local/bin oc kubectl
-```
-
-
-{{% /tab %}}
-{{< /tabs >}}
-
 
 
 ### Copy Kubeconfig
