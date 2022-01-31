@@ -95,8 +95,7 @@ To access the cluster, install the OpenShift client or kubectl.
 
 ```Bash
 curl -O https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz
-tar -xvzf openshift-client-linux.tar.gz -C /tmp
-sudo install /tmp/{kubectl,oc} /usr/local/bin
+sudo tar -xf openshift-client-linux.tar.gz -C /usr/local/bin oc kubectl
 ```
 
 ### Copy Kubeconfig
