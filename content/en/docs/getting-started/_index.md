@@ -94,7 +94,7 @@ sudo systemctl enable microshift --now
 To access the cluster, install the OpenShift client or kubectl. 
 
 ```Bash
-curl -O https://mirror.openshift.com/pub/openshift-v4/$(uname -m)/clients/ocp/stable/openshift-install-linux.tar.gz
+curl -O https://mirror.openshift.com/pub/openshift-v4/$(uname -m)/clients/ocp/stable/openshift-client-linux.tar.gz
 sudo tar -xf openshift-client-linux.tar.gz -C /usr/local/bin oc kubectl
 ```
 
