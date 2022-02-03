@@ -23,12 +23,12 @@ cards:
     button: "View Getting Started"
     button_path: "/docs/getting-started"
   - name: user-documentation
-    title: "User Documentation"
+    title: "User Docs"
     description: "Look up common tasks and how to perform them."
     button: "View User Documentation"
     button_path: "/docs/user-documentation"
   - name: developer-documentation
-    title: "Developer Documentation"
+    title: "Developer Docs"
     description: "Look up how to build and run MicroShift locally, for testing, contributing, and development."
     button: "View Developer Documentation"
     button_path: "/docs/developer-documentation"
