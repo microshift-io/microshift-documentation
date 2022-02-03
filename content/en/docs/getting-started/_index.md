@@ -64,15 +64,22 @@ sudo systemctl enable crio --now
 <br/>
 
 ### Deploying MicroShift
+The following steps will deploy MicroShift and enable `firewalld`. It is always best practice to have firewalls enabled and only to allow the minimum set of ports necessary for MicroShift to operate. `Iptables` can be used in place of `firewalld` if desired.
 
 {{< tabs >}}
 {{% tab name="Podman" %}}
 To have `systemd` start and manage MicroShift on Podman, run:
 
 ```Bash
-sudo dnf install -y podman
+sudo dnf install -y podman firewalld
 sudo curl -o /etc/systemd/system/microshift.service \
      https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-containerized.service
+sudo systemctl enable firewalld --now
+sudo firewall-cmd --zone=trusted --add-source=10.42.0.0/16 --permanent
+sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=443/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=5353/udp --permanent
+sudo firewall-cmd --reload
 sudo systemctl enable microshift --now
 ```
 
@@ -83,11 +90,31 @@ To have `systemd` start and manage MicroShift on an rpm-based host, run:
 ```Bash
 sudo dnf copr enable -y @redhat-et/microshift
 sudo dnf install -y microshift firewalld
+sudo systemctl enable firewalld --now
+sudo firewall-cmd --zone=trusted --add-source=10.42.0.0/16 --permanent
+sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=443/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=5353/udp --permanent
+sudo firewall-cmd --reload
 sudo systemctl enable microshift --now
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### Firewall Rules
+Depending on the MicroShift deployment additional ports can be opened.
+
+If external access to run `kubectl` or `oc` commands against MicroShift is required, you may need to add the following rule:
+```Bash
+sudo firewall-cmd --zone=public --permanent --add-port=6443/tcp
+```
+
+If access to services through NodePort is required, run the following to add the a rule for the port range:
+```Bash
+sudo firewall-cmd --zone=public --permanent --add-port=30000-32767/tcp
+```
+
 
 ### Install Clients
 
