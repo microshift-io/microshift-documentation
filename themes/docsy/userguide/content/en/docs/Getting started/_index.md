@@ -117,7 +117,7 @@ This is the simplest approach, as the Docsy example site repo is a [template rep
     git clone --recurse-submodules --depth 1 <em>https://github.com/my/example.git</em>
     </pre>
 
-You can now edit your local versions of the site's source files. To preview your site, go to your site root directory and run `hugo server` ([see the known issues on MacOS](#known-issues)). By default, your site will be available at http://localhost:1313/. To push changes to your new repo, go to your site root directory and use `git push`.
+You can now edit your local versions of the site's source files. To preview your site, go to your site root directory and run `hugo server` ([see the known issues on macOS](#known-issues)). By default, your site will be available at http://localhost:1313/. To push changes to your new repo, go to your site root directory and use `git push`.
 
 #### Using the command line
 
@@ -140,7 +140,7 @@ To copy the example site:
         hugo server
     
 1. Preview your site in your browser at: http://localhost:1313/. You can use `Ctrl + c` to stop the Hugo server whenever you like.
-   [See the known issues on MacOS](#known-issues).
+   [See the known issues on macOS](#known-issues).
 
 1. Now that you have a site running, you can push it to a new repository:
 
@@ -230,7 +230,7 @@ cd myproject
 hugo server
 ```
     
-By default, your site will be available at http://localhost:1313/. [See the known issues on MacOS](#known-issues).
+By default, your site will be available at http://localhost:1313/. [See the known issues on macOS](#known-issues).
 
 ## Basic site configuration
 
@@ -277,11 +277,11 @@ To use your own Custom Search Engine, replace the value in the `gcs_engine_id` w
 
 ## Known issues
 
-### MacOS
+### macOS
 
 #### Errors: `too many open files` or `fatal error: pipe failed`
 
-By default, MacOS permits a small number of open File Descriptors. For larger sites, or when you're simultaneously running multiple applications,
+By default, macOS permits a small number of open File Descriptors. For larger sites, or when you're simultaneously running multiple applications,
 you might receive one of the following errors when you run [`hugo server`](https://gohugo.io/commands/hugo_server/) to preview your site locally:
 
 * POSTCSS v7 and earlier:
