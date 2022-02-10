@@ -74,50 +74,54 @@ CRDS=`oc get -n ${CLUSTER_NAME} secret ${CLUSTER_NAME}-import -o jsonpath='{.dat
 ```
 
 ### Importing the cluster
-From the MicroShift cluster run the following command to import the cluster into RHACM.
+The remaining steps will be run on the MicroShift cluster
 
-```
-echo $CRDS | base64 -d | oc apply -f -
-echo $SECRET | base64 -d | oc apply -f -
-```
-
-To correctly deploy the images a secret must be added and service accounts must be patched to allow access to the images. To begin create secret to access registry.redhat.io.
+To correctly fetch images, a secret must be added and service accounts must be patched to allow access. To begin, create secret to access registry.redhat.io.
 
 ```
 podman login registry.redhat.io --authfile=~/auth.json
-oc create secret generic rhacm -n open-cluster-management-agent --from-file=.dockerconfigjson=~/auth.json --type=kubernetes.io/dockerconfigjson
 ```
 
-Now patch the following service accounts.
+Now, we will precreate the namespace `open-cluster-management-addon`, the associated service accounts and patch them to use the rhacm secret
 
 ```
+oc new-project open-cluster-management-agent
+oc create secret generic rhacm --from-file=.dockerconfigjson=auth.json --type=kubernetes.io/dockerconfigjson
+oc create sa klusterlet
+oc patch sa klusterlet -p '{"imagePullSecrets": [{"name": "rhacm"}]}' -n open-cluster-management-agent
+oc create sa klusterlet-registration-sa
+oc patch sa klusterlet-registration-sa -p '{"imagePullSecrets": [{"name": "rhacm"}]}'
+oc create sa klusterlet-work-sa
+oc patch sa klusterlet-work-sa -p '{"imagePullSecrets": [{"name": "rhacm"}]}'
 oc patch serviceaccount klusterlet -p '{"imagePullSecrets": [{"name": "rhacm"}]}' -n open-cluster-management-agent
-
 oc patch serviceaccount klusterlet-work-sa -p '{"imagePullSecrets": [{"name": "rhacm"}]}' -n open-cluster-management-agent
 ```
 
-It may be required to delete the pods that are in an "ImagePullBackOff" state.
-```
-for i in `oc get pods -n open-cluster-management-agent | grep ImagePullBackOff | awk '{print $1}'`; do oc delete pod $i -n open-cluster-management-agent; done
-```
-
-For the add-ons to work correctly, the following must be added to the MicroShift cluster.
+For the add-ons, we do something similar in the `open-cluster-management-agent-addon` namespace
 
 ```
-oc create secret generic rhacm -n open-cluster-management-agent-addon --from-file=.dockerconfigjson=/home/vagrant/auth.json --type=kubernetes.io/dockerconfigjson
-
-oc patch serviceaccount klusterlet-registration-sa -p '{"imagePullSecrets": [{"name": "rhacm"}]}' -n open-cluster-management-agent-addon
+oc new-project open-cluster-management-agent-addon
+oc create secret generic rhacm --from-file=.dockerconfigjson=auth.json --type=kubernetes.io/dockerconfigjson
+oc create sa klusterlet-addon-operator
+oc patch sa klusterlet-addon-operator -p '{"imagePullSecrets": [{"name": "rhacm"}]}'
 ```
 
-The secret must be added to the service accounts used by the add-ons.
+Now, we actually create the relevant CRDS and the jobs that register our instance to ACM
 
 ```
-for i in `oc get sa -n open-cluster-management-agent-addon | grep klusterlet | awk '{print $1}'`; do oc patch serviceaccount $i -p '{"imagePullSecrets": [{"name": "rhacm"}]}' -n open-cluster-management-agent-addon; done
+oc project open-cluster-management-agent
+echo $CRDS | base64 -d | oc apply -f -
+echo $IMPORT | base64 -d | oc apply -f -
 ```
 
-It may be required to delete the pods that are in an "ImagePullBackOff" state.
+In the case of the add ons, precreating some of the service accounts would cause helm failures so we need to wait for them to actually get created before patching them. It generally takes 2-3 minutes, and we are then able to patch said service accounts and then delete all pods of the namespace for the pods to be created properly
+
 ```
-for i in `oc get pods -n open-cluster-management-agent-addon | grep ImagePullBackOff | awk '{print $1}'`; do oc delete pod $i -n open-cluster-management-agent-addon; done
+oc project open-cluster-management-agent-addon
+for sa in klusterlet-addon-appmgr klusterlet-addon-certpolicyctrl klusterlet-addon-iampolicyctrl-sa klusterlet-addon-policyctrl klusterlet-addon-search klusterlet-addon-workmgr ; do
+  oc patch sa $sa -p '{"imagePullSecrets": [{"name": "rhacm"}]}'
+done
+oc delete pod --all -n open-cluster-management-agent-addon
 ```
 
 The cluster now should have all add-ons enabled and be in a READY state within RHACM.
