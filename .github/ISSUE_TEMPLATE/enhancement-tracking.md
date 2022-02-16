@@ -1,19 +1,11 @@
 ---
 name: Enhancement Tracking Issue
-about: Provide supporting details for a feature in development
+about: Propose addition of missing documentation
 labels: feature
 title: "[Enhancement]: <title>"
 ---
 
-<!-- Feature requests are unlikely to make progress as an issue.
-
-A proposal that works through the design along with the implications of the change should be submitted as a design document in https://github.com/redhat-et/microshift/tree/main/docs/design/
-
--->
-
-#### Design Document Link
-
-PR: #<PR Number>
+<!-- When proposing/requesting new documentation, please note we deliberately try to keep MicroShift minimal but extensible. Therefore, the main documentation will just describe the minimal core, while we welcome how-tos for solving specific use cases with / on top of MicroShift.-->
 
 #### What would you like to be added:
 
