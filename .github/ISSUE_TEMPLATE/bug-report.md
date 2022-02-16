@@ -1,23 +1,15 @@
 ---
 name: Bug Report
-about: Report a bug encountered while operating MicroShift
+about: Report a bug in MicroShift's documentation
 labels: bug
 title: "[BUG] <title>"
 ---
 
-<!-- Please use this template while reporting a bug and provide as much info as possible. Not doing so may result in your bug not being addressed in a timely manner. Thanks!
--->
+<!-- Please use this template to report when documentation isn't working as is, is unclear, or contains errors.-->
 
-#### What happened:
+#### What is not documented correctly:
 
-#### What you expected to happen:
-
-#### How to reproduce it (as minimally and precisely as possible):
-
-1. '...'
-2. '...'
-
-#### Anything else we need to know?:
+#### What you expected or propose to be documented:
 
 #### Environment:
 
@@ -26,5 +18,3 @@ title: "[BUG] <title>"
 - OS (e.g: `cat /etc/os-release`):
 - Kernel (e.g. `uname -a`):
 - Others:
-
-#### Relevant Logs
