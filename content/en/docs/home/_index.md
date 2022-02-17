@@ -27,6 +27,11 @@ cards:
     description: "Look up common tasks and how to perform them."
     button: "View User Documentation"
     button_path: "/docs/user-documentation"
+  - name: networking
+    title: "Networking"
+    description: "Exposing services with MicroShift."
+    button: "View Networking Documentation"
+    button_path: "/docs/user-documentation/networking"
   - name: developer-documentation
     title: "Developer Docs"
     description: "Look up how to build and run MicroShift locally, for testing, contributing, and development."

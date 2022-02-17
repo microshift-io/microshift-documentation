@@ -71,10 +71,9 @@ The following steps will deploy MicroShift and enable `firewalld`. It is always 
 To have `systemd` start and manage MicroShift on Podman, run:
 
 ```Bash
-sudo dnf install -y podman firewalld
+sudo dnf install -y podman
 sudo curl -o /etc/systemd/system/microshift.service \
      https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-containerized.service
-sudo systemctl enable firewalld --now
 sudo firewall-cmd --zone=trusted --add-source=10.42.0.0/16 --permanent
 sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=443/tcp --permanent
@@ -89,8 +88,7 @@ To have `systemd` start and manage MicroShift on an rpm-based host, run:
 
 ```Bash
 sudo dnf copr enable -y @redhat-et/microshift
-sudo dnf install -y microshift firewalld
-sudo systemctl enable firewalld --now
+sudo dnf install -y microshift
 sudo firewall-cmd --zone=trusted --add-source=10.42.0.0/16 --permanent
 sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=443/tcp --permanent
@@ -102,19 +100,8 @@ sudo systemctl enable microshift --now
 {{% /tab %}}
 {{< /tabs >}}
 
-### Firewall Rules
-Depending on the MicroShift deployment additional ports can be opened.
-
-If external access to run `kubectl` or `oc` commands against MicroShift is required, you may need to add the following rule:
-```Bash
-sudo firewall-cmd --zone=public --permanent --add-port=6443/tcp
-```
-
-If access to services through NodePort is required, run the following to add the a rule for the port range:
-```Bash
-sudo firewall-cmd --zone=public --permanent --add-port=30000-32767/tcp
-```
-
+For more details on MicroShift ports and firewall settings, please see the
+[firewall section](../user-documentation/networking/#firewall-configuration).
 
 ### Install Clients
 
