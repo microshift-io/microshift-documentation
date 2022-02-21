@@ -1,6 +1,6 @@
 ---
 title: "Differences between Microshift and OKD"
-weight: 20
+weight: 100
 main_menu: true
 content_type: concept
 description: "Addressing some innate differences between OKD and Microshift."
