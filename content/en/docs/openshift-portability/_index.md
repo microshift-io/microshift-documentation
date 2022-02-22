@@ -7,15 +7,17 @@ description: "Addressing some innate differences between OKD and MicroShift."
 ---
 # Differences Between OKD and MicroShift
 
-## App Portability
+The design goals behind MicroShift diverge from those of OKD as a necessity of the very different operating environments each project targets.  Namely, OKD achieves the goal of providing a full-stack, self-managed container appliction platform, targeting developer and operations-centric use cases on cloud infrastructure. MicroShift aims to provide an minimal OpenShift experience on small form factor, often headless devices with as conservative a resource overhead as possible. To further the project's goals, the MicroShift team has reduced OKD's feature set to remove functionality not well suited for the edge use cases.
 
-MicroShift is, by design, a trimmed down version of OKD 4.x and as such, comprimises are made to affect the resource footprint of the platform's runtime, streamlining of the platform's distribution, and to tune MicroShift to edge use-cases.  By and large, this should not impeded application portability between OKD 4.x and MicroShift, but it is worth noting key differences.
+## Deployment
 
-### Where's all the Operators?
+For OKD, [openshift-install](https://github.com/openshift/okd#getting-started) automates cluster deployment from the hardware provisioning up to cluster installation.  The tool typically runs remotely and can execute against a variety of cloud infrastructures and baremetal.  Importantly, the installer requires a reliable and speedy network connection throughout it's runtime.  Edge operating environments cannot be assumed to provide the same level of network reliability though.  To adapt to this, MicroShift is deployed as a single binary which encapsulates the OKD control-plane, and is run as an application on the operating system or in a container.  By deploying MicroShift as you would any other app, we're able to streamline deployment, updates, and rollbacks by distributing the bits as rpms or container images.  This is also well suited to atomic OS's, such as those built on [rpm-ostree](https://coreos.github.io/rpm-ostree/).  In such cases, MicroShift can be packed into a new OS layer to be loaded onto devices.
 
-The largest feature (in terms of runtime objects) that we've trimmed are the built-in OKD control-plane operators.  Running an operator for each control-plane componetn is *very* costly at small scale.  Operators are built on the [operator-framework](https://operatorframework.io/), which provides a wonderful toolset and boilerplate for orchestrating application lifecycle management.  However, MicroShift compiles the control-plane into a single binary. This deliberate design means that the control-plane applications are not managed through the Kubernetes API, making the role of their operators moot.  A beneficial side-effect of this design is a measurable reduction of redundant code (operator boilerplate) and a lower runtime overhead.  For most cases, we do not expect this do impact application portability.  However it is worth documenting the CRD APIs that are and are not shipped with MicroShift.
+## OKD's Managed Control
 
-#### Included OKD CRDs
+The largest feature (in terms of runtime objects) that we've trimmed are the built-in OKD control-plane operators.  Running an operator for each control-plane componetn is *very* costly at small scale.  Operators are built on the [operator-framework](https://operatorframework.io/), which provides a wonderful toolset and boilerplate for orchestrating application lifecycle management.  However, MicroShift compiles the control-plane into a single binary. This deliberate design means that the control-plane applications are not managed through the Kubernetes API, making the role of their operators moot.  A beneficial side-effect of this design is a measurable reduction of redundant code (operator boilerplate) and a lower runtime overhead.  For most cases, we do not expect this do impact application portability.  However it is worth documenting the OKD APIs that are and are not shipped with MicroShift.
+
+#### Included OKD APIs
 
 | Group                               | Kind                       |
 | ----------------------------------- | -------------------------- |
@@ -28,7 +30,7 @@ The largest feature (in terms of runtime objects) that we've trimmed are the bui
 | quota.openshift.io                  | clusterresourcequotas      |
 | security.openshift.io               | securitycontextconstraints |
 
-#### Excluded OKD CRDs
+#### Excluded OKD APIs
 
 |Group|Kind|
 |---|---|
