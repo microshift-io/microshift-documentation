@@ -1,19 +1,19 @@
 ---
-title: "Differences between Microshift and OKD"
+title: "Differences between MicroShift and OKD"
 weight: 100
 main_menu: true
 content_type: concept
-description: "Addressing some innate differences between OKD and Microshift."
+description: "Addressing some innate differences between OKD and MicroShift."
 ---
-# Differences Between OKD and Microshift
+# Differences Between OKD and MicroShift
 
 ## App Portability
 
-Microshift is, by design, a trimmed down version of OKD 4.x and as such, comprimises are made to affect the resource footprint of the platform's runtime, streamlining of the platform's distribution, and to tune Microshift to edge use-cases.  By and large, this should not impeded application portability between OKD 4.x and Microshift, but it is worth noting key differences.
+MicroShift is, by design, a trimmed down version of OKD 4.x and as such, comprimises are made to affect the resource footprint of the platform's runtime, streamlining of the platform's distribution, and to tune MicroShift to edge use-cases.  By and large, this should not impeded application portability between OKD 4.x and MicroShift, but it is worth noting key differences.
 
 ### Where's all the Operators?
 
-The largest feature (in terms of runtime objects) that we've trimmed are the built-in OKD control-plane operators.  Running an operator for each control-plane component is *very* costly at small scale.  Operators are built on the [operator-framework](https://operatorframework.io/), which provides a wonderful toolset and boilerplate for orchestrating application lifecycle management.  However, Microshift compiles the control-plane into a single binary. This deliberate design means that the control-plane applications are not managed through the Kubernetes API, making the role of their operators moot.  A beneficial side-effect of this design is a measurable reduction of redundant code (operator boilerplate) and a lower runtime overhead.  For most cases, we do not expect this do impact application portability.  However it is worth documenting the CRD APIs that are and are not shipped with Microshift.
+The largest feature (in terms of runtime objects) that we've trimmed are the built-in OKD control-plane operators.  Running an operator for each control-plane componetn is *very* costly at small scale.  Operators are built on the [operator-framework](https://operatorframework.io/), which provides a wonderful toolset and boilerplate for orchestrating application lifecycle management.  However, MicroShift compiles the control-plane into a single binary. This deliberate design means that the control-plane applications are not managed through the Kubernetes API, making the role of their operators moot.  A beneficial side-effect of this design is a measurable reduction of redundant code (operator boilerplate) and a lower runtime overhead.  For most cases, we do not expect this do impact application portability.  However it is worth documenting the CRD APIs that are and are not shipped with MicroShift.
 
 #### Included OKD CRDs
 
