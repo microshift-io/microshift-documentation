@@ -15,20 +15,32 @@ MicroShift's deployment model differs significantly from OKD's.  [Openshift-inst
 
 The MicroShift [documention](https://microshift.io/docs/getting-started/#install-cri-o) provides a step-by-step recipe for preparing a system and installing the app on supported operating systems.
 
-## Operators
+## Control-Plane Services
 
 The most notable difference between an OKD and MicroShift runtime are the lack of [operators](https://docs.openshift.com/container-platform/4.8/operators/operator-reference.html#machine-config-operator_platform-operators-ref). Running an operator for each control-plane component becomes quite costly at the edge.  Operators are built on the [operator-framework](https://operatorframework.io/), which provides a wonderful toolset and boilerplate for orchestrating application lifecycle management.  In order to reduce the platform's resource footprint, MicroShift compiles the control-plane into a single binary. This architecture means that the control-plane applications are not managed through the Kubernetes API, making the role of their operators moot.  The result of this design is a measurable reduction of redundant code (operator boilerplate) and a lower runtime overhead.  For most cases, we do not expect this do impact application portability.
 
-#### Included OKD APIs
+#### Embedded Services
 
-| Group                               | Kind                       |
-| ----------------------------------- | -------------------------- |
-| authorization.openshift.io          | rolebindingrestrictions    |
-| config.openshift.io                 | builds                     |
-|                                     | images                     |
-|                                     | proxies                    |
-| imageregistry.operator.openshift.io | configs                    |
-| operator.openshift.io               | imagecontentsourcepolicies |
-| quota.openshift.io                  | clusterresourcequotas      |
-| security.openshift.io               | securitycontextconstraints |
+##### Control-Plane
 
+- etcd
+- kube-scheduler
+- kube-apiserver
+- openshift-api-server
+- kube-controller-manager
+- openshift-controller-manager
+- openshift-oath
+- [multicast dns](https://github.com/redhat-et/microshift/pull/429) (for multi-node enablement)
+
+##### Node
+
+- kubelet
+- kube-proxy
+
+#### Deployed Services
+
+Post boot, MicroShift deploys the following services:
+
+- openshift-service-ca
+- openshift-ingress
+- kubevirt-hostpath-provisioner
