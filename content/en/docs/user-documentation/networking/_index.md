@@ -1,7 +1,7 @@
 ---
 title: "Networking"
 weight: 80
-description: Exposing your applications with MicroShift.
+description: Understanding and configuring networking in MicroShift.
 card:
   name: networking
   weight: 80

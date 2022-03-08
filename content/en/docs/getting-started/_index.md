@@ -101,7 +101,7 @@ sudo systemctl enable microshift --now
 {{< /tabs >}}
 
 For more details on MicroShift ports and firewall settings, please see the
-[firewall section](../user-documentation/networking/#firewall-configuration).
+[firewall documentation](../user-documentation/networking/firewall.md).
 
 ### Install Clients
 

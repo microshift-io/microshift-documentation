@@ -15,7 +15,7 @@ using firewalld the following ports should be considered:
 | 80          | `TCP`       | HTTP port used to serve applications through the OpenShift router. |
 | 443         | `TCP`       | HTTPS port used to serve applications through the OpenShift router. |
 | 6443        | `TCP`       | HTTPS API port for the MicroShift API |
-| 5353        | `UDP`       | mDNS service to respond for OpenShift route mDNS hosts |
+| 5353        | `UDP`       | [mDNS](../mdns/) service to respond for OpenShift route mDNS hosts |
 | 30000-32767 | `TCP/UDP`   | Port range reserved for NodePort type of services, can be used to expose applications on the LAN |
 
 Additionally pods need to be able to contact the internal coreDNS server, a way

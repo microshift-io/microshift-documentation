@@ -24,8 +24,8 @@ curl http://my-hostname.com
 ```
 
 ### Route with mDNS host example
-The hostname of a route can be a mDNS compliant hostname, which would be then
-announced via [mDNS](../mdns/) section for mor details.
+The hostname of a route can be a mDNS (.local) hostname, which would be then
+announced via mDNS, see the [mDNS](../mdns/) section for more details.
 
 ```bash
 oc expose service/nginx --hostname=my-hostname.local
