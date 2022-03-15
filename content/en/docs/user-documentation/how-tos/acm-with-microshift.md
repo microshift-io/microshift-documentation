@@ -12,14 +12,16 @@ modified: "2021-11-30T12:40:37.755+01:00"
 ---
 
 ## MicroShift with Advanced Cluster Management
-Red Hat Advanced Cluster Management(RHACM) can be used to manage the lifecycle of applications running on MicroShift. Currently, this functionality is only available for AMD64 based systems. In future releases of RHACM, management functionality of applications running on MicroShift will be available on ARM based architectures.
+Managing through RHACM (Red Hat Advanced Cluster Management) works just like for any other imported managed cluster (see [docs]). However, as secure production deployments don't provide any form of remote access to the cluster via ssh or kubectl, the recommended approach is to define a new cluster with ACM to get managed cluster credentials, then using your device (configuration) management agent of your choice to synchronise those credentials to the device and have MicroShift apply them automatically.
 
-The steps below assume that RHACM has been installed on a cluster and that MicroShift is installed on a separate cluster.
+The feature of using RHACM to manage the lifecycle of applications running on MicroShift is only available for AMD64 based systems. Starting with RHACM 2.5, the management functionality of applications running on MicroShift will be available on ARM based architectures.
 
-### Defining the cluster
-The following steps can be performed in the RHACM UI or on the CLI by following steps defined below. On the RHACM cluster, run the following command to import the MicroShift cluster:
+The steps below assume that RHACM has been installed on a cluster recognized as the hub cluster and that MicroShift is installed on a separate cluster referred to as the managed cluster.
 
-NOTE: Ensure you set the cluster name to a unique value that relates to the MicroShift cluster.
+### Defining the managed cluster in hub cluster
+The following steps can be performed in the RHACM UI or on the CLI. On the RHACM hub cluster, run the following commands to define the MicroShift cluster as the managed cluster:
+
+NOTE: Ensure you set the CLUSTER_NAME to a unique value that relates to the MicroShift cluster.
 ```
 export CLUSTER_NAME=microshift
 
@@ -28,7 +30,7 @@ oc new-project ${CLUSTER_NAME}
 oc label namespace ${CLUSTER_NAME} cluster.open-cluster-management.io/managedCluster=${CLUSTER_NAME}
 ```
 
-Apply the following to define the Cluster.
+Apply the following to define the managed MicroShift cluster.
 ```
 cat <<EOF | oc apply -f -
 apiVersion: agent.open-cluster-management.io/v1
@@ -52,7 +54,6 @@ spec:
     enabled: true
   searchCollector:
     enabled: true
-  version: 2.2.0
 EOF
 
 cat <<EOF | oc apply -f -
@@ -66,62 +67,27 @@ EOF
 
 ```
 
-This will generate a secret named ${CLUSTER_NAME}-import in the ${CLUSTER_NAME} namespace. Extract the import.yaml and the crds.yaml.
+This will generate a secret named ${CLUSTER_NAME}-import in the ${CLUSTER_NAME} namespace. Extract the `import.yaml` and the `crds.yaml` which requires `yq` to be installed.
 
 ```
-IMPORT=`oc get -n ${CLUSTER_NAME} secret ${CLUSTER_NAME}-import -o jsonpath='{.data.import\.yaml}'`
-CRDS=`oc get -n ${CLUSTER_NAME} secret ${CLUSTER_NAME}-import -o jsonpath='{.data.crds\.yaml}'`
+IMPORT=`oc get secret "$CLUSTER_NAME"-import -n "$CLUSTER_NAME" -o jsonpath={.data.import\\.yaml} | base64 --decode'`
+IMPORT_KUBECONFIG=$(yq eval-all '. | select(.metadata.name == "bootstrap-hub-kubeconfig") | .data.kubeconfig' IMPORT)
 ```
 
-### Importing the cluster
-The remaining steps will be run on the MicroShift cluster
+### Importing the managed Microshift cluster to hub cluster
+The importing process can be done automatically by RHACM components running on the hub cluster once the following steps are performed on managed MicroShift cluster. A detailed explanation can be found in [RHACM documentation](https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.4/html/clusters/managing-your-clusters#importing-the-cluster-manual).
 
-To correctly fetch images, a secret must be added and service accounts must be patched to allow access. To begin, create secret to access registry.redhat.io.
-
+#### Prepare the manifests
+A list of the K8s manifests based on [Kustomize](https://kustomize.io/) can be found in [this repo](https://github.com/redhat-et/microshift-documentation/content/en/docs/examples/manifests). This repo contains more than manifests however we will only focus on the `manifests` folder. Before syncing the manifests to the MicroShift node, the following commands need to be run to render manifests:
 ```
-podman login registry.redhat.io --authfile=~/auth.json
-```
-
-Now, we will precreate the namespace `open-cluster-management-addon`, the associated service accounts and patch them to use the rhacm secret
-
-```
-oc new-project open-cluster-management-agent
-oc create secret generic rhacm --from-file=.dockerconfigjson=auth.json --type=kubernetes.io/dockerconfigjson
-oc create sa klusterlet
-oc patch sa klusterlet -p '{"imagePullSecrets": [{"name": "rhacm"}]}' -n open-cluster-management-agent
-oc create sa klusterlet-registration-sa
-oc patch sa klusterlet-registration-sa -p '{"imagePullSecrets": [{"name": "rhacm"}]}'
-oc create sa klusterlet-work-sa
-oc patch sa klusterlet-work-sa -p '{"imagePullSecrets": [{"name": "rhacm"}]}'
-oc patch serviceaccount klusterlet -p '{"imagePullSecrets": [{"name": "rhacm"}]}' -n open-cluster-management-agent
-oc patch serviceaccount klusterlet-work-sa -p '{"imagePullSecrets": [{"name": "rhacm"}]}' -n open-cluster-management-agent
+sed -i "s/{{ .clustername }}/${CLUSTER_NAME}/g" manifests/klusterlet.yaml
+sed -i "s/{{ .kubeconfig }}/${IMPORT_KUBECONFIG}/g" manifests/klusterlet-kubeconfighub.yaml
 ```
 
-For the add-ons, we do something similar in the `open-cluster-management-agent-addon` namespace
+#### Sync manifests to MicroShift node
+The next step is to sync manifests to the MicroShift node. MicroShift has the feature of [auto-applying manifests](https://microshift.io/docs/user-documentation/manifests/). Once it finds a `kustomization.yaml` file in `${DATADIR}/manifests` (which defaults to `/var/lib/microshift/manifests`), `kubectl apply -k` will be run automatically upon start-up. The rendered manifests then need to be synced to `${DATADIR}/manifests`.
 
-```
-oc new-project open-cluster-management-agent-addon
-oc create secret generic rhacm --from-file=.dockerconfigjson=auth.json --type=kubernetes.io/dockerconfigjson
-oc create sa klusterlet-addon-operator
-oc patch sa klusterlet-addon-operator -p '{"imagePullSecrets": [{"name": "rhacm"}]}'
-```
+The syncing of manifests to managed Microshift cluster can be done by utilizing any GitOps tool to fetch the Kubernetes Kustomize manifests and put them in the directory described above, e.g. [Transmission](https://github.com/redhat-et/transmission) tool can be used to pull updates and apply them transactionally on the ostree-based Linux operating systems.
 
-Now, we actually create the relevant CRDS and the jobs that register our instance to ACM
-
-```
-oc project open-cluster-management-agent
-echo $CRDS | base64 -d | oc apply -f -
-echo $IMPORT | base64 -d | oc apply -f -
-```
-
-In the case of the add ons, precreating some of the service accounts would cause helm failures so we need to wait for them to actually get created before patching them. It generally takes 2-3 minutes, and we are then able to patch said service accounts and then delete all pods of the namespace for the pods to be created properly
-
-```
-oc project open-cluster-management-agent-addon
-for sa in klusterlet-addon-appmgr klusterlet-addon-certpolicyctrl klusterlet-addon-iampolicyctrl-sa klusterlet-addon-policyctrl klusterlet-addon-search klusterlet-addon-workmgr ; do
-  oc patch sa $sa -p '{"imagePullSecrets": [{"name": "rhacm"}]}'
-done
-oc delete pod --all -n open-cluster-management-agent-addon
-```
-
+#### MicroShift auto-applies those manifests to register with the ACM cluster
 The cluster now should have all add-ons enabled and be in a READY state within RHACM.
