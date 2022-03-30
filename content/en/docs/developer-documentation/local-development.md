@@ -16,7 +16,7 @@ description: Building and running the MicroShift binary for local development
 
 For building MicroShift you need a system with a minimum of
 
-- a supported 64-bit CPU architecture (amd64, arm64, or riscv64)
+- a supported 64-bit CPU architecture (amd64/x86_64, arm64, or riscv64)
 - a supported Linux OS (RHEL 8, CentOS Stream 8, or Fedora 34+)
 - 2 CPU cores
 - 3GB of RAM
