@@ -9,7 +9,7 @@ description: "MicroShift system requirements and deployment"
 
 To run MicroShift, you need a machine with at least:
 
-- a supported 64-bit<sup>2</sup> CPU architecture (amd64, arm64, or riscv64)
+- a supported 64-bit<sup>2</sup> CPU architecture (amd64/x86_64, arm64, or riscv64)
 - a supported OS (see below)
 - 2 CPU cores
 - 2GB of RAM
