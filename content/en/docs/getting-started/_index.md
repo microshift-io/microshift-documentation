@@ -22,7 +22,7 @@ To run MicroShift, you need a machine with at least:
 For production deployments, we recommend (and only test) deploying MicroShift on RHEL 8, CentOS Stream 8, or Fedora 34+ using one of two methods:
 
 - running containerized with `Podman`
-- installing via .rpm (e.g. for embedding MicroShift into an `rpm-ostree` image)
+- installing via .rpm (e.g. for embedding MicroShift into an [`rpm-ostree`]({{< ref "/docs/getting-started/_index.md#microshift-on-ostree-based-systems" >}}) image)
 
 Both methods feature a minimal resource footprint, a strong security posture, the ability to restart/update without disrupting workloads, and optionally auto-updates.
 
@@ -220,3 +220,30 @@ oc.exe get all -A --kubeconfig .\kubeconfig
 ```
 {{% /tab %}}
 {{< /tabs >}}
+
+## MicroShift on OSTree based systems
+
+As mentioned aboved, MicroShift has been designed to be deployed on edge computing devices. Looking at security standards, 
+an edge optimized operating system will most likely be inmutable and based in transactions for upgrades and rollbacks. OSTree provides these capabilities. 
+
+Fedora IoT and RHEL for Edge are both OSTree based systems and MicroShift can be shipped as part of the base `rpm-ostree`. 
+The recommended way to embed MicroShift in these operating systems is to build your own `rpm-ostree` with tools like [Image Builder](https://fedoramagazine.org/introduction-to-image-builder/). This project will allow you to create your own customized version of Fedora IoT or RHEL for Edge in order to include MicroShift and all the required dependencies like CRI-O.
+
+However, developers might need to manually install RPMs on the system for faster iterations. It is important to highlight that the base layer of an `rpm-ostree` is an atomic entity, so when installing a local package, any dependency that is part of the ostree with an older version will not be updated. This is the reason why it is mandatory to perform an upgrade before manually installing MicroShift.
+
+
+Let's see an example of a Fedora IoT 35 system:
+
+```
+curl -L -o /etc/yum.repos.d/fedora-modular.repo https://src.fedoraproject.org/rpms/fedora-repos/raw/rawhide/f/fedora-modular.repo
+curl -L -o /etc/yum.repos.d/fedora-updates-modular.repo https://src.fedoraproject.org/rpms/fedora-repos/raw/rawhide/f/fedora-updates-modular.repo
+curl -L -o /etc/yum.repos.d/group_redhat-et-microshift-fedora-35.repo https://copr.fedorainfracloud.org/coprs/g/redhat-et/microshift/repo/fedora-35/group_redhat-et-microshift-fedora-35.repo
+rpm-ostree ex module enable cri-o:1.21
+
+rpm-ostree upgrade
+rpm-ostree install cri-o cri-tools microshift
+
+systemctl reboot
+```
+
+Now MicroShift and its dependencies will be part of the `rpm-ostree` and ready to function.
