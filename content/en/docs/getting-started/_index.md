@@ -221,6 +221,13 @@ oc.exe get all -A --kubeconfig .\kubeconfig
 {{% /tab %}}
 {{< /tabs >}}
 
+As a developer, you might want to stop for the day and continue your work later. Stopping and restarting the MicroShift all-in-one container will bring some know issues with the CNI. This is why we recommend developers to use the `pause` and `unpause` Podman/Docker command.
+
+```sh
+podman pause microshift
+podman unpause microshift
+```
+
 ## MicroShift on OSTree based systems
 
 As mentioned aboved, MicroShift has been designed to be deployed on edge computing devices. Looking at security standards, 
@@ -234,7 +241,7 @@ However, developers might need to manually install RPMs on the system for faster
 
 Let's see an example of a Fedora IoT 35 system:
 
-```
+```sh
 curl -L -o /etc/yum.repos.d/fedora-modular.repo https://src.fedoraproject.org/rpms/fedora-repos/raw/rawhide/f/fedora-modular.repo
 curl -L -o /etc/yum.repos.d/fedora-updates-modular.repo https://src.fedoraproject.org/rpms/fedora-repos/raw/rawhide/f/fedora-updates-modular.repo
 curl -L -o /etc/yum.repos.d/group_redhat-et-microshift-fedora-35.repo https://copr.fedorainfracloud.org/coprs/g/redhat-et/microshift/repo/fedora-35/group_redhat-et-microshift-fedora-35.repo
