@@ -66,3 +66,27 @@ Substitute the image name:tag in the podman command with the newly built image n
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Building offline container image rpms
+
+`packaging/rpm/make-microshift-images-rpm.sh` is responsible for extracting the right
+MicroShift component container images into an rpm, srpm, or triggering a build in copr.
+
+`make-microshift-images-rpm.sh` queries the MicroShift code via `pkg/release/get.sh` to identify the
+MicroShift component images for the release in each architecture, it accepts one parameter with the
+desired action (`rpm`, `srpm`, `copr`), being `rpm` the default.
+
+For example:
+
+```bash
+cd packaging/rpm
+./make-microshift-images-rpm.sh
+```
+
+or
+
+```bash
+cd packaging/rpm
+export COPR_REPO=mangelajo/microshift-containers
+./make-microshift-images-rpm.sh copr
+```
