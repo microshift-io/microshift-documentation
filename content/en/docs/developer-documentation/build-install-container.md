@@ -87,6 +87,8 @@ or
 
 ```bash
 cd packaging/rpm
-export COPR_REPO=mangelajo/microshift-containers
+export COPR_REPO=@redhat-et/microshift-containers
 ./make-microshift-images-rpm.sh copr
 ```
+
+Please note that `@redhat-et/microshift-containers` is the default, being `@redhat-et` a group in copr, for a regular user you can user `username/microshift-containers` for example.

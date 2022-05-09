@@ -9,9 +9,10 @@ description: Offline containers are containers which are stored in the operating
 ---
 ## What are offline container images
 
-Offline containers are containers which are stored in the operating system image,
-and made available to `cri-o` via the `/etc/container/storage.conf` `additionalimagestores`
-list.
+Offline containers are containers which are stored in the operating, or
+the operating system image for an ostree based system,
+and made available to `cri-o` via the `/etc/container/storage.conf`
+`additionalimagestores` list.
 
 Those container images are accesible for `cri-o` to create containers. Those images
 cannot be deleted, but newer versions of those containers can be downloaded normally,
@@ -19,7 +20,7 @@ which `cri-o` will store in the general R/W container storage of the system.
 
 ## When to use offline container images
 
-Offline containers are useful when the Edge device will have restricted connectivity,
+Offline containers are useful when the edge device will have restricted connectivity,
 or no connectivity at all. Those containers are also helpful to improve general MicroShift
 and application startup on first boot, since no images need to be downloaded from the
 network and the applications are readily available to `cri-o`
@@ -45,7 +46,7 @@ curl -L -o /etc/yum.repos.d/microshift-containers.repo \
 rpm-ostree install microshift-containers
 ````
 
-Or simply install that repository and package from an os build blueprint.
+Or simply include this package when using image-builder.
 
 
 ## How package your application and manifests as rpms for offline container storage
@@ -62,7 +63,7 @@ Some example usages:
 ./paack.py rpm example-user-containers.yaml centos-stream-9-aarch64
 ```
 
-The target os is not important (`centos-stream-9`) but we need one os target
+The target OS is not important (`centos-stream-9`) but we need one os target
 compatible with the destination architecture.
 
 ```bash
@@ -71,7 +72,7 @@ compatible with the destination architecture.
 
 The produced `srpm` format contains the repository binaries and manifests for each architecture,
 then the build system unpacks the specific architecture for the build. The post install step
-of rpm configures the additionalimagestores in `/etc/container/storage.conf`
+of rpm configures the `additionalimagestores` in `/etc/container/storage.conf`
 
 ```bash
 ./paack.py copr example-user-containers.yaml mangelajo/my-app-containers
