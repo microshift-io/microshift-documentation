@@ -44,4 +44,4 @@ Participation in the MicroShift community is governed by the [CNCF Code of Condu
 
 ## Thank you
 
-MicroShift welcomes community participation, and we appreciate your contributions to [MicroShift](https://github.com/redhat-et/microshift) and to our documentation!
+MicroShift welcomes community participation, and we appreciate your contributions to [MicroShift](https://github.com/openshift/microshift) and to our documentation!

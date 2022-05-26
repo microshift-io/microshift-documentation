@@ -23,7 +23,7 @@ Microshift can be configured in three simple ways, in order of precedence:
 - Environment variables
 - Configuration file
 
-An example configuration can be found [here](https://github.com/redhat-et/microshift/blob/main/test/config.yaml).
+An example configuration can be found [here](https://github.com/openshift/microshift/blob/main/test/config.yaml).
 
 Below is a table of consisting of the configuration settings presently offered in MicroShift, along with the ways they can be set, what they mean, and their default values.
 

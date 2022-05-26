@@ -17,7 +17,7 @@ description: MicroShift known issues and troubleshooting tips.
 
 ### service-ca can't be created
 
-If you want to run `microshift` on EC2 RHEL 8.4(`cat /etc/os-release`), you might find [`ingress and service-ca will not stay online`](https://github.com/redhat-et/microshift/issues/270).
+If you want to run `microshift` on EC2 RHEL 8.4(`cat /etc/os-release`), you might find [`ingress and service-ca will not stay online`](https://github.com/openshift/microshift/issues/270).
 
 Inside the failing pods, you might find errors as: `10.43.0.1:443: read: connection timed out`.
 
@@ -68,4 +68,4 @@ As a workaround, you can follow steps below:
 
 This workaround won't affect the single node `microshift` functionality since the `flannel` `daemonset` is used for multi-node MicroShift.
 
-This issue is tracked at: [#296](https://github.com/redhat-et/microshift/issues/296)
+This issue is tracked at: [#296](https://github.com/openshift/microshift/issues/296)

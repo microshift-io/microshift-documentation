@@ -28,7 +28,7 @@ network and the applications are readily available to `cri-o`
 ## RPM packaging of container images
 
 RPM packaging of container images into read-only container storage is offered via the
-[`paack`](https://github.com/redhat-et/microshift/blob/main/packaging/rpm/paack.py) tool
+[`paack`](https://github.com/openshift/microshift/blob/main/packaging/rpm/paack.py) tool
 as an experimental method to allow users to create ostree images containing the desired containers.
 `RPM` was not designed for storing files with numeric uids/gids, or containing extended attributes,
 although several workarounds allow this we are looking for better ways to provide this.
@@ -53,7 +53,7 @@ Or simply include this package when using image-builder.
 
 To package workload application container images we provide `packaging/rpm/paack.py`.
 This tool accepts a yaml definition, for which an example can be found
-[here](https://github.com/redhat-et/microshift/blob/main/packaging/rpm/example-user-containers.yaml).
+[here](https://github.com/openshift/microshift/blob/main/packaging/rpm/example-user-containers.yaml).
 
 The tool can produce an srpm, rpm, or push a build to a copr repository.
 

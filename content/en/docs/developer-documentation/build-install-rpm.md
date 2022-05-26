@@ -25,7 +25,7 @@ sudo dnf install -y git golang rpm-build selinux-policy-devel container-selinux
 Clone the repository and cd into it:
 
 ```sh
-git clone https://github.com/redhat-et/microshift.git
+git clone https://github.com/openshift/microshift.git
 cd microshift
 ```
 
