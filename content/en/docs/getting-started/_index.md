@@ -52,8 +52,7 @@ sudo systemctl enable crio --now
 {{% tab name="CentOS 8 Stream" %}}
 
 ```Bash
-sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8_Stream/devel:kubic:libcontainers:stable.repo
-sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable:cri-o:1.21.repo https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:1.21/CentOS_8_Stream/devel:kubic:libcontainers:stable:cri-o:1.21.repo
+sudo dnf module enable -y cri-o:1.21
 sudo dnf install -y cri-o cri-tools
 sudo systemctl enable crio --now
 ```
