@@ -48,7 +48,7 @@ sudo dnf install -y git make golang
 Clone the repository and `cd` into it:
 
 ```Bash
-git clone https://github.com/redhat-et/microshift.git
+git clone https://github.com/openshift/microshift.git
 cd microshift
 ```
 

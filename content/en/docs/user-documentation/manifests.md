@@ -62,5 +62,5 @@ MicroShift workloads.
 | `${DATADIR}/manifests`   	      | R/W location for backwards compatibility (deprecated)                         |
 
 The list of manifest locations can be customized via configuration using the manifests section (see
-[here](https://github.com/redhat-et/microshift/blob/main/test/config.yaml)) or via the `MICROSHIFT_MANIFESTS`
+[here](https://github.com/openshift/microshift/blob/main/test/config.yaml)) or via the `MICROSHIFT_MANIFESTS`
 environment variable as comma separated directories.

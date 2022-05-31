@@ -29,8 +29,8 @@ The most notable difference between an OKD and MicroShift runtime are the lack o
 - openshift-api-server
 - kube-controller-manager
 - openshift-controller-manager
-- openshift-oauth
-- [multicast dns](https://github.com/redhat-et/microshift/pull/429) (for multi-node enablement)
+- openshift-oath
+- [multicast dns](https://github.com/openshift/microshift/pull/429) (for multi-node enablement)
 
 ##### Node
 
