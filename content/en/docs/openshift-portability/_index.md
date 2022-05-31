@@ -13,7 +13,7 @@ The design goals behind MicroShift diverge from those of OKD as a necessity of t
 
 MicroShift's deployment model differs significantly from OKD's.  [Openshift-install](https://github.com/openshift/okd#getting-started) fully automates OKD deployment on cloud or baremetal infrastructure and manages system dependencies and configuration.  It goes a long way to provide a streamlined installation model for users.  MicroShift, being a single binary, can be installed atomically and managed like any other app. The user is expected to have some basic knowledge of package installation tools (dnf, yum, rpm).
 
-The MicroShift [documention](https://microshift.io/docs/getting-started/#install-cri-o) provides a step-by-step recipe for preparing a system and installing the app on supported operating systems.
+The MicroShift [documentation](https://microshift.io/docs/getting-started/#install-cri-o) provides a step-by-step recipe for preparing a system and installing the app on supported operating systems.
 
 ## Control-Plane Services
 
