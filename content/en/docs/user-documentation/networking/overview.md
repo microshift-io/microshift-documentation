@@ -17,13 +17,13 @@ with the MicroShift API connectivity should be performed in any of the following
 ways:
   * DNS discovery, pre-configured on the network servers.
   * Direct IP address connectivity.
-  * mDNS discovery via .local domain, see [mDNS](./mdns)
+  * mDNS discovery via .local domain, see [mDNS](../mdns)
 
-Conectivity between Pods is handled by the [CNI](./cni) plugin on the Pod network
+Conectivity between Pods is handled by the [CNI](../cni) plugin on the Pod network
 range which defaults to `10.42.0.0/16` which can be modified via `Cluster.ClusterCIDR`
-[configuration](../configuring/) parameter, see more details in the corresponding sections.
+[configuration](../../configuring/) parameter, see more details in the corresponding sections.
 
 Connectivity to services of type ClusterIP is provided by the embedded `kube-proxy`
 iptables-based implementation on the `10.43.0.0/16` range which can be modified via
-`Cluster.ServiceCIDR` [configuration](../configuring/) parameter.
+`Cluster.ServiceCIDR` [configuration](../../configuring/) parameter.
 
