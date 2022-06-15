@@ -46,6 +46,11 @@ sudo dnf install -y git make golang
 <br/>
 
 Clone the repository and `cd` into it:
+{{< warning >}}
+Make sure to use the `4.8.0-microshift-2022-04-20-141053` branch when working with the source repository. 
+Later versions of the source code are not compatible with the community packages (to be fixed in the future).
+{{< /warning >}}
+
 
 ```Bash
 git clone -b 4.8.0-microshift-2022-04-20-141053 https://github.com/openshift/microshift.git
