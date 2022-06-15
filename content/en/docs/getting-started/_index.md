@@ -17,7 +17,7 @@ To run MicroShift, you need a machine with at least:
 
 ## Deploying MicroShift on Edge Devices
 
-We recommend (and only test) deploying MicroShift on RHEL 8, CentOS Stream 8, or Fedora 34+ installing via RPM (e.g. for embedding MicroShift into an [`rpm-ostree`]({{< ref "/docs/getting-started/_index.md#microshift-on-ostree-based-systems" >}}) image).
+We recommend (and only test) deploying MicroShift on RHEL 8, CentOS Stream, or Fedora 34+ installing via RPM (e.g. for embedding MicroShift into an [`rpm-ostree`]({{< ref "/docs/getting-started/_index.md#microshift-on-ostree-based-systems" >}}) image).
 
 This installation techique has a minimal resource footprint, a strong security posture, the ability to restart/update without disrupting workloads, and optionally auto-updates.
 
@@ -44,11 +44,10 @@ sudo dnf install -y cri-o cri-tools
 sudo systemctl enable crio --now
 ```
 {{% /tab %}}
-{{% tab name="CentOS 8 Stream" %}}
+{{% tab name="CentOS Stream" %}}
 
 ```Bash
-sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8_Stream/devel:kubic:libcontainers:stable.repo
-sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable:cri-o:1.21.repo https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:1.21/CentOS_8_Stream/devel:kubic:libcontainers:stable:cri-o:1.21.repo
+sudo dnf module enable -y cri-o:1.21
 sudo dnf install -y cri-o cri-tools
 sudo systemctl enable crio --now
 ```

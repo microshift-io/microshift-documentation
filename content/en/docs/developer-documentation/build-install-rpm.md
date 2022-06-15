@@ -61,11 +61,10 @@ command -v subscription-manager &> /dev/null \
 sudo dnf module enable -y cri-o:1.21
 ```
 {{% /tab %}}
-{{% tab name="CentOS_8_Stream" %}}
+{{% tab name="CentOS Stream" %}}
 
 ```Bash
-curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8_Stream/devel:kubic:libcontainers:stable.repo
-curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable:cri-o:1.21.repo https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:1.21/CentOS_8_Stream/devel:kubic:libcontainers:stable:cri-o:1.21.repo
+sudo dnf module enable -y cri-o:1.21
 ```
 
 {{% /tab %}}
