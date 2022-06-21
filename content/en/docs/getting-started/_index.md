@@ -119,22 +119,3 @@ an edge optimized operating system will most likely be inmutable and based in tr
 
 Fedora IoT and RHEL for Edge are both OSTree based systems and MicroShift can be shipped as part of the base `rpm-ostree`. 
 The recommended way to embed MicroShift in these operating systems is to build your own `rpm-ostree` with tools like [Image Builder](https://fedoramagazine.org/introduction-to-image-builder/). This project will allow you to create your own customized version of Fedora IoT or RHEL for Edge in order to include MicroShift and all the required dependencies like CRI-O.
-
-However, developers might need to manually install RPMs on the system for faster iterations. It is important to highlight that the base layer of an `rpm-ostree` is an atomic entity, so when installing a local package, any dependency that is part of the ostree with an older version will not be updated. This is the reason why it is mandatory to perform an upgrade before manually installing MicroShift.
-
-
-Let's see an example of a Fedora IoT 35 system:
-
-```sh
-curl -L -o /etc/yum.repos.d/fedora-modular.repo https://src.fedoraproject.org/rpms/fedora-repos/raw/rawhide/f/fedora-modular.repo
-curl -L -o /etc/yum.repos.d/fedora-updates-modular.repo https://src.fedoraproject.org/rpms/fedora-repos/raw/rawhide/f/fedora-updates-modular.repo
-curl -L -o /etc/yum.repos.d/group_redhat-et-microshift-fedora-35.repo https://copr.fedorainfracloud.org/coprs/g/redhat-et/microshift/repo/fedora-35/group_redhat-et-microshift-fedora-35.repo
-rpm-ostree ex module enable cri-o:1.21
-
-rpm-ostree upgrade
-rpm-ostree install cri-o cri-tools microshift
-
-systemctl reboot
-```
-
-Now MicroShift and its dependencies will be part of the `rpm-ostree` and ready to function.
