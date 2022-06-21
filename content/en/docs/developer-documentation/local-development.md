@@ -17,7 +17,7 @@ description: Building and running the MicroShift binary for local development
 For building MicroShift you need a system with a minimum of
 
 - a supported 64-bit CPU architecture (amd64/x86_64, arm64, or riscv64)
-- a supported Linux OS (RHEL 8, CentOS Stream 8, or Fedora 34+)
+- a supported Linux OS (RHEL 8, CentOS Stream, or Fedora 34+)
 - 2 CPU cores
 - 3GB of RAM
 - 1GB of free storage space for MicroShift
@@ -34,7 +34,7 @@ sudo dnf install -y git make golang
 ```
 
 {{% /tab %}}
-{{% tab name="Fedora, CentOS_8_Stream" %}}
+{{% tab name="Fedora, CentOS Stream" %}}
 
 ```Bash
 sudo dnf install -y git make golang
@@ -46,9 +46,14 @@ sudo dnf install -y git make golang
 <br/>
 
 Clone the repository and `cd` into it:
+{{< warning >}}
+Make sure to use the `4.8.0-microshift-2022-04-20-141053` branch when working with the source repository. 
+Later versions of the source code are not compatible with the community packages (to be fixed in the future).
+{{< /warning >}}
+
 
 ```Bash
-git clone https://github.com/openshift/microshift.git
+git clone -b 4.8.0-microshift-2022-04-20-141053 https://github.com/openshift/microshift.git
 cd microshift
 ```
 

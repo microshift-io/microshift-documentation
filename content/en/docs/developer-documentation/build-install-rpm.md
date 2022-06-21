@@ -23,9 +23,14 @@ sudo dnf install -y git golang rpm-build selinux-policy-devel container-selinux
 ```
 
 Clone the repository and cd into it:
+{{< warning >}}
+Make sure to use the `4.8.0-microshift-2022-04-20-141053` branch when working with the source repository. 
+Later versions of the source code are not compatible with the community packages (to be fixed in the future).
+{{< /warning >}}
+
 
 ```sh
-git clone https://github.com/openshift/microshift.git
+git clone -b 4.8.0-microshift-2022-04-20-141053 https://github.com/openshift/microshift.git
 cd microshift
 ```
 
@@ -61,11 +66,10 @@ command -v subscription-manager &> /dev/null \
 sudo dnf module enable -y cri-o:1.21
 ```
 {{% /tab %}}
-{{% tab name="CentOS_8_Stream" %}}
+{{% tab name="CentOS Stream" %}}
 
 ```Bash
-curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8_Stream/devel:kubic:libcontainers:stable.repo
-curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable:cri-o:1.21.repo https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:1.21/CentOS_8_Stream/devel:kubic:libcontainers:stable:cri-o:1.21.repo
+sudo dnf module enable -y cri-o:1.21
 ```
 
 {{% /tab %}}
