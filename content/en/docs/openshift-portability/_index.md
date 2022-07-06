@@ -7,7 +7,7 @@ description: "Addressing some innate differences between OKD and MicroShift."
 ---
 # Differences Between OKD and MicroShift
 
-The design goals behind MicroShift diverge from those of OKD as a necessity of the very different operating environments each project targets.  Namely, OKD achieves the goal of providing a full-stack, self-managed container appliction platform, targeting developer and operations-centric use cases on cloud infrastructure. MicroShift aims to provide an minimal OpenShift experience on small form factor, often headless devices with as conservative a resource overhead as possible. To further the project's goals, the MicroShift team has reduced OKD's feature set to remove functionality not well suited for edge use cases.
+The design goals behind MicroShift diverge from those of OKD as a necessity of the very different operating environments each project targets.  Namely, OKD achieves the goal of providing a full-stack, self-managed container application platform, targeting developer and operations-centric use cases on cloud infrastructure. MicroShift aims to provide a minimal OpenShift experience on small form factor, often headless devices with as conservative a resource overhead as possible. To further the project's goals, the MicroShift team has reduced OKD's feature set to remove functionality not well suited for edge use cases.
 
 ## Deployment
 
