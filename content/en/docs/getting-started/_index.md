@@ -17,6 +17,11 @@ To run MicroShift, you need a machine with at least:
 
 ## Deploying MicroShift on Edge Devices
 
+{{< warning >}}
+The available community documentation is not currently compatible with the latest MicroShift source code.
+It is recommended to follow the instructions in the [openshift/microshift GitHub repository](https://github.com/openshift/microshift).
+{{< /warning >}}
+
 We recommend (and only test) deploying MicroShift on RHEL 8, CentOS Stream, or Fedora 34+ installing via RPM (e.g. for embedding MicroShift into an [`rpm-ostree`]({{< ref "/docs/getting-started/_index.md#microshift-on-ostree-based-systems" >}}) image).
 
 This installation techique has a minimal resource footprint, a strong security posture, the ability to restart/update without disrupting workloads, and optionally auto-updates.
