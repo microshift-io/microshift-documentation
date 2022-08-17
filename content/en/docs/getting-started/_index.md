@@ -67,6 +67,8 @@ To have `systemd` start and manage MicroShift on an rpm-based host, run:
 ```Bash
 sudo dnf copr enable -y @redhat-et/microshift
 sudo dnf install -y microshift
+sudo dnf -y install firewalld
+sudo systemctl enable --now firewalld
 sudo firewall-cmd --zone=trusted --add-source=10.42.0.0/16 --permanent
 sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=443/tcp --permanent
