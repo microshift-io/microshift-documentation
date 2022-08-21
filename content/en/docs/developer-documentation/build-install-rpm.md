@@ -24,10 +24,11 @@ sudo dnf install -y git golang rpm-build selinux-policy-devel container-selinux
 
 Clone the repository and cd into it:
 {{< warning >}}
-Make sure to use the `4.8.0-microshift-2022-04-20-141053` branch when working with the source repository. 
-Later versions of the source code are not compatible with the community packages (to be fixed in the future).
-{{< /warning >}}
+The available community documentation is not currently compatible with the latest MicroShift source code.
+To build the latest MicroShift RPMs, follow the instructions in the [openshift/microshift GitHub repository](https://github.com/openshift/microshift).
 
+Otherwise, use the `4.8.0-microshift-2022-04-20-141053` branch when working with the source repository and these instructions.
+{{< /warning >}}
 
 ```sh
 git clone -b 4.8.0-microshift-2022-04-20-141053 https://github.com/openshift/microshift.git

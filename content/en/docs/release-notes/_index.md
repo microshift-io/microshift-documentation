@@ -20,5 +20,6 @@ You may view the release page [here](https://github.com/openshift/microshift/rel
 MicroShift is built from [OKD](https://www.okd.io/), the Kubernetes distribution by the OpenShift community. The OKD version currently used to build is `4.8.0-0.okd-2021-10-10-030117`
 
 {{< warning >}}
-MicroShift is still early days and moving fast. Features are missing. Things break. But you can still help shape it, too.
+The available community documentation is not currently compatible with the latest MicroShift source code.
+It is recommended to follow the instructions in the [openshift/microshift GitHub repository](https://github.com/openshift/microshift).
 {{< /warning >}}
