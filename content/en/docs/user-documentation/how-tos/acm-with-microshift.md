@@ -70,7 +70,7 @@ EOF
 This will generate a secret named ${CLUSTER_NAME}-import in the ${CLUSTER_NAME} namespace. Extract the `import.yaml` and the `crds.yaml` which requires `yq` to be installed.
 
 ```
-IMPORT=`oc get secret "$CLUSTER_NAME"-import -n "$CLUSTER_NAME" -o jsonpath={.data.import\\.yaml} | base64 --decode'`
+IMPORT=$(oc get secret "$CLUSTER_NAME"-import -n "$CLUSTER_NAME" -o jsonpath={.data.import\\.yaml} | base64 --decode)
 IMPORT_KUBECONFIG=$(yq eval-all '. | select(.metadata.name == "bootstrap-hub-kubeconfig") | .data.kubeconfig' IMPORT)
 ```
 
