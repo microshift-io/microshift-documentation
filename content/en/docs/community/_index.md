@@ -9,5 +9,5 @@ description: "MicroShift community is growing, we hope you can get involved!"
 
 - Join us on [Slack](https://microshift.slack.com)! ([Invite to the Slack space](https://join.slack.com/t/microshift/shared_invite/zt-uxncbjbl-XOjueb1ShNP7xfByDxNaaA))
 
-- Community meetings are held weekly, **Tuesdays at 10:30AM - 11:30AM EST**
-  - [📆 Check the community calendar](https://calendar.google.com/calendar/embed?src=nj6l882mfe4d2g9nr1h7avgrcs%40group.calendar.google.com&ctz=America%2FChicago) and click `➕ Google Calendar` button in the lower right hand corner to subscribe.
+
+- The MicroShift team is incredibly grateful for the public interest the project has gained.  As this interest grows, we feel it will be critical to establish a solid community framework that can scale with community involvement.  Because MicroShift is still in it's early days and moving quickly, the team's energy will be focused on driving the project towards its techincal goals.  Until such a time that it's decided there is a need for a community framework, please utilize our public slack channel.
