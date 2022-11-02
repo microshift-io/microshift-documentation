@@ -35,9 +35,6 @@ This will start the local Hugo server on port 1313. Open up your browser to <htt
 
 - Join us on [Slack](https://microshift.slack.com)! ([Invite to the Slack space](https://join.slack.com/t/microshift/shared_invite/zt-uxncbjbl-XOjueb1ShNP7xfByDxNaaA))
 
-- Community meetings are held weekly, Tuesdays at 10:30AM - 11:30AM EST.
-  - [📆 Check the community calendar](https://calendar.google.com/calendar/embed?src=nj6l882mfe4d2g9nr1h7avgrcs%40group.calendar.google.com&ctz=America%2FChicago) and click `➕ Google Calendar` button in the lower right hand corner to subscribe.
-
 ## Code of conduct
 
 Participation in the MicroShift community is governed by the [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
