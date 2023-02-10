@@ -27,7 +27,7 @@ Clone the repository and cd into it:
 The available community documentation is not currently compatible with the latest MicroShift source code.
 To build the latest MicroShift RPMs, follow the instructions in the [openshift/microshift GitHub repository](https://github.com/openshift/microshift).
 
-Otherwise, use the `4.8.0-microshift-2022-04-20-141053` branch when working with the source repository and these instructions.
+Otherwise, use the developer preview RPMs by following the instructions in the [MicroShift developer preview documentation](https://access.redhat.com/documentation/en-us/red_hat_build_of_microshift/4.12), using one of the [no-cost Red Hat Developer subscriptions](https://developers.redhat.com/blog/2021/02/10/how-to-activate-your-no-cost-red-hat-enterprise-linux-subscription).
 {{< /warning >}}
 
 ```sh

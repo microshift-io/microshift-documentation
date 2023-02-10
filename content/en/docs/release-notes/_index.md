@@ -21,5 +21,5 @@ MicroShift is built from [OKD](https://www.okd.io/), the Kubernetes distribution
 
 {{< warning >}}
 The available community documentation is not currently compatible with the latest MicroShift source code.
-It is recommended to follow the instructions in the [openshift/microshift GitHub repository](https://github.com/openshift/microshift).
+It is recommended to follow the instructions in the [MicroShift developer preview documentation](https://access.redhat.com/documentation/en-us/red_hat_build_of_microshift/4.12), using one of the [no-cost Red Hat Developer subscriptions](https://developers.redhat.com/blog/2021/02/10/how-to-activate-your-no-cost-red-hat-enterprise-linux-subscription).
 {{< /warning >}}

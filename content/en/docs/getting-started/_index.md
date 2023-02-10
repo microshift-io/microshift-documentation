@@ -19,7 +19,7 @@ To run MicroShift, you need a machine with at least:
 
 {{< warning >}}
 The available community documentation is not currently compatible with the latest MicroShift source code.
-It is recommended to follow the getting started instructions in the [openshift/microshift GitHub repository](https://github.com/openshift/microshift/blob/main/docs/getting_started.md).
+It is recommended to follow the instructions in the [MicroShift developer preview documentation](https://access.redhat.com/documentation/en-us/red_hat_build_of_microshift/4.12), using one of the [no-cost Red Hat Developer subscriptions](https://developers.redhat.com/blog/2021/02/10/how-to-activate-your-no-cost-red-hat-enterprise-linux-subscription).
 {{< /warning >}}
 
 We recommend (and only test) deploying MicroShift on RHEL 8, CentOS Stream, or Fedora 34+ installing via RPM (e.g. for embedding MicroShift into an [`rpm-ostree`]({{< ref "/docs/getting-started/_index.md#microshift-on-ostree-based-systems" >}}) image).
