@@ -1,6 +1,6 @@
 ---
 title: "MicroShift"
-abstract: "Research project exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing."
+abstract: "OpenShift Kubernetes optimized for the device edge."
 cid: home
 sitemap:
   priority: 1.0
@@ -9,8 +9,7 @@ sitemap:
 {{< blocks/section id="oceanNodes" >}}
 {{% blocks/feature-noimg %}}
 
-[MicroShift]({{< relref "/docs/home" >}}) is a project that is exploring how OpenShift<sup>1</sup> and Kubernetes can be
-optimized for small form factor and edge computing.
+[MicroShift](https://github.com/openshift/microshift) is a project optimizing OpenShift and Kubernetes for the device edge.
 
 Edge devices deployed out in the field pose very different operational, environmental, and business challenges from those of cloud computing. These motivate different engineering trade-offs for Kubernetes at the far edge than for cloud or near-edge scenarios. MicroShift's design goals cater to this:
 
@@ -22,35 +21,14 @@ Edge devices deployed out in the field pose very different operational, environm
 
 We believe these properties should also make MicroShift a great tool for other use cases such as Kubernetes applications development on resource-constrained systems, scale testing, and provisioning of lightweight Kubernetes control planes.
 
-Watch this [end-to-end MicroShift provisioning demo video](https://youtu.be/QOiB8NExtA4) to get a first impression of MicroShift deployed onto a [RHEL for edge computing](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux/edge-computing) device and managed through [Open Cluster Management](https://github.com/open-cluster-management).
-
-<sup>1) more precisely [OKD](https://www.okd.io/), the Kubernetes distribution by the OpenShift community</sup>
-
-{{< warning >}}
-The available community documentation is not currently compatible with the latest MicroShift source code.
-It is recommended to follow the instructions in the [MicroShift developer preview documentation](https://access.redhat.com/documentation/en-us/red_hat_build_of_microshift/4.12), using one of the [no-cost Red Hat Developer subscriptions](https://developers.redhat.com/blog/2021/02/10/how-to-activate-your-no-cost-red-hat-enterprise-linux-subscription).{{< /warning >}}
-
 ### continue with:
-<button id="btn-concepts" class="button" onclick="location.href='\/docs\/getting-started';"
+<button id="btn-concepts" class="button" onclick="location.href='https:\/\/github.com\/openshift\/microshift\/blob\/main\/docs\/getting_started.md';"
         aria-label="Getting Started">Getting
-    Started</button> <button id="btn-concepts" class="button" onclick="location.href='\/docs\/home';"
+    Started</button> <button id="btn-concepts" class="button" onclick="location.href='https:\/\/github.com\/openshift\/microshift#user-documentation';"
                              aria-label="Microshift Documentation">Microshift
     Documentation</button>
 
 {{% /blocks/feature-noimg %}}
 {{< /blocks/section >}}
 {{< blocks/section id="video" background-image="stars" >}}
-<div class="light-text">
-<h2>MicroShift End-to-End Provisioning Demonstration</h2>
-        <p>By Frank Zdarsky</p>
-        <br>
-        <a href="https://youtu.be/QOiB8NExtA4" button id="desktopShowVideoButton">MicroShift Provisioning</a>
-        <br>
-        <br>
-</div>
-<div id="videoPlayer">
-    <iframe data-url="https://www.youtube.com/embed/H06qrNmGqyE?autoplay=1" frameborder="0" allowfullscreen></iframe>
-    <button id="closeButton"></button>
-</div>
-
 {{< /blocks/section >}}
