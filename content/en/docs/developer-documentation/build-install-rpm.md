@@ -23,9 +23,15 @@ sudo dnf install -y git golang rpm-build selinux-policy-devel container-selinux
 ```
 
 Clone the repository and cd into it:
+{{< warning >}}
+The available community documentation is not currently compatible with the latest MicroShift source code.
+To build the latest MicroShift RPMs, follow the instructions in the [openshift/microshift GitHub repository](https://github.com/openshift/microshift).
+
+Otherwise, use the developer preview RPMs by following the instructions in the [MicroShift developer preview documentation](https://access.redhat.com/documentation/en-us/red_hat_build_of_microshift/4.12), using one of the [no-cost Red Hat Developer subscriptions](https://developers.redhat.com/blog/2021/02/10/how-to-activate-your-no-cost-red-hat-enterprise-linux-subscription).
+{{< /warning >}}
 
 ```sh
-git clone https://github.com/redhat-et/microshift.git
+git clone -b 4.8.0-microshift-2022-04-20-141053 https://github.com/openshift/microshift.git
 cd microshift
 ```
 
@@ -61,11 +67,10 @@ command -v subscription-manager &> /dev/null \
 sudo dnf module enable -y cri-o:1.21
 ```
 {{% /tab %}}
-{{% tab name="CentOS_8_Stream" %}}
+{{% tab name="CentOS Stream" %}}
 
 ```Bash
-curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8_Stream/devel:kubic:libcontainers:stable.repo
-curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable:cri-o:1.21.repo https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:1.21/CentOS_8_Stream/devel:kubic:libcontainers:stable:cri-o:1.21.repo
+sudo dnf module enable -y cri-o:1.21
 ```
 
 {{% /tab %}}

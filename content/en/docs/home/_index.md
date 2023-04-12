@@ -13,9 +13,9 @@ menu:
     post: >
       <p>Learn how to use MicroShift with conceptual, tutorial, and reference documentation. You can even help contribute to the docs</a>!</p>
 description: >
-  MicroShift is a research project that is exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing.
+  MicroShift is a project that is exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing.
 overview: >
-  MicroShift is a research project that is exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing.
+  MicroShift is a project that is exploring how OpenShift and Kubernetes can be optimized for small form factor and edge computing.
 cards:
   - name: getting-started
     title: "Getting Started"
