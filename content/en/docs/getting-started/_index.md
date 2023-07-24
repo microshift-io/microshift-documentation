@@ -66,6 +66,24 @@ sudo systemctl enable crio --now
 The following steps will deploy MicroShift and enable `firewalld`. It is always best practice to have firewalls enabled and only to allow the minimum set of ports necessary for MicroShift to operate. `Iptables` can be used in place of `firewalld` if desired.
 
 {{< tabs >}}
+{{% tab name="Podman" %}}
+To have `systemd` start and manage MicroShift on Podman, run:
+
+```Bash
+sudo dnf install -y podman
+sudo curl -o /etc/systemd/system/microshift.service \
+     https://raw.githubusercontent.com/redhat-et/microshift/main/packaging/systemd/microshift-containerized.service
+sudo firewall-cmd --zone=trusted --add-source=10.42.0.0/16 --permanent
+sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=443/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=5353/udp --permanent
+sudo firewall-cmd --zone=public --add-port=6443/tcp --permanent
+sudo firewall-cmd --reload
+sudo systemctl enable microshift --now
+```
+
+{{% /tab %}}
+
 {{% tab name=".rpm" %}}
 To have `systemd` start and manage MicroShift on an rpm-based host, run:
 
@@ -76,6 +94,7 @@ sudo firewall-cmd --zone=trusted --add-source=10.42.0.0/16 --permanent
 sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=443/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=5353/udp --permanent
+sudo firewall-cmd --zone=public --add-port=6443/tcp --permanent
 sudo firewall-cmd --reload
 sudo systemctl enable microshift --now
 ```
@@ -84,7 +103,7 @@ sudo systemctl enable microshift --now
 {{< /tabs >}}
 
 For more details on MicroShift ports and firewall settings, please see the
-[firewall documentation](../user-documentation/networking/firewall.md).
+[firewall documentation](../user-documentation/networking/firewall/).
 
 ### Install Clients
 
