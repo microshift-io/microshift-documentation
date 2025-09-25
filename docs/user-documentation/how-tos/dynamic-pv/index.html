@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-36037335-10"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-36037335-10');
+</script>
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.89.4" />
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/images/logo/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/logo/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/logo/favicon-16x16.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="mask-icon" href="images/logo/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="theme-color" content="#ffffff">
+
+<title>Dynamic Provisioning of PVs | MicroShift</title><meta property="og:title" content="Dynamic Provisioning of PVs" />
+<meta property="og:description" content="MicroShift storage solution can provision persistent volumes dynamically based on claims." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://microshift.io/docs/user-documentation/how-tos/dynamic-pv/" /><meta property="article:section" content="docs" />
+
+<meta property="article:modified_time" content="2025-09-25T18:46:26+04:00" /><meta property="og:site_name" content="MicroShift" />
+
+<meta itemprop="name" content="Dynamic Provisioning of PVs">
+<meta itemprop="description" content="MicroShift storage solution can provision persistent volumes dynamically based on claims.">
+<meta itemprop="dateModified" content="2025-09-25T18:46:26+04:00" />
+<meta itemprop="wordCount" content="234">
+<meta itemprop="keywords" content="pvc,hostpath provisioner," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dynamic Provisioning of PVs"/>
+<meta name="twitter:description" content="MicroShift storage solution can provision persistent volumes dynamically based on claims."/>
+
+
+
+
+
+<link rel="preload" href="/scss/main.min.74383d8b2c66513431ce06d78f9cea3f5745dd97194594c5acd57ec8cc1c401c.css" as="style">
+<link href="/scss/main.min.74383d8b2c66513431ce06d78f9cea3f5745dd97194594c5acd57ec8cc1c401c.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="/js/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+
+
+
+
+<meta name="theme-color" content="#326ce5">
+
+
+
+
+
+
+<meta name="description" content="MicroShift storage solution can provision persistent volumes dynamically based on claims.">
+<meta property="og:description" content="MicroShift storage solution can provision persistent volumes dynamically based on claims.">
+<meta name="twitter:description" content="MicroShift storage solution can provision persistent volumes dynamically based on claims.">
+<meta property="og:url" content="https://microshift.io/docs/user-documentation/how-tos/dynamic-pv/">
+<meta property="og:title" content="Dynamic Provisioning of PVs">
+<meta name="twitter:title" content="Dynamic Provisioning of PVs">
+<meta name="twitter:image" content="/images/favicon.png" />
+
+<meta name="twitter:image:alt" content="MicroShift">
+
+<meta property="og:image" content="/images/favicon.png">
+
+<meta property="og:type" content="article">
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/css/jquery-ui.min.137b1c829b79d35bbaea89c94a60a56165e443ca5dd258afed9f60317c44cc98.css">
+
+
+    <title>Dynamic Provisioning of PVs | MicroShift</title>
+  </head>
+  <body class="td-page td-documentation">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark  flex-column flex-md-row td-navbar" data-auto-burger="primary">
+        <a class="navbar-brand" href="/"></a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			<li class="nav-item mr-2 mb-lg-0">
+				<a class="nav-link active" href="https://github.com/microshift-io/microshift" >Getting Started</span></a>
+			</li>
+			<li class="nav-item mr-2 mb-lg-0">
+				<a class="nav-link active" href="https://github.com/microshift-io/microshift/blob/main/README.md" >Documentation</span></a>
+			</li>
+			
+			
+		</ul>
+	</div>
+	<button id="hamburger" onclick="kub.toggleMenu()" data-auto-burger-exclude><div></div></button>
+</nav>
+
+      
+
+
+
+      
+        <section class="header-hero filler">
+        </section>
+         
+      
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-md-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+  <script>
+    $(function() {
+    $("#td-section-nav a").removeClass("active");
+    $("#td-section-nav #m-docs-user-documentation-how-tos-dynamic-pv").addClass("active"); 
+    $("#td-section-nav #m-docs-user-documentation-how-tos-dynamic-pv-li span").addClass("td-sidebar-nav-active-item"); 
+    $("#td-section-nav #m-docs-user-documentation-how-tos-dynamic-pv").parents("li").addClass("active-path"); 
+    $("#td-section-nav li.active-path").addClass("show"); 
+    $("#td-section-nav li.active-path").children("input").prop('checked', true);
+    $("#td-section-nav #m-docs-user-documentation-how-tos-dynamic-pv-li").siblings("li").addClass("show");  
+    $("#td-section-nav #m-docs-user-documentation-how-tos-dynamic-pv-li").children("ul").children("li").addClass("show");  
+    $("#td-sidebar-menu").toggleClass("d-none"); 
+    });
+  </script>
+  
+<div id="td-sidebar-menu" class="td-sidebar__inner d-none">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+  <input
+    type="search"
+    class="form-control td-search-input"
+    placeholder="&#xf002; "
+    aria-label=""
+    autocomplete="off"
+  >
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    
+    
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docs-li">
+    <ul class="ul-1">
+        <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-home-li">
+    
+      <a href="/docs/home/" title="MicroShift Documentation" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docs-home"><span class="">Home</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-getting-started-li">
+    
+      <a href="/docs/getting-started/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docs-getting-started"><span class="">Getting Started</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docs-user-documentation-li">
+    
+      <a href="/docs/user-documentation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docs-user-documentation"><span class="">User Documentation</span></a>
+      <ul class="ul-2 foldable">
+        <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-user-documentation-disconnected-li">
+    
+      <a href="/docs/user-documentation/disconnected/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-user-documentation-disconnected"><span class="">Disconnected deployment</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-user-documentation-configuring-li">
+    
+      <a href="/docs/user-documentation/configuring/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-user-documentation-configuring"><span class="">Configuring MicroShift</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-user-documentation-manifests-li">
+    
+      <a href="/docs/user-documentation/manifests/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-user-documentation-manifests"><span class="">Auto-applying Manifests</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-docs-user-documentation-networking-li">
+    
+      <a href="/docs/user-documentation/networking/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docs-user-documentation-networking"><span class="">Networking</span></a>
+      <ul class="ul-3 foldable">
+        <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-user-documentation-networking-overview-li">
+    
+      <a href="/docs/user-documentation/networking/overview/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-user-documentation-networking-overview"><span class="">Overview</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-user-documentation-networking-exposing-services-li">
+    
+      <a href="/docs/user-documentation/networking/exposing-services/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-user-documentation-networking-exposing-services"><span class="">Exposing Services</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-user-documentation-networking-firewall-li">
+    
+      <a href="/docs/user-documentation/networking/firewall/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-user-documentation-networking-firewall"><span class="">Firewall</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-user-documentation-networking-mdns-li">
+    
+      <a href="/docs/user-documentation/networking/mdns/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-user-documentation-networking-mdns"><span class="">mDNS</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-user-documentation-networking-cni-li">
+    
+      <a href="/docs/user-documentation/networking/cni/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-user-documentation-networking-cni"><span class="">CNI Plugin</span></a>
+      
+  </li>
+      </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-docs-user-documentation-how-tos-li">
+    
+      <a href="/docs/user-documentation/how-tos/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docs-user-documentation-how-tos"><span class="">HowTos</span></a>
+      <ul class="ul-3 foldable">
+        <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-user-documentation-how-tos-acm-with-microshift-li">
+    
+      <a href="/docs/user-documentation/how-tos/acm-with-microshift/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-user-documentation-how-tos-acm-with-microshift"><span class="">MicroShift with Advanced Cluster Management</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-user-documentation-how-tos-proxy-li">
+    
+      <a href="/docs/user-documentation/how-tos/proxy/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-user-documentation-how-tos-proxy"><span class="">Deploying MicroShift behind Proxy</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-user-documentation-how-tos-private-registries-li">
+    
+      <a href="/docs/user-documentation/how-tos/private-registries/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-user-documentation-how-tos-private-registries"><span class="">Private registries and pull secrets</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-user-documentation-how-tos-example-usage-li">
+    
+      <a href="/docs/user-documentation/how-tos/example-usage/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-user-documentation-how-tos-example-usage"><span class="">Deploy a basic application</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-user-documentation-how-tos-dynamic-pv-li">
+    
+      <a href="/docs/user-documentation/how-tos/dynamic-pv/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-user-documentation-how-tos-dynamic-pv"><span class="">Dynamic Provisioning of PVs</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-user-documentation-how-tos-offline-containers-li">
+    
+      <a href="/docs/user-documentation/how-tos/offline-containers/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-user-documentation-how-tos-offline-containers"><span class="">Offline/disconnected container images</span></a>
+      
+  </li>
+      </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-user-documentation-troubleshooting-li">
+    
+      <a href="/docs/user-documentation/troubleshooting/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-user-documentation-troubleshooting"><span class="">Troubleshooting</span></a>
+      
+  </li>
+      </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docs-developer-documentation-li">
+    
+      <a href="/docs/developer-documentation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docs-developer-documentation"><span class="">Developer Documentation</span></a>
+      <ul class="ul-2 foldable">
+        <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-developer-documentation-local-development-li">
+    
+      <a href="/docs/developer-documentation/local-development/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-developer-documentation-local-development"><span class="">Building and Running MicroShift</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-developer-documentation-build-install-rpm-li">
+    
+      <a href="/docs/developer-documentation/build-install-rpm/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-developer-documentation-build-install-rpm"><span class=""></span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-docs-developer-documentation-vagrant-setup-li">
+    
+      <a href="/docs/developer-documentation/vagrant-setup/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docs-developer-documentation-vagrant-setup"><span class="">Optional vagrant setup</span></a>
+      
+  </li>
+      </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-community-li">
+    
+      <a href="/docs/community/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docs-community"><span class="">Community</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-release-notes-li">
+    
+      <a href="/docs/release-notes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docs-release-notes"><span class="">Release notes</span></a>
+      
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docs-openshift-portability-li">
+    
+      <a href="/docs/openshift-portability/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docs-openshift-portability"><span class="">Differences between MicroShift and OKD</span></a>
+      
+  </li>
+      </ul>
+  </li>
+    </ul>
+  </nav>
+</div>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://microshift.io/docs/">MicroShift Documentation</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://microshift.io/docs/user-documentation/">User Documentation</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://microshift.io/docs/user-documentation/how-tos/">HowTos</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="https://microshift.io/docs/user-documentation/how-tos/dynamic-pv/">Dynamic Provisioning of PVs</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+              
+
+            
+              
+<div class="td-content">
+	<h1>Dynamic Provisioning of PVs</h1>
+	<div class="lead">MicroShift storage solution can provision persistent volumes dynamically based on claims.</div>
+	<header class="article-meta">
+		
+		
+			
+				
+
+
+			
+				
+
+
+			
+		
+		
+	</header>    
+	<p>MicroShift deploys the <a href="https://github.com/kubevirt/hostpath-provisioner">hostpath provisioner</a> as solution to provide persistent storage to pods. The hostpath provisioner pod mounts the <code>/var/hpvolumes</code> directory in order to provision volumes. It also has the ability to dynamically provision PVs when a PVC is created, and wait until a pod uses that specific PVC.</p>
+<p>Let's see how to create a PVC so the hostpath provisioner creates the persistent volume for us.</p>
+<h3 id="create-a-persistent-volume-claim">Create a Persistent Volume Claim</h3>
+<p>MicroShift's hostpath provisioner creates a <code>StorageClass</code> named <code>kubevirt-hostpath-provisioner</code> by default.</p>
+<p>The PVC manifest must reference this <code>StorageClass</code> using the <code>storageClassName</code> spec parameter and there should be an annotation pointing at the node where the PV is going to be created. <em>This annotation is crucial if we want dynamic provisioning of PVs</em>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>v1<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>PersistentVolumeClaim<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>task-pv-claim<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">annotations</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">kubevirt.io/provisionOnNode</span>:<span style="color:#bbb"> </span>ricky-fedora.oglok.net<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">storageClassName</span>:<span style="color:#bbb"> </span>kubevirt-hostpath-provisioner<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">accessModes</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>- ReadWriteOnce<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">resources</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#008000;font-weight:bold">requests</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">storage</span>:<span style="color:#bbb"> </span>3Gi<span style="color:#bbb">
+</span></code></pre></div><p>This manifest will create the following Persistent Volume Claim and a Persistent Volume located at <code>/var/hpvolumes/</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ oc get pvc
+NAME            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS                    AGE
+task-pv-claim   Bound    pvc-58a28c40-7726-4830-ba70-32d18188a8b4   39Gi       RWO            kubevirt-hostpath-provisioner   8m43s
+$ oc get pv
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                   STORAGECLASS                    REASON   AGE
+pvc-58a28c40-7726-4830-ba70-32d18188a8b4   39Gi       RWO            Delete           Bound    default/task-pv-claim   kubevirt-hostpath-provisioner            8m43s
+
+$ ll /var/hpvolumes/
+total <span style="color:#666">0</span>
+drwxrwxrwx. <span style="color:#666">1</span> root root <span style="color:#666">8</span> Apr  <span style="color:#666">5</span> 10:26 pvc-58a28c40-7726-4830-ba70-32d18188a8b4
+</code></pre></div><p>For sake of clarity, we will instantiate a sample NGINX pod that mounts that volume:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#008000;font-weight:bold">apiVersion</span>:<span style="color:#bbb"> </span>v1<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">kind</span>:<span style="color:#bbb"> </span>Pod<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">metadata</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>task-pv-pod<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">spec</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">volumes</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>task-pv-storage<span style="color:#bbb">
+</span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">persistentVolumeClaim</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">        </span><span style="color:#008000;font-weight:bold">claimName</span>:<span style="color:#bbb"> </span>task-pv-claim<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#008000;font-weight:bold">containers</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>- <span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>task-pv-container<span style="color:#bbb">
+</span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">image</span>:<span style="color:#bbb"> </span>nginx<span style="color:#bbb">
+</span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">ports</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">        </span>- <span style="color:#008000;font-weight:bold">containerPort</span>:<span style="color:#bbb"> </span><span style="color:#666">80</span><span style="color:#bbb">
+</span><span style="color:#bbb">          </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;http-server&#34;</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span><span style="color:#008000;font-weight:bold">volumeMounts</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">        </span>- <span style="color:#008000;font-weight:bold">mountPath</span>:<span style="color:#bbb"> </span><span style="color:#b44">&#34;/usr/share/nginx/html&#34;</span><span style="color:#bbb">
+</span><span style="color:#bbb">          </span><span style="color:#008000;font-weight:bold">name</span>:<span style="color:#bbb"> </span>task-pv-storage<span style="color:#bbb">
+</span></code></pre></div><p>Any HTML file located at <code>/var/hpvolumes/pvc-58a28c40-7726-4830-ba70-32d18188a8b4</code> can be exposed by the NGINX running in the pod using a regular service.</p>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+
+    Last modified
+    September 25, 2025 at 6:46 PM PST
+    : <a  href="https://github.com/redhat-et/microshift-documentation/commit/7465b5fdb338d6f738e78628e4716ec0c3ff47a8">Update documentation redirects to microshift-io (#223) (7465b5f)</a>
+
+</div>
+
+</div>
+
+
+            <div class="text-muted mt-5 pt-3 border-top">
+
+    Last modified
+    September 25, 2025 at 6:46 PM PST
+    : <a  href="https://github.com/redhat-et/microshift-documentation/commit/7465b5fdb338d6f738e78628e4716ec0c3ff47a8">Update documentation redirects to microshift-io (#223) (7465b5f)</a>
+
+</div>
+
+            
+          </main>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+  
+  
+  
+  
+  
+  <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+  
+    
+    
+      
+    
+    
+    
+    
+    
+    
+    
+
+    
+    <a href="https://github.com/redhat-et/microshift-documentation/edit/main/content/en/docs/user-documentation/how-tos/dynamic-pv.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+
+    <a href="https://github.com/redhat-et/microshift-documentation/new/main/content/en/docs/user-documentation/how-tos/dynamic-pv.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+    
+
+    <a href="https://github.com/redhat-et/microshift-documentation/issues/new?title=Dynamic%20Provisioning%20of%20PVs" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+    
+
+  
+  
+    <a id="print" href="https://microshift.io/docs/user-documentation/how-tos/_print/"><i class="fa fa-print fa-fw"></i> Print entire section</a>
+  
+  </div>
+
+
+
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#create-a-persistent-volume-claim">Create a Persistent Volume Claim</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+<footer class="d-print-none">
+  <div class="footer__links">
+    <nav>
+      
+      
+      <a class="text-white" href="/docs/home/">Home</a>
+      
+      <a class="text-white" href="/docs/community/">Community</a>
+      
+    </nav>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6 col-sm-2 text-xs-center order-sm-2">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Twitter" aria-label="Twitter">
+    <a class="text-white" target="_blank" href="https://twitter.com/microshift_io">
+      <i class="fab fa-twitter"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Calendar" aria-label="Calendar">
+    <a class="text-white" target="_blank" href="https://calendar.google.com/calendar/embed?src=nj6l882mfe4d2g9nr1h7avgrcs%40group.calendar.google.com&amp;ctz=America%2FChicago">
+      <i class="fas fa-calendar-alt"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Youtube" aria-label="Youtube">
+    <a class="text-white" target="_blank" href="https://www.youtube.com/results?search_query=MicroShift&#43;Red&#43;Hat">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-6 col-sm-2 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" href="https://github.com/openshift/microshift">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" href="https://microshift.slack.com">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-8 text-center order-sm-2">
+        <small class="text-white">&copy; 2025 </small>
+        
+          
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    
+<script src="/js/popper-1.14.3.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/js/bootstrap-4.3.1.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.d450479ebf922238b0349336733304a8093ef200121614f1214a9d106d3775d0.js" integrity="sha256-1FBHnr&#43;SIjiwNJM2czMEqAk&#43;8gASFhTxIUqdEG03ddA=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/jquery-ui.min.c31ea7e64c1740bcef4b5af6b26f61e5b19ab33388395bc56d4ea49229c5b84d.js"></script>
+
+<script>$( function() { $( ".tabs" ).tabs();} ); </script>
+  </body>
+</html>

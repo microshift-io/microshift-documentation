@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-36037335-10"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-36037335-10');
+</script>
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.89.4" />
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+<link rel="canonical" type="text/html" href="https://microshift.io/docs/developer-documentation/">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/logo/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/logo/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/logo/favicon-16x16.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="mask-icon" href="images/logo/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="theme-color" content="#ffffff">
+
+<title>Developer Documentation | MicroShift</title><meta property="og:title" content="Developer Documentation" />
+<meta property="og:description" content="Building and running MicroShift for local development" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://microshift.io/docs/developer-documentation/" /><meta property="og:site_name" content="MicroShift" />
+
+<meta itemprop="name" content="Developer Documentation">
+<meta itemprop="description" content="Building and running MicroShift for local development"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Developer Documentation"/>
+<meta name="twitter:description" content="Building and running MicroShift for local development"/>
+
+
+
+
+
+<link rel="preload" href="/scss/main.min.74383d8b2c66513431ce06d78f9cea3f5745dd97194594c5acd57ec8cc1c401c.css" as="style">
+<link href="/scss/main.min.74383d8b2c66513431ce06d78f9cea3f5745dd97194594c5acd57ec8cc1c401c.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="/js/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+
+
+
+
+<meta name="theme-color" content="#326ce5">
+
+
+
+
+
+
+<meta name="description" content="Building and running MicroShift for local development">
+<meta property="og:description" content="Building and running MicroShift for local development">
+<meta name="twitter:description" content="Building and running MicroShift for local development">
+<meta property="og:url" content="https://microshift.io/docs/developer-documentation/">
+<meta property="og:title" content="Developer Documentation">
+<meta name="twitter:title" content="Developer Documentation">
+<meta name="twitter:image" content="/images/favicon.png" />
+
+<meta name="twitter:image:alt" content="MicroShift">
+
+<meta property="og:image" content="/images/favicon.png">
+
+<meta property="og:type" content="article">
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/css/jquery-ui.min.137b1c829b79d35bbaea89c94a60a56165e443ca5dd258afed9f60317c44cc98.css">
+
+
+  </head>
+  <body class="td-section">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark  flex-column flex-md-row td-navbar" data-auto-burger="primary">
+        <a class="navbar-brand" href="/"></a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			<li class="nav-item mr-2 mb-lg-0">
+				<a class="nav-link active" href="https://github.com/microshift-io/microshift" >Getting Started</span></a>
+			</li>
+			<li class="nav-item mr-2 mb-lg-0">
+				<a class="nav-link active" href="https://github.com/microshift-io/microshift/blob/main/README.md" >Documentation</span></a>
+			</li>
+			
+			
+		</ul>
+	</div>
+	<button id="hamburger" onclick="kub.toggleMenu()" data-auto-burger-exclude><div></div></button>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/docs/developer-documentation/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Developer Documentation</h1>
+<div class="lead">Building and running MicroShift for local development</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1: <a href="#pg-ee7318597e2a727a11960bedd6dffd3f">Building and Running MicroShift</a></li>
+
+
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-2ecd4c5c186af77b7fb7444586806f93"></a></li>
+
+
+    
+  
+    
+    
+	
+<li>3: <a href="#pg-8ee56599b9f5a3e95a8e3e124395fe92">Optional vagrant setup</a></li>
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-ee7318597e2a727a11960bedd6dffd3f">1 - Building and Running MicroShift</h1>
+    <div class="lead">Building and running the MicroShift binary for local development</div>
+	<h2 id="system-requirements">System Requirements</h2>
+<p>For building MicroShift you need a system with a minimum of</p>
+<ul>
+<li>a supported 64-bit CPU architecture (amd64/x86_64, arm64, or riscv64)</li>
+<li>a supported Linux OS (RHEL 8, CentOS Stream, or Fedora 34+)</li>
+<li>2 CPU cores</li>
+<li>3GB of RAM</li>
+<li>1GB of free storage space for MicroShift</li>
+</ul>
+<h2 id="building-microshift">Building MicroShift</h2>
+<p>Install the build-time dependencies:</p>
+<ul class="nav nav-tabs" id="tabset-docs-developer-documentation-local-development-1" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#tabset-docs-developer-documentation-local-development-1-0" role="tab" aria-controls="tabset-docs-developer-documentation-local-development-1-0" aria-selected="true">RHEL</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#tabset-docs-developer-documentation-local-development-1-1" role="tab" aria-controls="tabset-docs-developer-documentation-local-development-1-1">Fedora, CentOS Stream</a></li></ul>
+<div class="tab-content" id="tabset-docs-developer-documentation-local-development-1"><div id="tabset-docs-developer-documentation-local-development-1-0" class="tab-pane show active" role="tabpanel" aria-labelledby="tabset-docs-developer-documentation-local-development-1-0">
+
+<p><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo dnf install -y git make golang
+</code></pre></div></div>
+  <div id="tabset-docs-developer-documentation-local-development-1-1" class="tab-pane" role="tabpanel" aria-labelledby="tabset-docs-developer-documentation-local-development-1-1">
+
+<p><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo dnf install -y git make golang
+</code></pre></div></div></div>
+
+<br/>
+<p>Clone the repository and <code>cd</code> into it:
+<div class="alert alert-danger warning callout" role="alert">
+  <strong></strong> <p>The available community documentation is not currently compatible with the latest MicroShift source code.
+To build the latest MicroShift binary, follow the instructions in the <a href="https://github.com/openshift/microshift">openshift/microshift GitHub repository</a>.</p>
+<p>Otherwise, use the developer preview RPMs by following the instructions in the <a href="https://access.redhat.com/documentation/en-us/red_hat_build_of_microshift/4.12">MicroShift developer preview documentation</a>, using one of the <a href="https://developers.redhat.com/blog/2021/02/10/how-to-activate-your-no-cost-red-hat-enterprise-linux-subscription">no-cost Red Hat Developer subscriptions</a>.</p>
+
+</div>
+</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git clone -b 4.8.0-microshift-2022-04-20-141053 https://github.com/openshift/microshift.git
+<span style="color:#a2f">cd</span> microshift
+</code></pre></div><p>Build MicroShift:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash"><span style="color:#080;font-style:italic"># release build (without debug symbols)</span>
+make
+
+<span style="color:#080;font-style:italic"># development build (with debug symbols)</span>
+make <span style="color:#b8860b">DEBUG</span><span style="color:#666">=</span><span style="color:#a2f">true</span>
+</code></pre></div><h2 id="running-microshift">Running MicroShift</h2>
+<p>MicroShift requires <code>CRI-O</code> to be installed and running on the host. <br>
+Refer to <a href="https://microshift.io/docs/getting-started/#install-cri-o">Getting Started: Install CRI-O</a></p>
+<p>Install the SELinux policies from RPM or build and install them from source:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash"><span style="color:#080;font-style:italic"># from RPM</span>
+sudo dnf copr <span style="color:#a2f">enable</span> -y @redhat-et/microshift
+sudo dnf install -y microshift-selinux
+
+<span style="color:#080;font-style:italic"># from source</span>
+<span style="color:#666">(</span><span style="color:#a2f">cd</span> packaging/selinux <span style="color:#666">&amp;&amp;</span> sudo make install<span style="color:#666">)</span>
+</code></pre></div><p>Run MicroShift using</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo ./microshift run
+</code></pre></div><p>Now switch to a new terminal to access and use this development MicroShift cluster.</p>
+<ul>
+<li>
+<p>To install OpenShift and Kubernetes clients, follow <a href="https://microshift.io/docs/getting-started/#install-clients">Getting Started: Install Clients</a>.</p>
+</li>
+<li>
+<p>To configure the kubeconfig, follow <a href="https://microshift.io/docs/getting-started/#copy-kubeconfig">Getting Started: Copy  Kubeconfig</a>.</p>
+</li>
+</ul>
+<p>It is now possible to run <code>oc</code> or <code>kubectl</code> commands against the MicroShift environment.</p>
+<p>Verify that MicroShift is running:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">oc get pods -A
+</code></pre></div><p>Refer to the <a href="https://microshift.io/docs/user-documentation/">MicroShift user documentation</a></p>
+<h2 id="cleaning-up">Cleaning Up</h2>
+<p>To stop all MicroShift processes and wipe its state run:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo hack/cleanup.sh
+</code></pre></div>
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-2ecd4c5c186af77b7fb7444586806f93">2 - </h1>
+    <div class="lead">Building and installing the MicroShift RPMs for local development</div>
+	<h2 id="building-the-rpms">Building the RPMs</h2>
+<p>MicroShift binary with systemd unit file and the required SELinux submodule can be built as an RPM using <code>make</code> on an RPM-based distribution.</p>
+<p>Install the <a href="https://microshift.io/docs/developer-documentation/local-development/#build-dependencies">MicroShift build dependencies</a> and the RPM specific build-time packages.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo dnf install -y git golang rpm-build selinux-policy-devel container-selinux
+</code></pre></div><p>Clone the repository and cd into it:
+<div class="alert alert-danger warning callout" role="alert">
+  <strong></strong> <p>The available community documentation is not currently compatible with the latest MicroShift source code.
+To build the latest MicroShift RPMs, follow the instructions in the <a href="https://github.com/openshift/microshift">openshift/microshift GitHub repository</a>.</p>
+<p>Otherwise, use the developer preview RPMs by following the instructions in the <a href="https://access.redhat.com/documentation/en-us/red_hat_build_of_microshift/4.12">MicroShift developer preview documentation</a>, using one of the <a href="https://developers.redhat.com/blog/2021/02/10/how-to-activate-your-no-cost-red-hat-enterprise-linux-subscription">no-cost Red Hat Developer subscriptions</a>.</p>
+
+</div>
+</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone -b 4.8.0-microshift-2022-04-20-141053 https://github.com/openshift/microshift.git
+<span style="color:#a2f">cd</span> microshift
+</code></pre></div><p>Build the SELinux and MicroShift RPMs with:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make rpm
+</code></pre></div><p>RPMs will be placed in <code>./packaging/rpm/_rpmbuild/RPMS/</code>. There are two RPMs that will be required to install:</p>
+<pre tabindex="0"><code>packaging/rpm/_rpmbuild/RPMS/noarch/microshift-selinux-*
+packaging/rpm/_rpmbuild/RPMS/x86_64/microshift-*
+</code></pre><h2 id="installing-the-rpms">Installing the RPMs</h2>
+<p>Enable the CRI-O repository:</p>
+<ul class="nav nav-tabs" id="tabset-docs-developer-documentation-build-install-rpm-1" role="tablist"><li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#tabset-docs-developer-documentation-build-install-rpm-1-0" role="tab" aria-controls="tabset-docs-developer-documentation-build-install-rpm-1-0" aria-selected="true">RHEL</a></li>
+	  
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#tabset-docs-developer-documentation-build-install-rpm-1-1" role="tab" aria-controls="tabset-docs-developer-documentation-build-install-rpm-1-1">Fedora</a></li>
+		<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#tabset-docs-developer-documentation-build-install-rpm-1-2" role="tab" aria-controls="tabset-docs-developer-documentation-build-install-rpm-1-2">CentOS Stream</a></li></ul>
+<div class="tab-content" id="tabset-docs-developer-documentation-build-install-rpm-1"><div id="tabset-docs-developer-documentation-build-install-rpm-1-0" class="tab-pane show active" role="tabpanel" aria-labelledby="tabset-docs-developer-documentation-build-install-rpm-1-0">
+
+<p><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash"><span style="color:#a2f">command</span> -v subscription-manager &amp;&gt; /dev/null <span style="color:#b62;font-weight:bold">\
+</span><span style="color:#b62;font-weight:bold"></span>    <span style="color:#666">&amp;&amp;</span> subscription-manager repos --enable rhocp-4.8-for-rhel-8-x86_64-rpms
+</code></pre></div></div>
+  <div id="tabset-docs-developer-documentation-build-install-rpm-1-1" class="tab-pane" role="tabpanel" aria-labelledby="tabset-docs-developer-documentation-build-install-rpm-1-1">
+
+<p><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo dnf module <span style="color:#a2f">enable</span> -y cri-o:1.21
+</code></pre></div></div>
+  <div id="tabset-docs-developer-documentation-build-install-rpm-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-docs-developer-documentation-build-install-rpm-1-2">
+
+<p><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo dnf module <span style="color:#a2f">enable</span> -y cri-o:1.21
+</code></pre></div></div></div>
+
+<br/>
+<p>Install the MicroShift and the SELinux policies:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo dnf localinstall -y packaging/rpm/_rpmbuild/RPMS/noarch/microshift-selinux-*
+sudo dnf localinstall -y packaging/rpm/_rpmbuild/RPMS/x86_64/microshift-*
+</code></pre></div><h2 id="running-the-rpms">Running the RPMs</h2>
+<p>Start CRI-O and MicroShift services:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo systemctl <span style="color:#a2f">enable</span> crio --now
+sudo systemctl <span style="color:#a2f">enable</span> microshift --now
+</code></pre></div><p>To install OpenShift and Kubernetes clients, follow <a href="https://microshift.io/docs/getting-started/#install-clients">Getting Started: Install Clients</a>.</p>
+<p>To configure the kubeconfig, follow <a href="https://microshift.io/docs/getting-started/#copy-kubeconfig">Getting Started: Copy Kubeconfig</a>.</p>
+<p>It is now possible to run <code>oc</code> or <code>kubectl</code> commands against the MicroShift environment.</p>
+<p>Verify that MicroShift is running:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">oc get pods -A
+</code></pre></div><p>You can stop MicroShift service with systemd:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo systemctl stop microshift
+</code></pre></div><div class="alert alert-info note callout" role="alert">
+  <strong></strong> <ul>
+<li>cluster data at <code>/var/lib/microshift</code> and <code>/var/lib/kubelet</code>, will not be deleted upon stopping services.
+Upon a restart, the cluster state will persist as long as the storage is intact.</li>
+</ul>
+
+</div>
+
+<p>Check MicroShift with</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo podman ps
+sudo critcl ps
+</code></pre></div><p>For more on running MicroShift, refer to the <a href="https://microshift.io/docs/user-documentation/">user documentation</a></p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-8ee56599b9f5a3e95a8e3e124395fe92">3 - Optional vagrant setup</h1>
+    <div class="lead">Vagrant environment for local development (optional)</div>
+	<p>It is possible to use Vagrant for VM provisioning, however it is not necessary.</p>
+<p>Find a guide on how to install it for your system <a href="https://www.vagrantup.com/downloads">here</a>.</p>
+<p>Once Vagrant is installed, create a Vagrant box for the operating
+system of choice. For this example we will be looking at a <a href="https://app.vagrantup.com/fedora/boxes/34-cloud-base">fedora 34 cloud
+image</a>, however you can substitute any vagrant image of your choice.</p>
+<p>First, navigate to the MicroShift directory on your host system, or another designated
+directory where we will be storing the <code>Vagrantfile</code>.</p>
+<p>Next, download the vagrant image. For this example we will use
+a fedora 34 cloud image:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">vagrant box add fedora/34-cloud-base
+</code></pre></div><p>Depending on the image, Vagrant will ask you to select a Virtualization provider,
+just select the first one.</p>
+<p>Once that downloads, initialize the repository for launching your image:</p>
+<pre tabindex="0"><code>vagrant init fedora/34-cloud-base
+</code></pre><p>Running this command will create a <code>Vagrantfile</code> in your working directory which
+is used to configure your vagrant box.</p>
+<p>Before starting the Vagrant box, increase the amount of RAM available to the system.
+To do this, edit the <code>Vagrantfile</code> and configure your provider settings to include
+the following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb">    config<span style="color:#666">.</span>vm<span style="color:#666">.</span>provider <span style="color:#b44">&#34;libvirt&#34;</span> <span style="color:#a2f;font-weight:bold">do</span> <span style="color:#666">|</span>v<span style="color:#666">|</span>
+        <span style="color:#080;font-style:italic"># provides 3GB of memory</span>
+        v<span style="color:#666">.</span>memory <span style="color:#666">=</span> <span style="color:#666">3072</span>
+        <span style="color:#080;font-style:italic"># for parallelization</span>
+        v<span style="color:#666">.</span>cpus <span style="color:#666">=</span> <span style="color:#666">2</span>
+    <span style="color:#a2f;font-weight:bold">end</span>
+</code></pre></div><p>The value of <code>config.vm.provider</code> depends on the provider you selected when you
+ran <code>vagrant add</code> earlier. For example, if you selected <code>virtualbox</code> then the first
+line should be: <code>config.vm.provider &quot;virtualbox&quot; do |v|</code></p>
+<p>Now start the VM:</p>
+<pre tabindex="0"><code>vagrant up
+</code></pre><p>Once the VM is up, connect to it:</p>
+<pre tabindex="0"><code>vagrant ssh
+</code></pre><p>Once ssh'd into the vagrant instance, refer to the <a href="https://microshift.io/docs/developer-documentation/local-development/#build-dependencies">local build and install</a> to begin local development.</p>
+<h3 id="extra-optional-connecting-vscode-to-vagrant">(Extra Optional) Connecting VSCode to Vagrant</h3>
+<p>If using VSCode, you can connect to your vagrant box with a few extra steps.</p>
+<h4 id="increasing-memory-requirements">Increasing Memory Requirements</h4>
+<p>Since VSCode leans more on the heavy side of development, the RAM usage on your Vagrant environment
+can go up to 5GB, and therefore we will need to modify the <code>Vagrantfile</code> to
+increase the amount of available RAM from 3GB to 5GB (or 6GB if you want to be safe).
+To do this, set <code>v.memory</code> to the following in your <code>Vagrantfile</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rb" data-lang="rb">        <span style="color:#080;font-style:italic"># provides 5GB of memory</span>
+        v<span style="color:#666">.</span>memory <span style="color:#666">=</span> <span style="color:#666">5120</span>
+        <span style="color:#080;font-style:italic"># provides 6GB of memory</span>
+        v<span style="color:#666">.</span>memory <span style="color:#666">=</span> <span style="color:#666">6144</span>
+</code></pre></div><h4 id="setting-up-an-ssh-profile">Setting up an SSH Profile</h4>
+<p>First we need to ask Vagrant for an SSH config file. From your host machine, run:</p>
+<pre tabindex="0"><code>vagrant ssh-config &gt; ssh-config.conf
+</code></pre><p><em>You can edit the <code>ssh-config.conf</code> file to change the hostname from <code>default</code> to
+<code>vagrant</code> to be more easily identifiable, but that's up to you. :)</em></p>
+<p>Here's an example of a working SSH config file:</p>
+<pre tabindex="0"><code>Host default
+  HostName 127.0.0.1
+  User vagrant
+  Port 2222
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /path/to/microshift/.vagrant/machines/default/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+</code></pre><p>Next, you'll want to install the <code>Remote - SSH</code> extension from the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">VSCode Marketplace</a></p>
+<p>With the extension installed, you'll click on the green bottom in the bottom-left
+corner of VSCode to open a dropdown menu for SSH options:</p>
+<p><img src="../../../images/vscode-remote-button.png" alt="VSCode Remote Button"></p>
+<p>Select the option to open an SSH configuration file:
+<img src="../../../images/remote-ssh-dropdown.png" alt="Dropdown Menu"></p>
+<p>Next you'll want to navigate to the &quot;Remote Explorer&quot; tab on the left-hand side
+of VSCode, then select on the vagrant target (default if you haven't renamed it)
+and click on the button to connect to it in a remote window.</p>
+<p><em>(Credits to Andrés Lopez for this guide: <a href="https://medium.com/@lopezgand/connect-visual-studio-code-with-vagrant-in-your-local-machine-24903fb4a9de">Connect Visual Studio Code with Vagrant in your local machine
+</a>)</em></p>
+<p>Now that the vagrant environment is setup, refer to the <a href="https://microshift.io/docs/developer-documentation/local-development/#build-dependencies">local build and install</a></p>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="d-print-none">
+  <div class="footer__links">
+    <nav>
+      
+      
+      <a class="text-white" href="/docs/home/">Home</a>
+      
+      <a class="text-white" href="/docs/community/">Community</a>
+      
+    </nav>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6 col-sm-2 text-xs-center order-sm-2">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Twitter" aria-label="Twitter">
+    <a class="text-white" target="_blank" href="https://twitter.com/microshift_io">
+      <i class="fab fa-twitter"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Calendar" aria-label="Calendar">
+    <a class="text-white" target="_blank" href="https://calendar.google.com/calendar/embed?src=nj6l882mfe4d2g9nr1h7avgrcs%40group.calendar.google.com&amp;ctz=America%2FChicago">
+      <i class="fas fa-calendar-alt"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Youtube" aria-label="Youtube">
+    <a class="text-white" target="_blank" href="https://www.youtube.com/results?search_query=MicroShift&#43;Red&#43;Hat">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-6 col-sm-2 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" href="https://github.com/openshift/microshift">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" href="https://microshift.slack.com">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-8 text-center order-sm-2">
+        <small class="text-white">&copy; 2025 </small>
+        
+          
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+<script src="/js/popper-1.14.3.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/js/bootstrap-4.3.1.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.d450479ebf922238b0349336733304a8093ef200121614f1214a9d106d3775d0.js" integrity="sha256-1FBHnr&#43;SIjiwNJM2czMEqAk&#43;8gASFhTxIUqdEG03ddA=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/jquery-ui.min.c31ea7e64c1740bcef4b5af6b26f61e5b19ab33388395bc56d4ea49229c5b84d.js"></script>
+
+<script>$( function() { $( ".tabs" ).tabs();} ); </script>
+  </body>
+</html>

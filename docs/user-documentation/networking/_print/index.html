@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-36037335-10"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-36037335-10');
+</script>
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.89.4" />
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+<link rel="canonical" type="text/html" href="https://microshift.io/docs/user-documentation/networking/">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/logo/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/logo/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/logo/favicon-16x16.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="mask-icon" href="images/logo/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="theme-color" content="#ffffff">
+
+<title>Networking | MicroShift</title><meta property="og:title" content="Networking" />
+<meta property="og:description" content="Understanding and configuring networking in MicroShift." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://microshift.io/docs/user-documentation/networking/" /><meta property="og:site_name" content="MicroShift" />
+
+<meta itemprop="name" content="Networking">
+<meta itemprop="description" content="Understanding and configuring networking in MicroShift."><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Networking"/>
+<meta name="twitter:description" content="Understanding and configuring networking in MicroShift."/>
+
+
+
+
+
+<link rel="preload" href="/scss/main.min.74383d8b2c66513431ce06d78f9cea3f5745dd97194594c5acd57ec8cc1c401c.css" as="style">
+<link href="/scss/main.min.74383d8b2c66513431ce06d78f9cea3f5745dd97194594c5acd57ec8cc1c401c.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="/js/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+
+
+
+
+<meta name="theme-color" content="#326ce5">
+
+
+
+
+
+
+<meta name="description" content="Understanding and configuring networking in MicroShift.">
+<meta property="og:description" content="Understanding and configuring networking in MicroShift.">
+<meta name="twitter:description" content="Understanding and configuring networking in MicroShift.">
+<meta property="og:url" content="https://microshift.io/docs/user-documentation/networking/">
+<meta property="og:title" content="Networking">
+<meta name="twitter:title" content="Networking">
+<meta name="twitter:image" content="/images/favicon.png" />
+
+<meta name="twitter:image:alt" content="MicroShift">
+
+<meta property="og:image" content="/images/favicon.png">
+
+<meta property="og:type" content="article">
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/css/jquery-ui.min.137b1c829b79d35bbaea89c94a60a56165e443ca5dd258afed9f60317c44cc98.css">
+
+
+  </head>
+  <body class="td-section">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark  flex-column flex-md-row td-navbar" data-auto-burger="primary">
+        <a class="navbar-brand" href="/"></a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			<li class="nav-item mr-2 mb-lg-0">
+				<a class="nav-link active" href="https://github.com/microshift-io/microshift" >Getting Started</span></a>
+			</li>
+			<li class="nav-item mr-2 mb-lg-0">
+				<a class="nav-link active" href="https://github.com/microshift-io/microshift/blob/main/README.md" >Documentation</span></a>
+			</li>
+			
+			
+		</ul>
+	</div>
+	<button id="hamburger" onclick="kub.toggleMenu()" data-auto-burger-exclude><div></div></button>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/docs/user-documentation/networking/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Networking</h1>
+<div class="lead">Understanding and configuring networking in MicroShift.</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1: <a href="#pg-b0e7cd97514654edfa7e1b5bff515294">Overview</a></li>
+
+
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-93d339436d3fd951d49aab2c806ac37e">Exposing Services</a></li>
+
+
+    
+  
+    
+    
+	
+<li>3: <a href="#pg-a813f4a2f155401b0415650bb22eb277">Firewall</a></li>
+
+
+    
+  
+    
+    
+	
+<li>4: <a href="#pg-0477370f872d1351ebe6eea051d22d47">mDNS</a></li>
+
+
+    
+  
+    
+    
+	
+<li>5: <a href="#pg-1e1613f966091eff100b2129a8472a68">CNI Plugin</a></li>
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-b0e7cd97514654edfa7e1b5bff515294">1 - Overview</h1>
+    <div class="lead">Overview of the MicroShift networking.</div>
+	<p>MicroShift uses the host configured networking, either statically configured
+or via DHCP. In the case of dynamic addresses MicroShift will restart if an
+IP change is detected during runtime.</p>
+<p>Connectivity to the K8s API endpoint is provided in the default 6443 port on
+the master host(s) IP addresses. If other services in the network must interact
+with the MicroShift API connectivity should be performed in any of the following
+ways:</p>
+<ul>
+<li>DNS discovery, pre-configured on the network servers.</li>
+<li>Direct IP address connectivity.</li>
+<li>mDNS discovery via .local domain, see <a href="../mdns">mDNS</a></li>
+</ul>
+<p>Conectivity between Pods is handled by the <a href="../cni">CNI</a> plugin on the Pod network
+range which defaults to <code>10.42.0.0/16</code> which can be modified via <code>Cluster.ClusterCIDR</code>
+<a href="../../configuring/">configuration</a> parameter, see more details in the corresponding sections.</p>
+<p>Connectivity to services of type ClusterIP is provided by the embedded <code>kube-proxy</code>
+iptables-based implementation on the <code>10.43.0.0/16</code> range which can be modified via
+<code>Cluster.ServiceCIDR</code> <a href="../../configuring/">configuration</a> parameter.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-93d339436d3fd951d49aab2c806ac37e">2 - Exposing Services</h1>
+    <div class="lead">Exposing services in MicroShift.</div>
+	<p>Services deployed in MicroShift can be exposed in multiple ways.</p>
+<h1 id="routes-and-ingresses">Routes and Ingresses</h1>
+<p>By default an OpenShift router is created and exposed on host network ports 80/443.
+<code>Routes</code>or <code>Ingresses</code> can be used to expose HTTP or HTTPS services through the router.</p>
+<h3 id="example">Example</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc create deployment nginx --image<span style="color:#666">=</span>nginxinc/nginx-unprivileged:stable-alpine
+oc expose deployment nginx --port<span style="color:#666">=</span><span style="color:#666">8080</span>
+oc expose service/nginx --hostname<span style="color:#666">=</span>my-hostname.com
+
+<span style="color:#080;font-style:italic"># assuming my-hostname.com being mapped to the MicroShift node IP</span>
+curl http://my-hostname.com
+</code></pre></div><h3 id="route-with-mdns-host-example">Route with mDNS host example</h3>
+<p>The hostname of a route can be a mDNS (.local) hostname, which would be then
+announced via mDNS, see the <a href="../mdns/">mDNS</a> section for more details.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc expose service/nginx --hostname<span style="color:#666">=</span>my-hostname.local
+curl http://my-hostname.local
+</code></pre></div><h1 id="service-of-type-nodeport">Service of type NodePort</h1>
+<p>NodePort type of services expose services over a dedicated port on all the cluster
+nodes, such port is routed internally to the active pods backing the service.</p>
+<h3 id="example-1">Example</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc create deployment nginx --image<span style="color:#666">=</span>nginxinc/nginx-unprivileged:stable-alpine
+oc expose deployment nginx --type<span style="color:#666">=</span>NodePort --name<span style="color:#666">=</span>nodeport-nginx --port <span style="color:#666">8080</span>
+<span style="color:#b8860b">NODEPORT</span><span style="color:#666">=</span><span style="color:#a2f;font-weight:bold">$(</span>oc get service nodeport-nginx -o <span style="color:#b8860b">jsonpath</span><span style="color:#666">=</span><span style="color:#b44">&#39;{.spec.ports[0].nodePort}&#39;</span><span style="color:#a2f;font-weight:bold">)</span>
+<span style="color:#b8860b">IP</span><span style="color:#666">=</span><span style="color:#a2f;font-weight:bold">$(</span>oc get node -A -o <span style="color:#b8860b">jsonpath</span><span style="color:#666">=</span><span style="color:#b44">&#39;{.items[0].status.addresses[0].address}&#39;</span><span style="color:#a2f;font-weight:bold">)</span>
+curl http://<span style="color:#b8860b">$IP</span>:<span style="color:#b8860b">$NODEPORT</span>/
+</code></pre></div><p>For using <code>NodePort</code> services open the 30000-32767 port range , see the
+<a href="../firewall/">firewall</a> section.</p>
+<h1 id="service-of-type-loadbalancer">Service of type LoadBalancer</h1>
+<p>Services of type <code>LoadBalancer</code> are not supported yet, this kind of service is normally backed
+by a load balancer in the underlying cloud.</p>
+<p>Multiple alternatives are being explored to provide LoadBalancer VIPs on the LAN.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a813f4a2f155401b0415650bb22eb277">3 - Firewall</h1>
+    <div class="lead">Firewall considerations for MicroShift</div>
+	<p>MicroShift does not require a firewall to run, but it's recommended. In the case of
+using firewalld the following ports should be considered:</p>
+<table>
+<thead>
+<tr>
+<th>Port(s)</th>
+<th>Protocol(s)</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80</td>
+<td><code>TCP</code></td>
+<td>HTTP port used to serve applications through the OpenShift router.</td>
+</tr>
+<tr>
+<td>443</td>
+<td><code>TCP</code></td>
+<td>HTTPS port used to serve applications through the OpenShift router.</td>
+</tr>
+<tr>
+<td>6443</td>
+<td><code>TCP</code></td>
+<td>HTTPS API port for the MicroShift API</td>
+</tr>
+<tr>
+<td>5353</td>
+<td><code>UDP</code></td>
+<td><a href="../mdns/">mDNS</a> service to respond for OpenShift route mDNS hosts</td>
+</tr>
+<tr>
+<td>30000-32767</td>
+<td><code>TCP/UDP</code></td>
+<td>Port range reserved for NodePort type of services, can be used to expose applications on the LAN</td>
+</tr>
+</tbody>
+</table>
+<p>Additionally pods need to be able to contact the internal coreDNS server, a way
+to allow such connectivity is the following, assuming the PodIP range is <code>10.42.0.0/16</code></p>
+<p><code>sudo firewall-cmd --permanent --zone=trusted --add-source=10.42.0.0/16</code></p>
+<h2 id="firewalld">Firewalld</h2>
+<p>An example for enabling firewalld and opening all the above mentioned ports is:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo dnf install -y firewalld
+sudo systemctl <span style="color:#a2f">enable</span> firewalld --now
+sudo firewall-cmd --zone<span style="color:#666">=</span>trusted --add-source<span style="color:#666">=</span>10.42.0.0/16 --permanent
+sudo firewall-cmd --zone<span style="color:#666">=</span>public --add-port<span style="color:#666">=</span>80/tcp --permanent
+sudo firewall-cmd --zone<span style="color:#666">=</span>public --add-port<span style="color:#666">=</span>443/tcp --permanent
+sudo firewall-cmd --zone<span style="color:#666">=</span>public --add-port<span style="color:#666">=</span>6443/tcp --permanent
+sudo firewall-cmd --zone<span style="color:#666">=</span>public --add-port<span style="color:#666">=</span>5353/udp --permanent
+sudo firewall-cmd --zone<span style="color:#666">=</span>public --add-port<span style="color:#666">=</span>30000-32767/tcp --permanent
+sudo firewall-cmd --zone<span style="color:#666">=</span>public --add-port<span style="color:#666">=</span>30000-32767/udp --permanent
+sudo firewall-cmd --reload
+</code></pre></div>
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-0477370f872d1351ebe6eea051d22d47">4 - mDNS</h1>
+    <div class="lead">embedded Multicast DNS support in MicroShift.</div>
+	<p>MicroShift includes an embedded mDNS server for deployment scenarios in which the authoritative DNS server cannot be reconfigured to point clients to services on MicroShift.</p>
+<p>mDNS is a protocol used to allow name resolution and service discovery within a LAN using
+multicast exposed on the <code>5353/UDP</code> port.</p>
+<p>This allows <code>.local</code> domains exposed by MicroShift to be discovered by other elements
+on the Local Area Network.</p>
+<h2 id="notes-for-linux">Notes for Linux</h2>
+<p>mDNS resolution on Linux is provided by the avahi-daemon. For other Linux hosts to discover
+MicroShift services or for workers to locate the master node via mDNS, avahi should be enabled:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo dnf install -y nss-mdns avahi
+hostnamectl set-hostname microshift-vm.local
+systemctl <span style="color:#a2f">enable</span> --now avahi-daemon.service
+</code></pre></div><p>By default only the minimal IPv4 mDNS resolver is implemented, that will only resolve TLD mDNS
+domains like <code>hostname.local</code>, if you want to use hostnames in the form of <code>subdomain.domain.local</code>
+you need to enable the full mDNS resolver on the host trying to resolve those dns entries:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#a2f">echo</span> .local &gt; /etc/mdns.allow
+<span style="color:#a2f">echo</span> .local. &gt;&gt; /etc/mdns.allow
+sed -i <span style="color:#b44">&#39;s/mdns4_minimal/mdns/g&#39;</span> /etc/nsswitch.conf
+</code></pre></div>
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-1e1613f966091eff100b2129a8472a68">5 - CNI Plugin</h1>
+    <div class="lead">The CNI Plugin used in MicroShift.</div>
+	<p>MicroShift uses the <a href="https://github.com/flannel-io/flannel">Flannel</a> CNI network plugin
+as lightweight (but less featureful) alternative to OpenShiftSDN or OVNKubernetes.</p>
+<p>This provides worker node to worker node pod connectivity via vxlan tunnels.</p>
+<p>For single node operation the crio-bridge plugin could be used for additional
+resource saving.</p>
+<!-- TO-DO: test and documment network-pluging switching -->
+<p>Both flannel and crio-bridge have no support for <em>NetworkPolicy</em>.</p>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="d-print-none">
+  <div class="footer__links">
+    <nav>
+      
+      
+      <a class="text-white" href="/docs/home/">Home</a>
+      
+      <a class="text-white" href="/docs/community/">Community</a>
+      
+    </nav>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6 col-sm-2 text-xs-center order-sm-2">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Twitter" aria-label="Twitter">
+    <a class="text-white" target="_blank" href="https://twitter.com/microshift_io">
+      <i class="fab fa-twitter"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Calendar" aria-label="Calendar">
+    <a class="text-white" target="_blank" href="https://calendar.google.com/calendar/embed?src=nj6l882mfe4d2g9nr1h7avgrcs%40group.calendar.google.com&amp;ctz=America%2FChicago">
+      <i class="fas fa-calendar-alt"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Youtube" aria-label="Youtube">
+    <a class="text-white" target="_blank" href="https://www.youtube.com/results?search_query=MicroShift&#43;Red&#43;Hat">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-6 col-sm-2 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" href="https://github.com/openshift/microshift">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" href="https://microshift.slack.com">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-8 text-center order-sm-2">
+        <small class="text-white">&copy; 2025 </small>
+        
+          
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+<script src="/js/popper-1.14.3.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/js/bootstrap-4.3.1.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.d450479ebf922238b0349336733304a8093ef200121614f1214a9d106d3775d0.js" integrity="sha256-1FBHnr&#43;SIjiwNJM2czMEqAk&#43;8gASFhTxIUqdEG03ddA=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/jquery-ui.min.c31ea7e64c1740bcef4b5af6b26f61e5b19ab33388395bc56d4ea49229c5b84d.js"></script>
+
+<script>$( function() { $( ".tabs" ).tabs();} ); </script>
+  </body>
+</html>

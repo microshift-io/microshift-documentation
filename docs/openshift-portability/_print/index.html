@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-36037335-10"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-36037335-10');
+</script>
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.89.4" />
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+<link rel="canonical" type="text/html" href="https://microshift.io/docs/openshift-portability/">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/logo/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/logo/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/logo/favicon-16x16.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="mask-icon" href="images/logo/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="theme-color" content="#ffffff">
+
+<title>Differences between MicroShift and OKD | MicroShift</title><meta property="og:title" content="Differences between MicroShift and OKD" />
+<meta property="og:description" content="Addressing some innate differences between OKD and MicroShift." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://microshift.io/docs/openshift-portability/" /><meta property="og:site_name" content="MicroShift" />
+
+<meta itemprop="name" content="Differences between MicroShift and OKD">
+<meta itemprop="description" content="Addressing some innate differences between OKD and MicroShift."><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Differences between MicroShift and OKD"/>
+<meta name="twitter:description" content="Addressing some innate differences between OKD and MicroShift."/>
+
+
+
+
+
+<link rel="preload" href="/scss/main.min.74383d8b2c66513431ce06d78f9cea3f5745dd97194594c5acd57ec8cc1c401c.css" as="style">
+<link href="/scss/main.min.74383d8b2c66513431ce06d78f9cea3f5745dd97194594c5acd57ec8cc1c401c.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="/js/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+
+
+
+
+<meta name="theme-color" content="#326ce5">
+
+
+
+
+
+
+<meta name="description" content="Addressing some innate differences between OKD and MicroShift.">
+<meta property="og:description" content="Addressing some innate differences between OKD and MicroShift.">
+<meta name="twitter:description" content="Addressing some innate differences between OKD and MicroShift.">
+<meta property="og:url" content="https://microshift.io/docs/openshift-portability/">
+<meta property="og:title" content="Differences between MicroShift and OKD">
+<meta name="twitter:title" content="Differences between MicroShift and OKD">
+<meta name="twitter:image" content="/images/favicon.png" />
+
+<meta name="twitter:image:alt" content="MicroShift">
+
+<meta property="og:image" content="/images/favicon.png">
+
+<meta property="og:type" content="article">
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/css/jquery-ui.min.137b1c829b79d35bbaea89c94a60a56165e443ca5dd258afed9f60317c44cc98.css">
+
+
+  </head>
+  <body class="td-section">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark  flex-column flex-md-row td-navbar" data-auto-burger="primary">
+        <a class="navbar-brand" href="/"></a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			<li class="nav-item mr-2 mb-lg-0">
+				<a class="nav-link active" href="https://github.com/microshift-io/microshift" >Getting Started</span></a>
+			</li>
+			<li class="nav-item mr-2 mb-lg-0">
+				<a class="nav-link active" href="https://github.com/microshift-io/microshift/blob/main/README.md" >Documentation</span></a>
+			</li>
+			
+			
+		</ul>
+	</div>
+	<button id="hamburger" onclick="kub.toggleMenu()" data-auto-burger-exclude><div></div></button>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/docs/openshift-portability/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Differences between MicroShift and OKD</h1>
+<div class="lead">Addressing some innate differences between OKD and MicroShift.</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+
+    </ul>
+
+
+<div class="content">
+      <h1 id="differences-between-okd-and-microshift">Differences Between OKD and MicroShift</h1>
+<p>The design goals behind MicroShift diverge from those of OKD as a necessity of the very different operating environments each project targets.  Namely, OKD achieves the goal of providing a full-stack, self-managed container application platform, targeting developer and operations-centric use cases on cloud infrastructure. MicroShift aims to provide a minimal OpenShift experience on small form factor, often headless devices with as conservative a resource overhead as possible. To further the project's goals, the MicroShift team has reduced OKD's feature set to remove functionality not well suited for edge use cases.</p>
+<h2 id="deployment">Deployment</h2>
+<p>MicroShift's deployment model differs significantly from OKD's.  <a href="https://github.com/openshift/okd#getting-started">Openshift-install</a> fully automates OKD deployment on cloud or baremetal infrastructure and manages system dependencies and configuration.  It goes a long way to provide a streamlined installation model for users.  MicroShift, being a single binary, can be installed atomically and managed like any other app. The user is expected to have some basic knowledge of package installation tools (dnf, yum, rpm).</p>
+<p>The MicroShift <a href="https://microshift.io/docs/getting-started/#install-cri-o">documentation</a> provides a step-by-step recipe for preparing a system and installing the app on supported operating systems.</p>
+<h2 id="control-plane-services">Control-Plane Services</h2>
+<p>The most notable difference between an OKD and MicroShift runtime are the lack of <a href="https://docs.openshift.com/container-platform/4.8/operators/operator-reference.html#machine-config-operator_platform-operators-ref">operators</a>. Running an operator for each control-plane component becomes quite costly at the edge.  Operators are built on the <a href="https://operatorframework.io/">operator-framework</a>, which provides a wonderful toolset and boilerplate for orchestrating application lifecycle management.  In order to reduce the platform's resource footprint, MicroShift compiles the control-plane into a single binary. This architecture means that the control-plane applications are not managed through the Kubernetes API, making the role of their operators moot.  The result of this design is a measurable reduction of redundant code (operator boilerplate) and a lower runtime overhead.  For most cases, we do not expect this to impact application portability.</p>
+<h4 id="embedded-services">Embedded Services</h4>
+<h5 id="control-plane">Control-Plane</h5>
+<ul>
+<li>etcd</li>
+<li>kube-scheduler</li>
+<li>kube-apiserver</li>
+<li>openshift-api-server</li>
+<li>kube-controller-manager</li>
+<li>openshift-controller-manager</li>
+<li>openshift-oath</li>
+<li><a href="https://github.com/openshift/microshift/pull/429">multicast dns</a> (for multi-node enablement)</li>
+</ul>
+<h5 id="node">Node</h5>
+<ul>
+<li>kubelet</li>
+<li>kube-proxy</li>
+</ul>
+<h4 id="deployed-services">Deployed Services</h4>
+<p>Post boot, MicroShift deploys the following services:</p>
+<ul>
+<li>openshift-service-ca</li>
+<li>openshift-ingress</li>
+<li>kubevirt-hostpath-provisioner</li>
+</ul>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="d-print-none">
+  <div class="footer__links">
+    <nav>
+      
+      
+      <a class="text-white" href="/docs/home/">Home</a>
+      
+      <a class="text-white" href="/docs/community/">Community</a>
+      
+    </nav>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6 col-sm-2 text-xs-center order-sm-2">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Twitter" aria-label="Twitter">
+    <a class="text-white" target="_blank" href="https://twitter.com/microshift_io">
+      <i class="fab fa-twitter"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Calendar" aria-label="Calendar">
+    <a class="text-white" target="_blank" href="https://calendar.google.com/calendar/embed?src=nj6l882mfe4d2g9nr1h7avgrcs%40group.calendar.google.com&amp;ctz=America%2FChicago">
+      <i class="fas fa-calendar-alt"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Youtube" aria-label="Youtube">
+    <a class="text-white" target="_blank" href="https://www.youtube.com/results?search_query=MicroShift&#43;Red&#43;Hat">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-6 col-sm-2 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" href="https://github.com/openshift/microshift">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" href="https://microshift.slack.com">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-8 text-center order-sm-2">
+        <small class="text-white">&copy; 2025 </small>
+        
+          
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+<script src="/js/popper-1.14.3.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/js/bootstrap-4.3.1.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.d450479ebf922238b0349336733304a8093ef200121614f1214a9d106d3775d0.js" integrity="sha256-1FBHnr&#43;SIjiwNJM2czMEqAk&#43;8gASFhTxIUqdEG03ddA=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/jquery-ui.min.c31ea7e64c1740bcef4b5af6b26f61e5b19ab33388395bc56d4ea49229c5b84d.js"></script>
+
+<script>$( function() { $( ".tabs" ).tabs();} ); </script>
+  </body>
+</html>
