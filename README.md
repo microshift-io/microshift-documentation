@@ -23,13 +23,13 @@ cd microshift-documentation
 
 ```bash
 npm install
-# if you do want to download and use hugo-extended in current directory
 make server
-# or if you already have hugo-extended installed in $PATH
-hugo serve
 ```
 
-This will start the local Hugo server on port 1313. Open up your browser to <http://localhost:1313> to view the website. As you make changes to the source files, Hugo updates the website and forces a browser refresh.
+This will start the local Hugo server on port 8080. Open up your browser to <http://localhost:8080> to view the website.
+As you make changes to the source files, Hugo updates the website and forces a browser refresh.
+
+Note: Run `make static` to generate static contents without starting a server.
 
 ## Get involved with MicroShift
 
